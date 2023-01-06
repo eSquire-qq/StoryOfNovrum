@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerControlledMovement : MonoBehaviour
 {
 	public float moveSpeed = 5f;
 
 	public Rigidbody2D rb;
 	public Animator animator;
 
-	Vector2 movment;
+	protected Vector2 movment;
 
-	void Update()
+	protected void Update()
 	{
 		movment.x  = Input.GetAxisRaw("Horizontal");
 		movment.y  = Input.GetAxisRaw("Vertical");
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 		animator.SetFloat("Speed", movment.sqrMagnitude);
 	}
 
-	void FixedUpdate()
+	protected void FixedUpdate()
 	{
 		rb.MovePosition(rb.position + movment * moveSpeed * Time.fixedDeltaTime);
 	}
