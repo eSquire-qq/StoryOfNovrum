@@ -1,0 +1,783 @@
+fileFormatVersion: 2
+guid: 809e89916d979d0418422c96ec0a5081
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 145
+        width: 62
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea668fcd7f7fcb6408f465687c9f5d56
+      internalID: 611726734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 148
+        width: 64
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 286f28a68de87784bbe31bf15567607f
+      internalID: -15021128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 155
+        width: 53
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0ac0714516add84fafceaef78623e54
+      internalID: 1298153694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 155
+        width: 36
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c2fc00a4ee2e54ca53d8d5876be07d
+      internalID: 1159583413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 191
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 204fc97b85dadcd48b6ef133b2589f7e
+      internalID: -2063806127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 217
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 256aa8a53b39fb549b341706b2cfba49
+      internalID: -1477661977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 214
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0655e5d882cbaa14cb1663da3a4cb94c
+      internalID: -583650521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 154
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e6d019ffbe01644b81d9fcdd640b2a6
+      internalID: 1606393016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 181
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cc9926c846fd524e8b33f8e4e113278
+      internalID: 1796977921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 197
+        width: 40
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33bf7ff981b13c94a8525b4e8cddf4b5
+      internalID: 378256765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 145
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd983d3b3fab9049b9aaf137d807557
+      internalID: 86856830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 146
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f728a86c6d280f049bf8ada15fd28a7c
+      internalID: 1824726285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 67
+        width: 36
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 237431020bc913a47bc2c7d359e94c50
+      internalID: -1426073964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 70
+        width: 30
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 576ddf746ee6f8b42a7f19dc1ebbd0f4
+      internalID: 738476948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 68
+        width: 21
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1631196f8ebd63e468da70fda940eb70
+      internalID: -634206975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 97
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43eea2d4758c51749a4ba25faf52f89c
+      internalID: 738218140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 70
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd84cc683be4ae44b4b079ab21016ae
+      internalID: 618720724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 67
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c54da814b70c3b498fdb814c49eedce
+      internalID: 33561720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 66
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13f7e9214b7f0ab498cfd210bd0a8fe9
+      internalID: -1406298793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 021878e6d9c13d44991ea74755373f2a
+      internalID: -2023336363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 67
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f5430a60d818e643bc3d135046f80cb
+      internalID: 274364796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 29
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 798d34e7b4cf03e47921f70d18810f06
+      internalID: 1909929994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 2
+        width: 53
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86fb799fa9593af46852ad831a30ffc6
+      internalID: -2050061155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 4
+        width: 32
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a22f335cec70b6e4f9769f49794f143f
+      internalID: 231365392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 6
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18ef598776b7b934488e849ea3e74c20
+      internalID: -1836309612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 29
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3abfc3876bb80844bebda172c8b1207
+      internalID: -1193088290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 37
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dec321d1ba430946bb7a8e52a2867c2
+      internalID: -293059512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 34
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 342fb1cab13eda84985b73e5b5ab7e70
+      internalID: 387421786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 3
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be3ff3aee49bd824bac61da791588a67
+      internalID: -248004137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallTreeSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 0
+        width: 11
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa80b90f6674fb746a67ff4264e3de95
+      internalID: -393932035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SmallTreeSpriteSheet_16: 618720724
+      SmallTreeSpriteSheet_0: 611726734
+      SmallTreeSpriteSheet_14: -634206975
+      SmallTreeSpriteSheet_11: 1824726285
+      SmallTreeSpriteSheet_24: -1836309612
+      SmallTreeSpriteSheet_10: 86856830
+      SmallTreeSpriteSheet_21: 1909929994
+      SmallTreeSpriteSheet_28: -248004137
+      SmallTreeSpriteSheet_9: 378256765
+      SmallTreeSpriteSheet_7: 1606393016
+      SmallTreeSpriteSheet_5: -1477661977
+      SmallTreeSpriteSheet_15: 738218140
+      SmallTreeSpriteSheet_1: -15021128
+      SmallTreeSpriteSheet_25: -1193088290
+      SmallTreeSpriteSheet_8: 1796977921
+      SmallTreeSpriteSheet_22: -2050061155
+      SmallTreeSpriteSheet_23: 231365392
+      SmallTreeSpriteSheet_12: -1426073964
+      SmallTreeSpriteSheet_6: -583650521
+      SmallTreeSpriteSheet_27: 387421786
+      SmallTreeSpriteSheet_20: 274364796
+      SmallTreeSpriteSheet_17: 33561720
+      SmallTreeSpriteSheet_4: -2063806127
+      SmallTreeSpriteSheet_2: 1298153694
+      SmallTreeSpriteSheet_3: 1159583413
+      SmallTreeSpriteSheet_26: -293059512
+      SmallTreeSpriteSheet_13: 738476948
+      SmallTreeSpriteSheet_18: -1406298793
+      SmallTreeSpriteSheet_19: -2023336363
+      SmallTreeSpriteSheet_29: -393932035
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
