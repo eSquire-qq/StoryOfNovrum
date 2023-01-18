@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
+using Inverntory.Interaction;
 
 public class PlayerControlledMovement : MonoBehaviour
 {
@@ -9,29 +11,66 @@ public class PlayerControlledMovement : MonoBehaviour
 
 	public Rigidbody2D rb;
 	public Animator animator;
-	public GameObject InteractionArea;
+	protected InteractionArea interactionArea;
 
-	protected Vector2 movment;
-	NavMeshAgent navMeshAgent;
+	protected Vector2 movmentVector;
+	public NavMeshAgent navMeshAgent;
+
+	protected PlayerInput playerInput;
+	protected InputAction movement;
+	protected InputAction interaction;
 
 	public void Start()
 	{
 		navMeshAgent = GetComponent<NavMeshAgent>();
+		interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
+	}
+
+	public void Awake()
+	{
+		playerInput = new PlayerInput();
+	}
+
+	public void OnEnable()
+	{
+		movement = playerInput.Player.Move;
+		movement.Enable();
+
+		interaction = playerInput.Player.Interact;
+		interaction.Enable();
+		interaction.performed += Interact;
+	}
+
+	public void OnDisable()
+	{
+		movement.Disable();
+		interaction.Disable();
 	}
 
 	protected void Update()
 	{
-		movment.x  = Input.GetAxisRaw("Horizontal");
-		movment.y  = Input.GetAxisRaw("Vertical");
+		movmentVector = movement.ReadValue<Vector2>();
 
-		animator.SetFloat("Horizontal", movment.x);
-		animator.SetFloat("Vertical", movment.y);
-		animator.SetFloat("Speed", movment.sqrMagnitude);
+		animator.SetFloat("Horizontal", movmentVector.x);
+		animator.SetFloat("Vertical", movmentVector.y);
+		animator.SetFloat("Speed", movmentVector.sqrMagnitude);
 	}
 
 	protected void FixedUpdate()
 	{
-		rb.MovePosition(rb.position + movment * moveSpeed * Time.fixedDeltaTime);
-		InteractionArea.transform.localPosition = movment/2;
+		rb.MovePosition(rb.position + movmentVector * moveSpeed * Time.fixedDeltaTime);
+		if (interactionArea) {
+			interactionArea.transform.localPosition = movmentVector/2;
+		}
+	}
+
+	protected void Interact(InputAction.CallbackContext context)
+	{
+		GameObject interactionObject = interactionArea.GetCurrentItem()?.gameObject;
+		if (interactionObject != null)
+		{
+			Destroy(interactionObject);
+			interactionObject = null;
+		}
 	}
 }
