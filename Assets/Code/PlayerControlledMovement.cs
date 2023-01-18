@@ -11,6 +11,12 @@ public class PlayerControlledMovement : MonoBehaviour
 	public Animator animator;
 
 	protected Vector2 movment;
+	NavMeshAgent navMeshAgent;
+
+	public void Start()
+	{
+		navMeshAgent = GetComponent<NavMeshAgent>();
+	}
 
 	protected void Update()
 	{
