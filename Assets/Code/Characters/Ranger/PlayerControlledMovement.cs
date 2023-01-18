@@ -9,6 +9,7 @@ public class PlayerControlledMovement : MonoBehaviour
 
 	public Rigidbody2D rb;
 	public Animator animator;
+	public GameObject InteractionArea;
 
 	protected Vector2 movment;
 	NavMeshAgent navMeshAgent;
@@ -31,5 +32,6 @@ public class PlayerControlledMovement : MonoBehaviour
 	protected void FixedUpdate()
 	{
 		rb.MovePosition(rb.position + movment * moveSpeed * Time.fixedDeltaTime);
+		InteractionArea.transform.localPosition = movment/2;
 	}
 }
