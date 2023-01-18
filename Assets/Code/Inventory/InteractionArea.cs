@@ -2,14 +2,16 @@ using UnityEngine;
 
 namespace Inverntory.Interaction
 {
-    public class InteractionScript : MonoBehaviour
+    public class InteractionArea : MonoBehaviour
     {
+        InteractiveItem currentItem;
         private void OnTriggerEnter2D(Collider2D collision)
         {
             InteractiveItem item = collision.GetComponent<InteractiveItem>();
             if (item != null)
             {
                 item.ShowHighlight();
+                currentItem = item;
             }
         }
 
@@ -20,6 +22,11 @@ namespace Inverntory.Interaction
             {
                 item.HideHighlight();
             }
+        }
+
+        public InteractiveItem GetCurrentItem()
+        {
+            return currentItem;
         }
     }
 
