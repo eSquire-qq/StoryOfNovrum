@@ -1,10 +1,13 @@
+using Inventory.Model;
 using UnityEngine;
 
 namespace Inverntory.Interaction
 {
     public class InteractionArea : MonoBehaviour
     {
-        InteractiveItem currentItem;
+        [SerializeField]
+        protected InteractiveItem currentItem;
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             InteractiveItem item = collision.GetComponent<InteractiveItem>();
