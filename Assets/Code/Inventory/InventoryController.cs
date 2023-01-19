@@ -58,30 +58,30 @@ namespace Inventory
             inventoryUI.OnDescriptionRequested += HandleDescriptionRequest;
             inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;
-            // inventoryUI.OnItemActionRequested += HandleItemActionRequest;
+            inventoryUI.OnItemActionRequested += HandleItemActionRequest;
         }
 
-        // private void HandleItemActionRequest(int itemIndex)
-        // {
-        //     InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
-        //     if (inventoryItem.IsEmpty)
-        //         return;
+        private void HandleItemActionRequest(int itemIndex)
+        {
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+                return;
 
-        //     IItemAction itemAction = inventoryItem.item as IItemAction;
-        //     if(itemAction != null)
-        //     {
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if(itemAction != null)
+            {
                 
-        //         inventoryUI.ShowItemAction(itemIndex);
-        //         inventoryUI.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
-        //     }
+                inventoryUI.ShowItemAction(itemIndex);
+                inventoryUI.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
+            }
 
-        //     IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
-        //     if (destroyableItem != null)
-        //     {
-        //         inventoryUI.AddAction("Drop", () => DropItem(itemIndex, inventoryItem.quantity));
-        //     }
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null)
+            {
+                inventoryUI.AddAction("Drop", () => DropItem(itemIndex, inventoryItem.quantity));
+            }
 
-        // }
+        }
 
         private void DropItem(int itemIndex, int quantity)
         {
@@ -90,27 +90,27 @@ namespace Inventory
             audioSource.PlayOneShot(dropClip);
         }
 
-        // public void PerformAction(int itemIndex)
-        // {
-        //     InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
-        //     if (inventoryItem.IsEmpty)
-        //         return;
+        public void PerformAction(int itemIndex)
+        {
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+                return;
 
-        //     IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
-        //     if (destroyableItem != null)
-        //     {
-        //         inventoryData.RemoveItem(itemIndex, 1);
-        //     }
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null)
+            {
+                inventoryData.RemoveItem(itemIndex, 1);
+            }
 
-        //     IItemAction itemAction = inventoryItem.item as IItemAction;
-        //     if (itemAction != null)
-        //     {
-        //         itemAction.PerformAction(gameObject, inventoryItem.itemState);
-        //         audioSource.PlayOneShot(itemAction.actionSFX);
-        //         if (inventoryData.GetItemAt(itemIndex).IsEmpty)
-        //             inventoryUI.ResetSelection();
-        //     }
-        // }
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null)
+            {
+                itemAction.PerformAction(gameObject, inventoryItem.itemState);
+                audioSource.PlayOneShot(itemAction.actionSFX);
+                if (inventoryData.GetItemAt(itemIndex).IsEmpty)
+                    inventoryUI.ResetSelection();
+            }
+        }
 
         private void HandleDragging(int itemIndex)
         {

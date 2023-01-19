@@ -23,14 +23,9 @@ public class MouseFollower : MonoBehaviour
     }
     void Update()
     {
-        Vector2 position;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            (RectTransform)canvas.transform,
-            Input.mousePosition,
-            canvas.worldCamera,
-            out position
-                );
-        transform.position = canvas.transform.TransformPoint(position);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = Camera.main.transform.position.z + Camera.main.nearClipPlane;
+        transform.position = mousePosition;
     }
     
     public void Toggle(bool val)

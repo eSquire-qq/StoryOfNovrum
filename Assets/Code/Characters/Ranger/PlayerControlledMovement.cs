@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using Inverntory.Interaction;
+using Inventory.Model;
 
 public class PlayerControlledMovement : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerControlledMovement : MonoBehaviour
 	public Rigidbody2D rb;
 	public Animator animator;
 	protected InteractionArea interactionArea;
+
+	[SerializeField]
+    private InventorySO inventoryData;
 
 	protected Vector2 movmentVector;
 	protected PlayerInput playerInput;
@@ -63,10 +67,12 @@ public class PlayerControlledMovement : MonoBehaviour
 
 	protected void Interact(InputAction.CallbackContext context)
 	{
-		GameObject interactionObject = interactionArea.GetCurrentItem()?.gameObject;
+		Item interactionObject = interactionArea.GetCurrentItem();
 		if (interactionObject != null)
 		{
-			Destroy(interactionObject);
+			inventoryData.AddItem(interactionObject.InventoryItem, interactionObject.Quantity);
+			interactionObject.DestroyItem();
+			Destroy(interactionObject.gameObject);
 			interactionObject = null;
 		}
 	}
