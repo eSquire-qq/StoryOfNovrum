@@ -14,15 +14,12 @@ public class PlayerControlledMovement : MonoBehaviour
 	protected InteractionArea interactionArea;
 
 	protected Vector2 movmentVector;
-	public NavMeshAgent navMeshAgent;
-
 	protected PlayerInput playerInput;
 	protected InputAction movement;
 	protected InputAction interaction;
 
 	public void Start()
 	{
-		navMeshAgent = GetComponent<NavMeshAgent>();
 		interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
 	}
 
