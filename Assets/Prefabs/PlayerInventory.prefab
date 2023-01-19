@@ -135,10 +135,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 250, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2242944741532044089
 MonoBehaviour:
@@ -181,4 +181,3 @@ MonoBehaviour:
   itemPrefab: {fileID: 7639570341444658467, guid: e7810f49855f8ab44bed88fa1a0ae7f0, type: 3}
   contentPanel: {fileID: 4746613884472001509}
   mouseFollower: {fileID: 0}
-  actionPanel: {fileID: 0}

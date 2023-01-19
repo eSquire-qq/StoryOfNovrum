@@ -12,8 +12,8 @@ namespace Inventory.UI
     {
         [SerializeField]
         private Image itemImage;
-        [SerializeField]
-        private TMP_Text quantityTxt;
+        // [SerializeField]
+        // private TMP_Text quantityTxt;
 
         [SerializeField]
         private Image borderImage;
@@ -42,7 +42,7 @@ namespace Inventory.UI
         {
             itemImage.gameObject.SetActive(true);
             itemImage.sprite = sprite;
-            quantityTxt.text = quantity + "";
+            // quantityTxt.text = quantity + "";
             empty = false;
         }
 
