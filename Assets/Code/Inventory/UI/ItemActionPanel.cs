@@ -20,8 +20,13 @@ namespace Inventory.UI
 
         public void Toggle(bool val)
         {
-            if (val == true)
+            if (val == true) {
                 RemoveOldButtons();
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePosition.z = Camera.main.transform.position.z + Camera.main.nearClipPlane;
+                mousePosition.y = mousePosition.y -= 64;
+                transform.position = mousePosition;
+            }
             gameObject.SetActive(val);
         }
 

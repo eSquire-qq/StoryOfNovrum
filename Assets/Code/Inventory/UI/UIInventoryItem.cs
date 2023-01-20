@@ -16,7 +16,7 @@ namespace Inventory.UI
         // private TMP_Text quantityTxt;
 
         [SerializeField]
-        private Image borderImage;
+        private Image selectionImage;
 
         public event Action<UIInventoryItem> OnItemClicked,
             OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag,
@@ -36,7 +36,7 @@ namespace Inventory.UI
         }
         public void Deselect()
         {
-            borderImage.enabled = false;
+            selectionImage.enabled = false;
         }
         public void SetData(Sprite sprite, int quantity)
         {
@@ -48,7 +48,7 @@ namespace Inventory.UI
 
         public void Select()
         {
-            borderImage.enabled = true;
+            selectionImage.enabled = true;
         }
 
         public void OnPointerClick(PointerEventData eventData)
