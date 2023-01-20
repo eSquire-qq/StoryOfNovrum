@@ -10,7 +10,7 @@ namespace Inventory.Model
     public class InventorySO : ScriptableObject
     {
         [SerializeField]
-        private List<InventoryItem> inventoryItems;
+        protected List<InventoryItem> inventoryItems;
 
         [field: SerializeField]
         public int Size { get; private set; } = 10;
@@ -32,7 +32,7 @@ namespace Inventory.Model
             {
                 for (int i = 0; i < inventoryItems.Count; i++)
                 {
-                    while(quantity > 0 && IsInventoryFull() == false)
+                    while(quantity > 0 && IsInventoryFull == false)
                     {
                         quantity -= AddItemToFirstFreeSlot(item, 1, itemState);
                     }
@@ -45,7 +45,7 @@ namespace Inventory.Model
             return quantity;
         }
 
-        private int AddItemToFirstFreeSlot(ItemSO item, int quantity
+        protected int AddItemToFirstFreeSlot(ItemSO item, int quantity
             , List<ItemParameter> itemState = null)
         {
             InventoryItem newItem = new InventoryItem
@@ -67,8 +67,11 @@ namespace Inventory.Model
             return 0;
         }
 
-        private bool IsInventoryFull()
-            => inventoryItems.Where(item => item.IsEmpty).Any() == false;
+        protected bool IsInventoryFull {
+            get {
+                return inventoryItems.Where(item => item.IsEmpty).Any() == false;
+            }
+        }
 
         private int AddStackableItem(ItemSO item, int quantity)
         {
@@ -96,7 +99,7 @@ namespace Inventory.Model
                     }
                 }
             }
-            while(quantity > 0 && IsInventoryFull() == false)
+            while(quantity > 0 && IsInventoryFull == false)
             {
                 int newQuantity = Mathf.Clamp(quantity, 0, item.MaxStackSize);
                 quantity -= newQuantity;
