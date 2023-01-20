@@ -5,16 +5,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Inventory
 {
     public class InventoryController : MonoBehaviour
     {
         [SerializeField]
-        private UIInventoryPage inventoryUI;
+        protected UIInventoryPage inventoryUI;
 
         [SerializeField]
-        private InventorySO inventoryData;
+        protected InventorySO inventoryData;
+
+        [SerializeField]
+        protected GameObject ItemPrefab;
 
         public List<InventoryItem> initialItems = new List<InventoryItem>();
 
@@ -81,6 +85,13 @@ namespace Inventory
 
         private void DropItem(int itemIndex, int quantity)
         {
+            if (ItemPrefab) 
+            {
+                GameObject dropItem = Instantiate(ItemPrefab) as GameObject;
+                dropItem.GetComponent<Item>().InventoryItem = inventoryData.GetItemAt(itemIndex).item;
+                dropItem.GetComponent<Item>().Quantity = quantity;
+                dropItem.transform.position = transform.position;
+            }
             inventoryData.RemoveItem(itemIndex, quantity);
             inventoryUI.ResetSelection();
         }
