@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Inverntory.Interaction
 {
-    public class InteractiveItem : Item
+    public class InteractiveItem : MonoBehaviour
     {
         protected SpriteRenderer sprRend;
 
@@ -14,13 +14,13 @@ namespace Inverntory.Interaction
         public void ShowHighlight() 
         {
             transform.localScale = new Vector2(1.1f, 1.1f);
-            gameObject.GetComponent<Renderer>().sharedMaterial.SetFloat("_OutlineEnabled", 1f);
+            gameObject.GetComponent<Renderer>().material.SetFloat("_OutlineEnabled", 1f);
         }
 
         public void HideHighlight() 
         {
             transform.localScale = new Vector2(1f, 1f);
-            gameObject.GetComponent<Renderer>().sharedMaterial.SetFloat("_OutlineEnabled", 0f);
+            gameObject.GetComponent<Renderer>().material.SetFloat("_OutlineEnabled", 0f);
         }
 
     }

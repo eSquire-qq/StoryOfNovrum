@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using Inverntory.Interaction;
-using Inventory.Model;
+using System;
+using Inventory.Interaction;
 
-public class PlayerControlledMovement : MonoBehaviour
+public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker
 {
 	public float moveSpeed = 5f;
 
@@ -14,15 +12,14 @@ public class PlayerControlledMovement : MonoBehaviour
 	public Animator animator;
 	protected InteractionArea interactionArea;
 
-	[SerializeField]
-    private InventorySO inventoryData;
-
 	protected Vector2 movmentVector;
 	protected PlayerInput playerInput;
 	protected InputAction movement;
 	protected InputAction interaction;
 
-	public void Start()
+	public event Action<object> OnInteraction;
+
+    public void Start()
 	{
 		interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
 	}
@@ -65,15 +62,8 @@ public class PlayerControlledMovement : MonoBehaviour
 		}
 	}
 
-	protected void Interact(InputAction.CallbackContext context)
+	public void Interact(InputAction.CallbackContext context)
 	{
-		Item interactionObject = interactionArea.GetCurrentItem();
-		if (interactionObject != null)
-		{
-			inventoryData.AddItem(interactionObject.InventoryItem, interactionObject.Quantity);
-			interactionObject.DestroyItem();
-			Destroy(interactionObject.gameObject);
-			interactionObject = null;
-		}
+		OnInteraction?.Invoke(context);
 	}
 }

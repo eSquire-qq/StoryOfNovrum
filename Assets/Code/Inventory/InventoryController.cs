@@ -18,12 +18,6 @@ namespace Inventory
 
         public List<InventoryItem> initialItems = new List<InventoryItem>();
 
-        [SerializeField]
-        private AudioClip dropClip;
-
-        [SerializeField]
-        private AudioSource audioSource;
-
         private void Start()
         {
             PrepareUI();
@@ -87,7 +81,6 @@ namespace Inventory
         {
             inventoryData.RemoveItem(itemIndex, quantity);
             inventoryUI.ResetSelection();
-            audioSource.PlayOneShot(dropClip);
         }
 
         public void PerformAction(int itemIndex)
@@ -106,7 +99,6 @@ namespace Inventory
             if (itemAction != null)
             {
                 itemAction.PerformAction(gameObject, inventoryItem.itemState);
-                audioSource.PlayOneShot(itemAction.actionSFX);
                 if (inventoryData.GetItemAt(itemIndex).IsEmpty)
                     inventoryUI.ResetSelection();
             }
