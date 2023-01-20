@@ -27,6 +27,7 @@ public class PickUpSystemComponent : MonoBehaviour, IInteraction
 		if (interactionObject != null)
 		{
             int reminded = inventoryData.AddItem(interactionObject.InventoryItem, interactionObject.Quantity);
+            Debug.Log(reminded);
             if (reminded == 0) {
                 interactionObject.DestroyItem();
                 Destroy(interactionObject.gameObject);

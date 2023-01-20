@@ -53,6 +53,7 @@ namespace Inventory
             inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;
             inventoryUI.OnItemActionRequested += HandleItemActionRequest;
+            inventoryUI.Show();
         }
 
         private void HandleItemActionRequest(int itemIndex)
@@ -64,7 +65,6 @@ namespace Inventory
             IItemAction itemAction = inventoryItem.item as IItemAction;
             if(itemAction != null)
             {
-                
                 inventoryUI.ShowItemAction(itemIndex);
                 inventoryUI.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
             }
@@ -72,7 +72,9 @@ namespace Inventory
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
             if (destroyableItem != null)
             {
-                inventoryUI.AddAction("Drop", () => DropItem(itemIndex, inventoryItem.quantity));
+                inventoryUI.AddAction("Drop", () => { 
+                    DropItem(itemIndex, inventoryItem.quantity);
+                });
             }
 
         }
@@ -148,24 +150,7 @@ namespace Inventory
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                if (inventoryUI.isActiveAndEnabled == false)
-                {
-                    inventoryUI.Show();
-                    foreach (var item in inventoryData.GetCurrentInventoryState())
-                    {
-                        inventoryUI.UpdateData(item.Key,
-                            item.Value.item.ItemImage,
-                            item.Value.quantity);
-                    }
-                }
-                else
-                {
-                    inventoryUI.Hide();
-                }
-
-            }
+        
         }
     }
 }
