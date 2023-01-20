@@ -7069,6 +7069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 928083345}
   inventoryData: {fileID: 11400000, guid: 931e6d2bee2b0ef43abd6d4d4a74fe14, type: 2}
+  ItemPrefab: {fileID: 0}
   initialItems: []
 --- !u!114 &2129553919
 MonoBehaviour:
@@ -7383,11 +7384,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2677132671491283083, guid: 5eb034446513b2e4bb63c852276eb656, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 2677132671491283083, guid: 5eb034446513b2e4bb63c852276eb656, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2677132671491283083, guid: 5eb034446513b2e4bb63c852276eb656, type: 3}
       propertyPath: m_LocalPosition.x
