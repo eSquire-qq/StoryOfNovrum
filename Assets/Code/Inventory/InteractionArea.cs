@@ -24,6 +24,9 @@ namespace Inverntory.Interaction
             if (item != null)
             {
                 item.HideHighlight();
+                if (currentItem == item) {
+                    currentItem = null;
+                }
             }
         }
 
