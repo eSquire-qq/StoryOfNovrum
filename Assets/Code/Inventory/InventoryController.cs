@@ -91,6 +91,7 @@ namespace Inventory
                 dropItem.GetComponent<Item>().InventoryItem = inventoryData.GetItemAt(itemIndex).item;
                 dropItem.GetComponent<Item>().Quantity = quantity;
                 dropItem.transform.position = transform.position;
+                Debug.Log(dropItem);
             }
             inventoryData.RemoveItem(itemIndex, quantity);
             inventoryUI.ResetSelection();
