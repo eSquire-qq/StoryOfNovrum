@@ -16,7 +16,7 @@ MonoBehaviour:
   <MaxStackSize>k__BackingField: 1
   <Name>k__BackingField: Test Item
   <Description>k__BackingField: Test Item
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: 8bc789588f350674ea7634ad94faaf7a, type: 3}
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: ed7e51f30a28c0444ba925e581eedf81, type: 3}
   <DefaultParametersList>k__BackingField: []
   modifiersData: []
   <actionSFX>k__BackingField: {fileID: 0}
