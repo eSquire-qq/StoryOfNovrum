@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 285428269867022726}
   - component: {fileID: 9070505301390553120}
   - component: {fileID: 2715737069296597568}
-  - component: {fileID: 3213024673413246504}
-  - component: {fileID: 7902428177486757313}
+  - component: {fileID: 64929841772988706}
+  - component: {fileID: 3159629858109923129}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -113,7 +113,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3213024673413246504
+--- !u!114 &64929841772988706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,10 +122,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3463532090349341373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a3b0957cb52b1d4e83e57ac82aa6cda, type: 3}
+  m_Script: {fileID: 11500000, guid: 0add0e0823140644e82c6a413f13833e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7902428177486757313
+--- !u!114 &3159629858109923129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3463532090349341373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8281e51e468f8f841a6ad475e7019176, type: 3}
+  m_Script: {fileID: 11500000, guid: 311ca01178343ba4ba8678517e58bc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InventoryItem>k__BackingField: {fileID: 0}
+  <InventoryItem>k__BackingField: {fileID: 11400000, guid: d91a38004099e1c478f01e9d2ca20a0a, type: 2}
   <Quantity>k__BackingField: 1

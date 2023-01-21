@@ -3,39 +3,41 @@ using Inventory.Interaction;
 using Inverntory.Interaction;
 using Inventory.Model;
 
-public class PickUpSystemComponent : MonoBehaviour, IInteraction
+namespace Inventory
 {
-    protected InteractionArea interactionArea;
-
-    [SerializeField]
-    protected InventorySO inventoryData;
-
-    [SerializeField]
-    protected IInteractionInvoker invoker;
-
-    public void Awake()
+    public class PickUpSystemComponent : MonoBehaviour, IInteraction
     {
-        interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
-        invoker = GetComponent(typeof(IInteractionInvoker)) as IInteractionInvoker;
-        invoker.OnInteraction += Interact;
-    }
+        protected InteractionArea interactionArea;
 
-    public void Interact(object interactionContext)
-    {
-        Item interactionObject = interactionArea.GetCurrentItem().GetComponent<Item>();
-        Debug.Log(interactionObject);
-		if (interactionObject != null)
-		{
-            int reminded = inventoryData.AddItem(interactionObject.InventoryItem, interactionObject.Quantity);
-            Debug.Log(reminded);
-            if (reminded == 0) {
-                interactionObject.DestroyItem();
-                Destroy(interactionObject.gameObject);
-			    interactionObject = null;
+        [SerializeField]
+        protected InventorySO inventoryData;
+
+        [SerializeField]
+        protected IInteractionInvoker invoker;
+
+        public void Awake()
+        {
+            interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
+            invoker = GetComponent(typeof(IInteractionInvoker)) as IInteractionInvoker;
+            invoker.OnInteraction += Interact;
+        }
+
+        public void Interact(object interactionContext)
+        {
+            PickableItemObject interactionObject = interactionArea.GetCurrentItem().GetComponent<PickableItemObject>();
+            if (interactionObject != null)
+            {
+                int reminded = inventoryData.AddItem(interactionObject.InventoryItem, interactionObject.Quantity);
+                Debug.Log(reminded);
+                if (reminded == 0) {
+                    interactionObject.DestroyItem();
+                    Destroy(interactionObject.gameObject);
+                    interactionObject = null;
+                }
+                else {
+                    interactionObject.Quantity = reminded;
+                }
             }
-            else {
-                interactionObject.Quantity = reminded;
-            }
-		}
+        }
     }
 }

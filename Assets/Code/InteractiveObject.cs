@@ -2,15 +2,8 @@ using UnityEngine;
 
 namespace Inverntory.Interaction
 {
-    public class InteractiveItem : MonoBehaviour
+    public class InteractiveObject : MonoBehaviour
     {
-        protected SpriteRenderer sprRend;
-
-        void Start()
-        {
-            sprRend = gameObject.GetComponent<SpriteRenderer>();
-        }
-
         public void ShowHighlight() 
         {
             transform.localScale = new Vector2(1.1f, 1.1f);
