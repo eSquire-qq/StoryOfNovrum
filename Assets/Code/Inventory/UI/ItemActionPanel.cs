@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Inventory.UI
@@ -14,7 +15,9 @@ namespace Inventory.UI
         public void AddButon(string name, Action onClickAction)
         {
             GameObject button = Instantiate(buttonPrefab, transform);
-            button.GetComponent<Button>().onClick.AddListener(() => onClickAction());
+            button.GetComponent<Button>().onClick.AddListener(() => {
+                onClickAction();
+            });
             button.GetComponentInChildren<TMPro.TMP_Text>().text = name;
         }
 
@@ -36,6 +39,11 @@ namespace Inventory.UI
             {
                 Destroy(transformChildObjects.gameObject);
             }
+        }
+
+        public void Update()
+        {
+            global::Utils.HideIfClickedOutside(gameObject);
         }
     }
 }

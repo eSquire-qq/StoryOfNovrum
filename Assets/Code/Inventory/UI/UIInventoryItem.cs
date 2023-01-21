@@ -23,6 +23,7 @@ namespace Inventory.UI
             OnRightMouseBtnClick;
 
         private bool empty = true;
+        public bool selected = false;
 
         public void Awake()
         {
@@ -37,6 +38,7 @@ namespace Inventory.UI
         public void Deselect()
         {
             selectionImage.enabled = false;
+            selected = false;
         }
         public void SetData(Sprite sprite, int quantity)
         {
@@ -49,6 +51,7 @@ namespace Inventory.UI
         public void Select()
         {
             selectionImage.enabled = true;
+            selected = true;
         }
 
         public void OnPointerClick(PointerEventData eventData)

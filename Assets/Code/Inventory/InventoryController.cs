@@ -53,7 +53,8 @@ namespace Inventory
         private void PrepareUI()
         {
             inventoryUI.InitializeInventoryUI(inventoryData.Size);
-            inventoryUI.OnDescriptionRequested += HandleDescriptionRequest;
+            inventoryUI.OnSelect += HandleSelect;
+            inventoryUI.OnUnselect += HandleUnselect;
             inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;
             inventoryUI.OnItemActionRequested += HandleItemActionRequest;
@@ -88,9 +89,10 @@ namespace Inventory
             if (ItemPrefab) 
             {
                 GameObject dropItem = Instantiate(ItemPrefab) as GameObject;
-                dropItem.GetComponent<Item>().InventoryItem = inventoryData.GetItemAt(itemIndex).item;
-                dropItem.GetComponent<Item>().Quantity = quantity;
+                dropItem.GetComponent<PickableItemObject>().InventoryItem = inventoryData.GetItemAt(itemIndex).item;
+                dropItem.GetComponent<PickableItemObject>().Quantity = quantity;
                 dropItem.transform.position = transform.position;
+                Debug.Log(dropItem);
             }
             inventoryData.RemoveItem(itemIndex, quantity);
             inventoryUI.ResetSelection();
@@ -130,7 +132,7 @@ namespace Inventory
             inventoryData.SwapItems(itemIndex_1, itemIndex_2);
         }
 
-        private void HandleDescriptionRequest(int itemIndex)
+        private void HandleSelect(int itemIndex)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
@@ -142,6 +144,12 @@ namespace Inventory
             string description = PrepareDescription(inventoryItem);
             inventoryUI.UpdateDescription(itemIndex, item.ItemImage,
                 item.name, description);
+        }
+
+        protected void HandleUnselect(int itemIndex)
+        {
+                inventoryUI.ResetSelection();
+                return;
         }
 
         private string PrepareDescription(InventoryItem inventoryItem)

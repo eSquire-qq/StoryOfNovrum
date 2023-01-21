@@ -20,7 +20,7 @@ namespace Inventory.UI
 
         private int currentlyDraggedItemIndex = -1;
 
-        public event Action<int> OnDescriptionRequested,
+        public event Action<int> OnSelect, OnUnselect,
                 OnItemActionRequested,
                 OnStartDragging;
 
@@ -128,7 +128,11 @@ namespace Inventory.UI
             int index = listOfUIItems.IndexOf(inventoryItemUI);
             if (index == -1)
                 return;
-            OnDescriptionRequested?.Invoke(index);
+            if (inventoryItemUI.selected) {
+                OnUnselect?.Invoke(index);
+            } else {
+                OnSelect?.Invoke(index);
+            }
         }
 
         public void Show()
