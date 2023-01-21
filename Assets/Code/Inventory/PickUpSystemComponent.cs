@@ -24,15 +24,13 @@ namespace Inventory
 
         public void Interact(object interactionContext)
         {
-            PickableItemObject interactionObject = interactionArea.GetCurrentItem().GetComponent<PickableItemObject>();
+            PickableItemObject interactionObject = interactionArea.GetCurrentItem()?.GetComponent<PickableItemObject>();
             if (interactionObject != null)
             {
                 int reminded = inventoryData.AddItem(interactionObject.InventoryItem, interactionObject.Quantity);
-                Debug.Log(reminded);
                 if (reminded == 0) {
                     interactionObject.DestroyItem();
                     Destroy(interactionObject.gameObject);
-                    interactionObject = null;
                 }
                 else {
                     interactionObject.Quantity = reminded;

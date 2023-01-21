@@ -162,6 +162,7 @@ namespace Inventory.UI
             foreach (UIInventoryItem item in listOfUIItems)
             {
                 item.Deselect();
+                // OnUnselect?.Invoke(listOfUIItems.IndexOf(item));
             }
             actionPanel.Toggle(false);
         }
