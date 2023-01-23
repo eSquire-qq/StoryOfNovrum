@@ -149,9 +149,47 @@ namespace Inventory.Model
             return inventoryItems[itemIndex];
         }
 
+        public void SplitItem(int itemIndex)
+        {
+            InventoryItem item = inventoryItems[itemIndex];
+            if (item.item.IsStackable == false) {
+                return;
+            }
+            this.AddItemToFirstFreeSlot(item.item, (item.quantity/2), item.itemState);
+            inventoryItems[itemIndex] = item.ChangeQuantity((item.quantity/2));
+            InformAboutChange();
+        }
+
         public void SwapItems(int itemIndex_1, int itemIndex_2)
         {
             InventoryItem item1 = inventoryItems[itemIndex_1];
+            InventoryItem item2 = inventoryItems[itemIndex_2];
+            if (item1.item && item2.item
+             && item1.item.ID == item2.item.ID 
+             && item1.item.IsStackable && item2.item.IsStackable
+             && itemIndex_1 != itemIndex_2) {
+                int quantity = item1.quantity;
+                int amountPossibleToTake =
+                        item2.item.MaxStackSize - item2.quantity;
+
+                Debug.Log(amountPossibleToTake);
+                Debug.Log(quantity);
+                if (quantity > amountPossibleToTake)
+                {
+                    inventoryItems[itemIndex_2] = item2
+                        .ChangeQuantity(item2.item.MaxStackSize);
+                    quantity -= amountPossibleToTake;
+                }
+                else
+                {
+                    inventoryItems[itemIndex_2] = item2
+                        .ChangeQuantity(item2.quantity + quantity);
+                    inventoryItems[itemIndex_1] = InventoryItem.GetEmptyItem();
+                    InformAboutChange();
+                    return;
+                }
+                item1 = item1.ChangeQuantity(quantity);
+            }
             inventoryItems[itemIndex_1] = inventoryItems[itemIndex_2];
             inventoryItems[itemIndex_2] = item1;
             InformAboutChange();

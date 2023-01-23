@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 namespace Inventory.UI
@@ -20,7 +21,12 @@ namespace Inventory.UI
 
         private int currentlyDraggedItemIndex = -1;
 
-        public event Action<int> OnSelect, OnUnselect,
+        private bool ctrlPressed = false;
+
+        public static bool CtrlPressed;
+        public static HashSet<KeyCode> currentlyPressedKeys = new HashSet<KeyCode>();
+
+        public event Action<int> OnSelect, OnUnselect, OnSplit,
                 OnItemActionRequested,
                 OnStartDragging;
 
@@ -98,7 +104,6 @@ namespace Inventory.UI
                 return;
             }
             OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
-            HandleItemSelection(inventoryItemUI);
         }
 
         private void ResetDraggedItem()
@@ -112,8 +117,10 @@ namespace Inventory.UI
             int index = listOfUIItems.IndexOf(inventoryItemUI);
             if (index == -1)
                 return;
+            if (CtrlPressed) {
+                OnSplit?.Invoke(index);
+            }
             currentlyDraggedItemIndex = index;
-            HandleItemSelection(inventoryItemUI);
             OnStartDragging?.Invoke(index);
         }
 
@@ -171,6 +178,29 @@ namespace Inventory.UI
             actionPanel.Toggle(false);
             gameObject.SetActive(false);
             ResetDraggedItem();
+        }
+
+        public void Update() {
+            ctrlPressed = Input.GetKeyDown(KeyCode.LeftControl);
+        }
+
+        private void OnGUI()
+        {
+            if (!Event.current.isKey) return;
+
+            if (Event.current.keyCode != KeyCode.None)
+            {
+                if (Event.current.type == EventType.KeyDown)
+                {
+                    currentlyPressedKeys.Add(Event.current.keyCode);
+                }
+                else if (Event.current.type == EventType.KeyUp)
+                {
+                    currentlyPressedKeys.Remove(Event.current.keyCode);
+                }
+            }
+
+            CtrlPressed = Event.current.control;
         }
     }
 }

@@ -295,7 +295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -212.20001, y: 178.8}
+  m_AnchoredPosition: {x: -212.20004, y: 178.8}
   m_SizeDelta: {x: -874.92, y: -369.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81648567
@@ -1293,7 +1293,6 @@ GameObject:
   - component: {fileID: 492707536}
   - component: {fileID: 492707535}
   - component: {fileID: 492707534}
-  - component: {fileID: 492707538}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1387,18 +1386,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &492707538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492707533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a3b0957cb52b1d4e83e57ac82aa6cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &541343276
 GameObject:
   m_ObjectHideFlags: 0
@@ -7469,8 +7456,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311ca01178343ba4ba8678517e58bc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InventoryItem>k__BackingField: {fileID: 11400000, guid: d91a38004099e1c478f01e9d2ca20a0a, type: 2}
-  <Quantity>k__BackingField: 1
+  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 2141d19ad2d90694fbcb9fdbb2f703c5, type: 2}
+  <Quantity>k__BackingField: 54
 --- !u!61 &2139513816
 BoxCollider2D:
   m_ObjectHideFlags: 0

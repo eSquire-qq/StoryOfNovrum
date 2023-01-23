@@ -55,6 +55,7 @@ namespace Inventory
             inventoryUI.InitializeInventoryUI(inventoryData.Size);
             inventoryUI.OnSelect += HandleSelect;
             inventoryUI.OnUnselect += HandleUnselect;
+            inventoryUI.OnSplit += HandleSplitItem;
             inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;
             inventoryUI.OnItemActionRequested += HandleItemActionRequest;
@@ -126,6 +127,11 @@ namespace Inventory
             if (inventoryItem.IsEmpty)
                 return;
             inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
+        }
+
+        private void HandleSplitItem(int itemIndex)
+        {
+            inventoryData.SplitItem(itemIndex);
         }
 
         private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
