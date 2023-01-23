@@ -35,24 +35,6 @@ public class PlayerAttack : MonoBehaviour
         invoker.OnInteraction += Attack;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-		/*if (attacking)
-		{
-            timer += Time.deltaTime;
-
-            if(timer >= timeToAttack)
-			{
-                timer = 0;
-                attacking = false;
-                attackArea.SetActive(attacking);
-			}
-
-		}*/
-
-    }
-
     public void Attack(object interactionContext)
 	{
         Health attackObject = interactionArea.GetCurrentItem()?.GetComponent<Health>();
@@ -67,9 +49,6 @@ public class PlayerAttack : MonoBehaviour
             damage = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Damage").value;
         }
         attackObject.TakeDamage(damage);
-
-        /*attacking = true;
-        attackArea.SetActive(attacking);*/
 	}
 
 }
