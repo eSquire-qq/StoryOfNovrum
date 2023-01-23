@@ -138,11 +138,6 @@ namespace Inventory.UI
         public void Show()
         {
             gameObject.SetActive(true);
-            ResetSelection();
-        }
-
-        public void ResetSelection()
-        {
             DeselectAllItems();
         }
 
@@ -157,14 +152,18 @@ namespace Inventory.UI
             actionPanel.transform.position = listOfUIItems[itemIndex].transform.position;
         }
 
-        private void DeselectAllItems()
+        public void DeselectAllItems()
         {
             foreach (UIInventoryItem item in listOfUIItems)
             {
                 item.Deselect();
-                // OnUnselect?.Invoke(listOfUIItems.IndexOf(item));
             }
             actionPanel.Toggle(false);
+        }
+
+        public void DeselectItem(int index)
+        {
+            OnUnselect?.Invoke(index);
         }
 
         public void Hide()

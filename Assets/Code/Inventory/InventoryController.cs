@@ -92,10 +92,10 @@ namespace Inventory
                 dropItem.GetComponent<PickableItemObject>().InventoryItem = inventoryData.GetItemAt(itemIndex).item;
                 dropItem.GetComponent<PickableItemObject>().Quantity = quantity;
                 dropItem.transform.position = transform.position;
-                Debug.Log(dropItem);
             }
             inventoryData.RemoveItem(itemIndex, quantity);
-            inventoryUI.ResetSelection();
+            inventoryUI.DeselectItem(itemIndex);
+            inventoryUI.DeselectAllItems();
         }
 
         public void PerformAction(int itemIndex)
@@ -114,8 +114,9 @@ namespace Inventory
             if (itemAction != null)
             {
                 itemAction.PerformAction(gameObject, inventoryItem.itemState);
-                if (inventoryData.GetItemAt(itemIndex).IsEmpty)
-                    inventoryUI.ResetSelection();
+                if (inventoryData.GetItemAt(itemIndex).IsEmpty) {
+                    inventoryUI.DeselectAllItems();
+                }
             }
         }
 
@@ -137,7 +138,7 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
             {
-                inventoryUI.ResetSelection();
+                inventoryUI.DeselectAllItems();
                 return;
             }
             ItemSO item = inventoryItem.item;
@@ -148,7 +149,7 @@ namespace Inventory
 
         protected void HandleUnselect(int itemIndex)
         {
-                inventoryUI.ResetSelection();
+                inventoryUI.DeselectAllItems();
                 return;
         }
 
