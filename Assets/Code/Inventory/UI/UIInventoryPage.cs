@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
 namespace Inventory.UI
@@ -26,7 +27,7 @@ namespace Inventory.UI
         public static bool CtrlPressed;
         public static HashSet<KeyCode> currentlyPressedKeys = new HashSet<KeyCode>();
 
-        public event Action<int> OnSelect, OnUnselect, OnSplit,
+        public event Action<int> OnSelect, OnUnselect, OnSplit, OnDrop,
                 OnItemActionRequested,
                 OnStartDragging;
 
@@ -93,6 +94,14 @@ namespace Inventory.UI
 
         private void HandleEndDrag(UIInventoryItem inventoryItemUI)
         {
+            if (
+                !RectTransformUtility.RectangleContainsScreenPoint(
+                contentPanel, 
+                Input.mousePosition, 
+                Camera.main)
+            ) {
+                OnDrop?.Invoke(listOfUIItems.IndexOf(inventoryItemUI));
+            }
             ResetDraggedItem();
         }
 

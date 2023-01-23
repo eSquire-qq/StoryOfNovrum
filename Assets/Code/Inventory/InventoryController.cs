@@ -56,6 +56,7 @@ namespace Inventory
             inventoryUI.OnSelect += HandleSelect;
             inventoryUI.OnUnselect += HandleUnselect;
             inventoryUI.OnSplit += HandleSplitItem;
+            inventoryUI.OnDrop += HandleDropFromUI;
             inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;
             inventoryUI.OnItemActionRequested += HandleItemActionRequest;
@@ -83,6 +84,11 @@ namespace Inventory
                 });
             }
 
+        }
+
+        protected void HandleDropFromUI(int itemIndex) {
+            int quantity = inventoryData.GetItemAt(itemIndex).quantity;
+            DropItem(itemIndex, quantity);
         }
 
         private void DropItem(int itemIndex, int quantity)
