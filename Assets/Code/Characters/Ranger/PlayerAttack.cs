@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Timers;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -17,10 +18,8 @@ public class PlayerAttack : MonoBehaviour
 
     private GameObject attackArea = default;
 
-    private bool attacking = false;
-
-    private float timeToAttack = 0.25f;
-    private float timer = 0f;
+    protected bool attackCoolDown = false;
+    protected float attackCoolDownTime = 0.5f;
 
     void Start()
     {
@@ -35,20 +34,36 @@ public class PlayerAttack : MonoBehaviour
         invoker.OnInteraction += Attack;
     }
 
-    public void Attack(object interactionContext)
-	{
-        Health attackObject = interactionArea.GetCurrentItem()?.GetComponent<Health>();
-        if (attackObject == null)
+	public void Attack(object interactionContext)
+    {
+		if (attackCoolDown)
 		{
             return;
 		}
+
+        Health attackObject = interactionArea.GetCurrentItem()?.GetComponent<Health>();
+        if (attackObject == null)
+        {
+            return;
+        }
         float damage = 1f;
         InventoryItem currentWeapon = wieldObjectController.wieldItem;
         if (currentWeapon.item != null)
-		{
+        {
             damage = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Damage").value;
         }
         attackObject.TakeDamage(damage);
-	}
+        attackCoolDown = true;
+
+        Timer attackCoolDownTimer = new Timer(20000);
+		attackCoolDownTimer.Elapsed += OnAttackCooldownTimerPassed;
+        attackCoolDownTimer.AutoReset = false;
+        attackCoolDownTimer.Enabled = true;
+    }
+
+    protected void OnAttackCooldownTimerPassed(object source, ElapsedEventArgs e)
+    {
+        attackCoolDown = false;
+    }
 
 }
