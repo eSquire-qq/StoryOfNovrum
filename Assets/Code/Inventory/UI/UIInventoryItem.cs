@@ -12,8 +12,10 @@ namespace Inventory.UI
     {
         [SerializeField]
         private Image itemImage;
-        // [SerializeField]
-        // private TMP_Text quantityTxt;
+        [SerializeField]
+        private Image quantityBg;
+        [SerializeField]
+        private TMP_Text quantityTxt;
 
         [SerializeField]
         private Image selectionImage;
@@ -33,6 +35,8 @@ namespace Inventory.UI
         public void ResetData()
         {
             itemImage.gameObject.SetActive(false);
+            quantityBg.enabled = false;
+            quantityTxt.enabled = false;
             empty = true;
         }
         public void Deselect()
@@ -44,7 +48,9 @@ namespace Inventory.UI
         {
             itemImage.gameObject.SetActive(true);
             itemImage.sprite = sprite;
-            // quantityTxt.text = quantity + "";
+            quantityTxt.text = quantity + "";
+            quantityBg.enabled = quantity > 1;
+            quantityTxt.enabled = quantity > 1;
             empty = false;
         }
 

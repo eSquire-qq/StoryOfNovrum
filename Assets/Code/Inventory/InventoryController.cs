@@ -55,6 +55,8 @@ namespace Inventory
             inventoryUI.InitializeInventoryUI(inventoryData.Size);
             inventoryUI.OnSelect += HandleSelect;
             inventoryUI.OnUnselect += HandleUnselect;
+            inventoryUI.OnSplit += HandleSplitItem;
+            inventoryUI.OnDrop += HandleDropFromUI;
             inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;
             inventoryUI.OnItemActionRequested += HandleItemActionRequest;
@@ -84,6 +86,11 @@ namespace Inventory
 
         }
 
+        protected void HandleDropFromUI(int itemIndex) {
+            int quantity = inventoryData.GetItemAt(itemIndex).quantity;
+            DropItem(itemIndex, quantity);
+        }
+
         private void DropItem(int itemIndex, int quantity)
         {
             if (ItemPrefab) 
@@ -92,10 +99,10 @@ namespace Inventory
                 dropItem.GetComponent<PickableItemObject>().InventoryItem = inventoryData.GetItemAt(itemIndex).item;
                 dropItem.GetComponent<PickableItemObject>().Quantity = quantity;
                 dropItem.transform.position = transform.position;
-                Debug.Log(dropItem);
             }
             inventoryData.RemoveItem(itemIndex, quantity);
-            inventoryUI.ResetSelection();
+            inventoryUI.DeselectItem(itemIndex);
+            inventoryUI.DeselectAllItems();
         }
 
         public void PerformAction(int itemIndex)
@@ -114,8 +121,9 @@ namespace Inventory
             if (itemAction != null)
             {
                 itemAction.PerformAction(gameObject, inventoryItem.itemState);
-                if (inventoryData.GetItemAt(itemIndex).IsEmpty)
-                    inventoryUI.ResetSelection();
+                if (inventoryData.GetItemAt(itemIndex).IsEmpty) {
+                    inventoryUI.DeselectAllItems();
+                }
             }
         }
 
@@ -125,6 +133,11 @@ namespace Inventory
             if (inventoryItem.IsEmpty)
                 return;
             inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
+        }
+
+        private void HandleSplitItem(int itemIndex)
+        {
+            inventoryData.SplitItem(itemIndex);
         }
 
         private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
@@ -137,7 +150,7 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
             {
-                inventoryUI.ResetSelection();
+                inventoryUI.DeselectAllItems();
                 return;
             }
             ItemSO item = inventoryItem.item;
@@ -148,7 +161,7 @@ namespace Inventory
 
         protected void HandleUnselect(int itemIndex)
         {
-                inventoryUI.ResetSelection();
+                inventoryUI.DeselectAllItems();
                 return;
         }
 
