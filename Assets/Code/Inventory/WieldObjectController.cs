@@ -14,11 +14,14 @@ namespace Inventory
 
         protected SpriteRenderer wieldedObjectSprite;
 
+        public InventoryItem wieldItem { get;  protected set; }
+
         private void Start()
         {
             inventoryUI.OnSelect += HandleSelect;
             inventoryUI.OnUnselect += HandleUnselect;
             wieldedObjectSprite = GetComponent<SpriteRenderer>() as SpriteRenderer;
+            wieldItem = InventoryItem.GetEmptyItem();
         }
 
         protected void HandleSelect(int itemIndex)
@@ -30,11 +33,13 @@ namespace Inventory
                 return;
             }
             ItemSO item = inventoryItem.item;
+            wieldItem = inventoryItem;
             wieldedObjectSprite.sprite = item.ItemImage;
         }
 
         protected void HandleUnselect(int itemIndex)
         {
+            wieldItem = InventoryItem.GetEmptyItem();
             wieldedObjectSprite.sprite = null;
             return;
         }
