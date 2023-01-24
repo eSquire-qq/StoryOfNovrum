@@ -5,26 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     public static bool GameIsPaused = false;
 	public GameObject pauseMenuUI;
-
-
-    // Update is called once per frame
-    void Update()
-    {
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			if (GameIsPaused)
-			{
-				Resume();
-			}
-			else
-			{
-				Pause();
-			}
-		}
-    }
+	protected PlayerInput pauseMenu;
 
 	public void Resume()
 	{
@@ -50,6 +33,18 @@ public class PauseMenu : MonoBehaviour
 	{
 		Debug.Log("Quiting game...");
 		Application.Quit();
+	}
+
+	public void OnEnable()
+	{
+		pauseMenu.Enable();
+		interaction = playerInput.Player.Interact;
+		pauseMenu.performed += Interact;
+	}
+
+	public void OnDisable()
+	{
+		pauseMenu.Disable();
 	}
 
 }
