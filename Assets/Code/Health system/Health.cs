@@ -36,4 +36,9 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
 	}
 
+    public void Heal(float health)
+	{
+        currentHealth += health;
+	}
+
 }
