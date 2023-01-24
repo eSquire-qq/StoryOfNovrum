@@ -18,6 +18,9 @@ namespace Inventory.UI
         [SerializeField]
         private MouseFollower mouseFollower;
 
+        [SerializeField]
+        private ItemActionPanel actionPanel;
+
         List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
 
         private int currentlyDraggedItemIndex = -1;
@@ -32,9 +35,6 @@ namespace Inventory.UI
                 OnStartDragging;
 
         public event Action<int, int> OnSwapItems;
-
-        [SerializeField]
-        private ItemActionPanel actionPanel;
 
         private void Awake()
         {
@@ -166,6 +166,11 @@ namespace Inventory.UI
         {
             actionPanel.Toggle(true);
             actionPanel.transform.position = listOfUIItems[itemIndex].transform.position;
+        }
+
+        public void HideItemAction()
+        {
+            actionPanel.Toggle(false);
         }
 
         public void DeselectAllItems()

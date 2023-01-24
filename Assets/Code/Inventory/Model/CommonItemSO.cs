@@ -2,14 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Inventory.Actions;
 
 namespace Inventory.Model
 {
     [CreateAssetMenu]
-    public class CommonItemSO : ItemSO, IDestroyableItem, IItemWithActions
+    public class CommonItemSO : ItemSO, IItemWithActions
     {
-        // [SerializeField]
-        // private List<ModifierData> modifiersData = new List<ModifierData>();
 
         public void Awake()
         {
@@ -20,21 +19,15 @@ namespace Inventory.Model
             }
         }
 
-        public bool PerformAction(object actionTarget, string actionName)
+        public bool PerformAction(ActionInput input, string actionName)
         {
             ActionData action = actionDatas.Find(x => x.actionName.Equals(actionName));
             if (action == null) {
                 return false;
             }
-            action.action.PerformAction(actionTarget);
+            action.action.PerformAction(input);
             return true;
         }
     }
 
-    // [Serializable]
-    // public class ModifierData
-    // {
-    //     public CharacterStatModifierSO statModifier;
-    //     public float value;
-    // }
 }
