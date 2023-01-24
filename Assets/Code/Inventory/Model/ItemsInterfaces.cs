@@ -10,8 +10,12 @@ namespace Inventory.Model
 
     public interface IItemAction
     {
-        public string ActionName { get; }
-        public AudioClip actionSFX { get; }
-        bool PerformAction(GameObject character, List<ItemParameter> itemState);
+        bool PerformAction(object actionTarget, List<ItemParameter> itemState);
     }
+
+    public interface IItemWithActions
+    {
+        bool PerformAction(object actionTarget, string actionName);
+    }
+    
 }

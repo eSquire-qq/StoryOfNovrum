@@ -69,11 +69,18 @@ namespace Inventory
             if (inventoryItem.IsEmpty)
                 return;
 
-            IItemAction itemAction = inventoryItem.item as IItemAction;
-            if(itemAction != null)
+            // if(itemAction != null)
+            // {
+            //     inventoryUI.ShowItemAction(itemIndex);
+            //     inventoryUI.AddAction(itemAction..ActionName, () => PerformAction(itemIndex));
+            // }
+
+            Debug.Log(inventoryItem);
+            foreach(ActionData action in inventoryItem.item.actionDatas)
             {
-                inventoryUI.ShowItemAction(itemIndex);
-                inventoryUI.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
+                inventoryUI.AddAction(action.actionName, () => {
+                    action.action.PerformAction(gameObject, inventoryItem.itemState);
+                });
             }
 
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
