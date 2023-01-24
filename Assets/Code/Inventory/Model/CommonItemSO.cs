@@ -13,6 +13,7 @@ namespace Inventory.Model
 
         public void Awake()
         {
+            actionNames = new List<string>();
             foreach (ActionData data in actionDatas)
             {
                 actionNames.Add(data.actionName);
