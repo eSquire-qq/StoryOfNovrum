@@ -55,7 +55,7 @@ public class PlayerAttack : MonoBehaviour
         attackObject.TakeDamage(damage);
         attackCoolDown = true;
 
-        Timer attackCoolDownTimer = new Timer(20000);
+        Timer attackCoolDownTimer = new Timer(500);
 		attackCoolDownTimer.Elapsed += OnAttackCooldownTimerPassed;
         attackCoolDownTimer.AutoReset = false;
         attackCoolDownTimer.Enabled = true;
