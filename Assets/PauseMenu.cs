@@ -2,25 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
-	public GameObject pauseMenuUI;
-	protected PlayerInput pauseMenu;
+	protected PlayerInput playerInput;
+	protected InputAction menu;
+
+	[SerializeField] private GameObject PauseMenuWindow;
+    public bool gameIsPaused;
+
+	public void Awake()
+	{
+		playerInput = new PlayerInput();
+	}
 
 	public void Resume()
 	{
-		pauseMenuUI.SetActive(false);
+		PauseMenuWindow.SetActive(false);
 		Time.timeScale = 1f;
-		GameIsPaused = false;
+		gameIsPaused = false;
 	}
 
-	private void Pause()
+	public void Pause(InputAction.CallbackContext context)
 	{
-		pauseMenuUI.SetActive(true);
-		Time.timeScale = 0f;
-		GameIsPaused = true;
+		gameIsPaused = !gameIsPaused;
+
+		if(gameIsPaused)
+		{
+			ActivateMenu();
+		}
+		else
+		{
+			DeactivateMenu();
+		}
 	}
 
 	public void LoadMenu()
@@ -37,14 +52,28 @@ public class PauseMenu : MonoBehaviour
 
 	public void OnEnable()
 	{
-		pauseMenu.Enable();
-		interaction = playerInput.Player.Interact;
-		pauseMenu.performed += Interact;
+		menu = playerInput.Menu.Escape;
+		menu.Enable();
+		menu.performed += Pause;
+		Debug.Log("OnEnable");
 	}
 
 	public void OnDisable()
 	{
-		pauseMenu.Disable();
+		menu.Disable();
+	}
+
+	public void ActivateMenu()
+	{
+		Time.timeScale = 0;
+		PauseMenuWindow.SetActive(true);
+	}
+
+	public void DeactivateMenu()
+	{
+		Time.timeScale = 1;
+		PauseMenuWindow.SetActive(false);
+		gameIsPaused = false;
 	}
 
 }

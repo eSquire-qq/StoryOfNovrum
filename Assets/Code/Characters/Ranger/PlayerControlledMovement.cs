@@ -17,8 +17,6 @@ public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker
 
 	protected InputAction movement;
 	protected InputAction interaction;
-	protected InputAction attack;
-
 	public event Action<object> OnInteraction;
 
     public void Start()
@@ -33,10 +31,6 @@ public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker
 
 	public void OnEnable()
 	{
-		attack = playerInput.Player.Attack;
-		attack.Enable();
-		attack.performed += Interact;
-
 		movement = playerInput.Player.Move;
 		movement.Enable();
 
@@ -47,7 +41,6 @@ public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker
 
 	public void OnDisable()
 	{
-		attack.Disable();
 		movement.Disable();
 		interaction.Disable();
 	}
