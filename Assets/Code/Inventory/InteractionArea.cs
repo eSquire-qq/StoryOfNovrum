@@ -6,31 +6,36 @@ namespace Inverntory.Interaction
     public class InteractionArea : MonoBehaviour
     {
         [SerializeField]
-        protected InteractiveObject currentItem;
+        protected GameObject currentItem;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            InteractiveObject item = collision.GetComponent<InteractiveObject>();
-            if (item != null)
+            GameObject item = collision.gameObject;
+            if (item == null) {
+                return;
+            }
+            currentItem = item;
+            InteractiveObject interativeItem = currentItem.GetComponent<InteractiveObject>();
+            if (interativeItem != null)
             {
-                item.ShowHighlight();
-                currentItem = item;
+                interativeItem.ShowHighlight();
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            InteractiveObject item = collision.GetComponent<InteractiveObject>();
-            if (item != null)
+            GameObject item = collision.GetComponent<GameObject>();
+            if (currentItem == item) {
+                currentItem = null;
+            }
+            InteractiveObject interativeItem = currentItem.GetComponent<InteractiveObject>();
+            if (interativeItem != null)
             {
-                item.HideHighlight();
-                if (currentItem == item) {
-                    currentItem = null;
-                }
+                interativeItem.HideHighlight();
             }
         }
 
-        public InteractiveObject GetCurrentItem()
+        public GameObject GetCurrentItem()
         {
             return currentItem;
         }
