@@ -6,13 +6,20 @@ using Inventory.Interaction;
 
 public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker
 {
-	public float moveSpeed = 5f;
+
+	public float horizontal;
+    public float vertical;
+
+    protected bool isRunning;
+    private Vector3 moveDir;
+
+	public float moveSpeed = 100f;
 
 	public Rigidbody2D rb;
 	public Animator animator;
 	protected InteractionArea interactionArea;
 
-	protected Vector2 movmentVector;
+	protected Vector3 movmentVector;
 	protected PlayerInput playerInput;
 
 	protected InputAction movement;
@@ -22,6 +29,7 @@ public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker
     public void Start()
 	{
 		interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
+		rb = GetComponent<Rigidbody2D>();
 	}
 
 	public void Awake()
@@ -47,16 +55,33 @@ public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker
 
 	protected void Update()
 	{
-		movmentVector = movement.ReadValue<Vector2>();
+		horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
-		animator.SetFloat("Horizontal", movmentVector.x);
-		animator.SetFloat("Vertical", movmentVector.y);
-		animator.SetFloat("Speed", movmentVector.sqrMagnitude);
+        if(horizontal != 0 || vertical != 0)
+        {
+            animator.SetFloat("Horizontal", horizontal);
+            animator.SetFloat("Vertical", vertical);    
+            if(!isRunning)
+            {
+                isRunning = true;
+                animator.SetBool("isRunning", isRunning);
+            }
+        }else
+        {
+            if(isRunning)
+            {
+                isRunning = false;
+                animator.SetBool("isRunning",isRunning);
+                StopRunning();
+            }
+        }
+        moveDir = new Vector3(horizontal,vertical).normalized;
 	}
 
 	protected void FixedUpdate()
 	{
-		rb.MovePosition(rb.position + movmentVector * moveSpeed * Time.fixedDeltaTime);
+		rb.velocity = moveDir * moveSpeed * Time.deltaTime;
 		if (interactionArea) {
 			interactionArea.transform.localPosition = movmentVector/2;
 		}
@@ -66,4 +91,10 @@ public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker
 	{
 		OnInteraction?.Invoke(context);
 	}
+
+	private void StopRunning()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
 }
