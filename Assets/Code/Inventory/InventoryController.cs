@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Inventory.Actions;
 
 namespace Inventory
 {
@@ -56,7 +57,7 @@ namespace Inventory
             inventoryUI.OnSelect += HandleSelect;
             inventoryUI.OnUnselect += HandleUnselect;
             inventoryUI.OnSplit += HandleSplitItem;
-            inventoryUI.OnDrop += HandleDropFromUI;
+            inventoryUI.OnDrop += DropItem;
             inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;
             inventoryUI.OnItemActionRequested += HandleItemActionRequest;
@@ -68,62 +69,46 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
+            if (inventoryItem.item.actionDatas.Count <= 0)
+                return;
 
-            IItemAction itemAction = inventoryItem.item as IItemAction;
-            if(itemAction != null)
+            inventoryUI.ShowItemAction(itemIndex);
+            foreach(ActionData action in inventoryItem.item.actionDatas)
             {
-                inventoryUI.ShowItemAction(itemIndex);
-                inventoryUI.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
-            }
-
-            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
-            if (destroyableItem != null)
-            {
-                inventoryUI.AddAction("Drop", () => { 
-                    DropItem(itemIndex, inventoryItem.quantity);
+                inventoryUI.AddAction(action.actionName, () => {
+                    bool success = action.action.PerformAction(new ActionInput{
+                        target = this.gameObject,
+                        inventory = this.inventoryData,
+                        itemIndex = itemIndex
+                    }, inventoryItem.itemState);
+                    if (success) {
+                        inventoryUI.HideItemAction();
+                        if (action.actionName == "Drop") {
+                            inventoryUI.DeselectItem(itemIndex);
+                            inventoryUI.DeselectAllItems();
+                        }
+                    }
                 });
             }
-
         }
 
-        protected void HandleDropFromUI(int itemIndex) {
-            int quantity = inventoryData.GetItemAt(itemIndex).quantity;
-            DropItem(itemIndex, quantity);
-        }
-
-        private void DropItem(int itemIndex, int quantity)
-        {
-            if (ItemPrefab) 
-            {
-                GameObject dropItem = Instantiate(ItemPrefab) as GameObject;
-                dropItem.GetComponent<PickableItemObject>().InventoryItem = inventoryData.GetItemAt(itemIndex).item;
-                dropItem.GetComponent<PickableItemObject>().Quantity = quantity;
-                dropItem.transform.position = transform.position;
-            }
-            inventoryData.RemoveItem(itemIndex, quantity);
-            inventoryUI.DeselectItem(itemIndex);
-            inventoryUI.DeselectAllItems();
-        }
-
-        public void PerformAction(int itemIndex)
+        private void DropItem(int itemIndex)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
-
-            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
-            if (destroyableItem != null)
-            {
-                inventoryData.RemoveItem(itemIndex, 1);
-            }
-
-            IItemAction itemAction = inventoryItem.item as IItemAction;
-            if (itemAction != null)
-            {
-                itemAction.PerformAction(gameObject, inventoryItem.itemState);
-                if (inventoryData.GetItemAt(itemIndex).IsEmpty) {
-                    inventoryUI.DeselectAllItems();
-                }
+            ActionData dropAction = inventoryItem.item.actionDatas.Find(x => x.actionName == "Drop");
+            if (dropAction == null)
+                return;
+            bool success = dropAction.action.PerformAction(new ActionInput{
+                        target = this.gameObject,
+                        inventory = this.inventoryData,
+                        itemIndex = itemIndex
+                    }, inventoryItem.itemState);
+            if (success) {
+                inventoryUI.HideItemAction();
+                inventoryUI.DeselectItem(itemIndex);
+                inventoryUI.DeselectAllItems();
             }
         }
 
