@@ -83,7 +83,7 @@ namespace Inventory
                     }, inventoryItem.itemState);
                     if (success) {
                         inventoryUI.HideItemAction();
-                        if (action.actionName == "Drop") {
+                        if (inventoryData.GetItemAt(itemIndex).IsEmpty) {
                             inventoryUI.DeselectItem(itemIndex);
                             inventoryUI.DeselectAllItems();
                         }
@@ -107,8 +107,10 @@ namespace Inventory
                     }, inventoryItem.itemState);
             if (success) {
                 inventoryUI.HideItemAction();
-                inventoryUI.DeselectItem(itemIndex);
-                inventoryUI.DeselectAllItems();
+                if (inventoryData.GetItemAt(itemIndex).IsEmpty) {
+                    inventoryUI.DeselectItem(itemIndex);
+                    inventoryUI.DeselectAllItems();
+                }
             }
         }
 
