@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -55,7 +53,6 @@ public class PauseMenu : MonoBehaviour
 		menu = playerInput.Menu.Escape;
 		menu.Enable();
 		menu.performed += Pause;
-		Debug.Log("OnEnable");
 	}
 
 	public void OnDisable()
