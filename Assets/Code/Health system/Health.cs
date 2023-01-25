@@ -15,7 +15,9 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        if (healthBar) {
+            healthBar.SetMaxHealth(maxHealth);
+        }
     }
 
     void Update()
@@ -28,7 +30,9 @@ public class Health : MonoBehaviour
 		{
             OnNoHealth?.Invoke();
 		}
-        healthBar.SetHealth(currentHealth);
+        if (healthBar) {
+            healthBar.SetHealth(currentHealth);
+        }
     }
 
     public void TakeDamage(float damage)

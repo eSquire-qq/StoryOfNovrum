@@ -1,7 +1,7 @@
 using Inventory.Model;
 using UnityEngine;
 
-namespace Inverntory.Interaction
+namespace Inventory.Interaction
 {
     public class InteractionArea : MonoBehaviour
     {
