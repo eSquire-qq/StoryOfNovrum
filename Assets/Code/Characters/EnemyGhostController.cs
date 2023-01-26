@@ -13,6 +13,7 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
     protected AIPath aiPath;
     protected GameObject target; 
     protected InteractionArea interactionArea;
+    protected DetectionArea detectionnArea;
 
     public event Action<object> OnInteraction;
 
@@ -21,16 +22,19 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
     public void Start()
     {
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
+        detectionnArea = GetComponentInChildren(typeof(DetectionArea)) as DetectionArea;
+        detectionnArea.OnAreaEnter += OnDetectionRadiusEnter;
+        detectionnArea.OnAreaExit += OnDetectionRadiusExit;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    protected void OnDetectionRadiusEnter(Collider2D collision)
     {
         if (collision.gameObject.name == "Player") {
             target = collision.gameObject;
         }
     }
 
-    public void OnTriggerExit2D(Collider2D collision)
+    protected void OnDetectionRadiusExit(Collider2D collision)
     {
         if (target == collision.gameObject) {
             target = null;
@@ -41,7 +45,7 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
     public void Update()
     {
         GameObject currentInteractionItem = interactionArea.GetCurrentItem();
-        if (currentInteractionItem && target == currentInteractionItem) {
+        if (currentInteractionItem && GameObject.ReferenceEquals(target, currentInteractionItem)) {
             OnInteraction?.Invoke(new object());
         }
     }
@@ -61,7 +65,6 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
 
         if (targetHit.collider?.tag == "Player")
         {
-            Debug.Log(target.transform);
             aiDestination.target = target.transform;
         }
     }

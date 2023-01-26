@@ -24,14 +24,14 @@ namespace Inventory.Interaction
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            GameObject item = collision.GetComponent<GameObject>();
-            if (currentItem == item) {
-                currentItem = null;
-            }
-            InteractiveObject interativeItem = currentItem.GetComponent<InteractiveObject>();
+            GameObject item = collision.gameObject;
+            InteractiveObject interativeItem = item.GetComponent<InteractiveObject>();
             if (interativeItem != null)
             {
                 interativeItem.HideHighlight();
+            }
+            if (GameObject.ReferenceEquals(currentItem, item)) {
+                currentItem = null;
             }
         }
 
