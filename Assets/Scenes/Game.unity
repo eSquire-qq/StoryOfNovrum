@@ -295,7 +295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -212.20007, y: 178.79999}
+  m_AnchoredPosition: {x: -212.20004, y: 178.79999}
   m_SizeDelta: {x: -874.92, y: -369.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81648567
@@ -5527,6 +5527,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3921924338232541364, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842705483627549745, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842705483627549745, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.84375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842705483627549745, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842705483627549746, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1284220871}
     - target: {fileID: 4842705483627549749, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
       propertyPath: m_Name
       value: EnemyGhost (1)
@@ -5578,6 +5598,10 @@ PrefabInstance:
     - target: {fileID: 4842705483627549753, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842705483627549759, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8157772294811833851, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
       propertyPath: m_BodyType
@@ -5943,6 +5967,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0add0e0823140644e82c6a413f13833e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1284220871 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4842705483627549744, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
+  m_PrefabInstance: {fileID: 1104478832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1375848641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3028720538180671761, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
