@@ -4,6 +4,7 @@ using UnityEngine;
 using Pathfinding;
 using Inventory.Interaction;
 using System;
+using System.Timers;
 
 public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
 {
@@ -17,19 +18,21 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
 
     public event Action<object> OnInteraction;
 
-    protected bool attackCoolDown = false;
+    protected GameObject runAwayTarget;
 
     public void Start()
     {
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
         detectionnArea = GetComponentInChildren(typeof(DetectionArea)) as DetectionArea;
-        detectionnArea.OnAreaEnter += OnDetectionRadiusEnter;
+        detectionnArea.OnAreaStay += OnDetectionRadiusStay;
         detectionnArea.OnAreaExit += OnDetectionRadiusExit;
     }
 
-    protected void OnDetectionRadiusEnter(Collider2D collision)
+    protected void OnDetectionRadiusStay(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player") {
+        if (runAwayTarget)
+            return;
+        if (collision.gameObject.tag == "Player") {
             target = collision.gameObject;
         }
     }
@@ -44,9 +47,20 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
 
     public void Update()
     {
+        if (runAwayTarget)
+            return;
+        aiPath.maxSpeed = 1f;
         GameObject currentInteractionItem = interactionArea.GetCurrentItem();
         if (currentInteractionItem && GameObject.ReferenceEquals(target, currentInteractionItem)) {
             OnInteraction?.Invoke(new object());
+
+            runAwayTarget = new GameObject("GhostRunAwayTarget");
+            runAwayTarget.transform.position = (target.transform.position - (transform.position/2));
+            target = runAwayTarget;
+            aiPath.maxSpeed = 2f;
+            aiPath.SearchPath();
+
+            GameObject.Destroy(runAwayTarget.gameObject, 2f);
         }
     }
 
@@ -55,17 +69,18 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
         if (target == null) {
             return;
         }
-        Debug.DrawRay(transform.position, Vector3.Normalize(target.transform.position - transform.position), Color.yellow);
+
+        if (aiPath.steeringTarget != null) {
+            interactionArea.transform.position = Utils.PositionBetween(transform.position, aiPath.steeringTarget, 0.75f);
+        }
+
         RaycastHit2D targetHit = Physics2D.Linecast(transform.position, target.transform.position, 
         ((1 << LayerMask.NameToLayer("Default")) | (1 << LayerMask.NameToLayer("MiddleLayer"))));
-
-        if (targetHit.collider) {
-            Debug.DrawRay(transform.position, (targetHit.transform.position - transform.position), Color.red);
-        }
 
         if (targetHit.collider?.tag == "Player")
         {
             aiDestination.target = target.transform;
+            aiPath.SearchPath();
         }
     }
 }
