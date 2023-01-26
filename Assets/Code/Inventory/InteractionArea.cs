@@ -22,6 +22,15 @@ namespace Inventory.Interaction
             }
         }
 
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            GameObject item = collision.gameObject;
+            if (item == null) {
+                return;
+            }
+            currentItem = item;
+        }
+
         private void OnTriggerExit2D(Collider2D collision)
         {
             GameObject item = collision.gameObject;
