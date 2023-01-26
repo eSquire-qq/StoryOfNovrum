@@ -7520,22 +7520,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8acf687aaf6fa8049bcda63edbd491ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2129553933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247053236}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6949023012889444d8822110c2b04308, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2129553901}
-  moveSpeed: 100
-  horizontal: 0
-  vertical: 0
 --- !u!1001 &2750264788633521964
 PrefabInstance:
   m_ObjectHideFlags: 0
