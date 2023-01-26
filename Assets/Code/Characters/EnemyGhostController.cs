@@ -19,6 +19,10 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
 
     protected bool attackCoolDown = false;
 
+    public Animator animator;
+    protected bool isRunning;
+    private Rigidbody2D rb;
+
     public void Start()
     {
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
@@ -44,9 +48,38 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
 
     public void Update()
     {
+        AIAnimation();
+
         GameObject currentInteractionItem = interactionArea.GetCurrentItem();
         if (currentInteractionItem && GameObject.ReferenceEquals(target, currentInteractionItem)) {
             OnInteraction?.Invoke(new object());
+            animator.SetTrigger("Attack");
+        }
+    }
+
+    protected void AIAnimation()
+    {
+        Vector3 steeringVector = Vector3.Normalize(aiPath.steeringTarget - transform.position);
+
+        if (aiPath.TargetReached)
+        {
+            if(isRunning)
+            {
+                isRunning = false;
+                animator.SetBool("isRunning", isRunning);
+            }
+            return;
+        }
+
+        if(steeringVector.x != 0 || steeringVector.y != 0)
+        {
+            animator.SetFloat("Horizontal", steeringVector.x);
+            animator.SetFloat("Vertical", steeringVector.y);    
+            if(!isRunning)
+            {
+                isRunning = true;
+                animator.SetBool("isRunning", isRunning);
+            }
         }
     }
 
