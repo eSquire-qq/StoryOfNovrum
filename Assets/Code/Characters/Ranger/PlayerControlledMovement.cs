@@ -1,25 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Inverntory.Interaction;
 using System;
 using Inventory.Interaction;
 
-public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker
+public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker<object>
 {
 
 	public float horizontal;
     public float vertical;
 
     protected bool isRunning;
-    private Vector3 moveDir;
+    protected Vector3 moveDir;
 
 	public float moveSpeed = 100f;
 
 	public Rigidbody2D rb;
 	public Animator animator;
 	protected InteractionArea interactionArea;
-
-	protected Vector3 movmentVector;
 	protected PlayerInput playerInput;
 
 	protected InputAction movement;
@@ -83,7 +80,9 @@ public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker
 	{
 		rb.velocity = moveDir * moveSpeed * Time.deltaTime;
 		if (interactionArea) {
-			interactionArea.transform.localPosition = movmentVector/2;
+			if (moveDir.x != 0 || moveDir.y != 0) {
+				interactionArea.transform.localPosition = moveDir/2;
+			}
 		}
 	}
 

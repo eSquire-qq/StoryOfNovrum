@@ -20,6 +20,10 @@ MonoBehaviour:
   <DefaultParametersList>k__BackingField:
   - itemParameter: {fileID: 11400000, guid: d66784541eb4bd7448e4e82c4824bea5, type: 2}
     value: 25
+  - itemParameter: {fileID: 11400000, guid: c5f991e6a40e99942b9a511e2ac789ee, type: 2}
+    value: 25
   <actionDatas>k__BackingField:
   - action: {fileID: 11400000, guid: a2cf66b742bcae24a950cec4fb3e9bff, type: 2}
     <actionName>k__BackingField: Drop
+  - action: {fileID: 11400000, guid: 288707ce006403c489dd090dd76a23b8, type: 2}
+    <actionName>k__BackingField: Consume

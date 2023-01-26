@@ -1,5 +1,4 @@
 using System;
-using Inverntory.Interaction;
 
 namespace Inventory.Interaction
 {
@@ -7,7 +6,7 @@ namespace Inventory.Interaction
         public void Interact(object context);
     }
 
-    public interface IInteractionInvoker {
-        public event Action<object> OnInteraction;
+    public interface IInteractionInvoker<T> {
+        public event Action<T> OnInteraction;
     }
 }

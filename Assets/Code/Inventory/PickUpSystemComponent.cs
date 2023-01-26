@@ -1,6 +1,5 @@
 using UnityEngine;
 using Inventory.Interaction;
-using Inverntory.Interaction;
 using Inventory.Model;
 
 namespace Inventory
@@ -13,12 +12,12 @@ namespace Inventory
         protected InventorySO inventoryData;
 
         [SerializeField]
-        protected IInteractionInvoker invoker;
+        protected IInteractionInvoker<object> invoker;
 
         public void Awake()
         {
             interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
-            invoker = GetComponent(typeof(IInteractionInvoker)) as IInteractionInvoker;
+            invoker = GetComponent(typeof(IInteractionInvoker<object>)) as IInteractionInvoker<object>;
             invoker.OnInteraction += Interact;
         }
 

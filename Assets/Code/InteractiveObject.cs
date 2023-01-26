@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Inverntory.Interaction
+namespace Inventory.Interaction
 {
     public class InteractiveObject : MonoBehaviour
     {
