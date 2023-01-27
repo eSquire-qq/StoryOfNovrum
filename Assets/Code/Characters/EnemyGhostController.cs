@@ -4,6 +4,7 @@ using UnityEngine;
 using Pathfinding;
 using Inventory.Interaction;
 using System;
+using System.Timers;
 
 public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
 {
@@ -11,13 +12,13 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
     protected AIDestinationSetter aiDestination;
     [SerializeField]
     protected AIPath aiPath;
-    protected GameObject target; 
+    public GameObject target; 
     protected InteractionArea interactionArea;
     protected DetectionArea detectionnArea;
 
     public event Action<object> OnInteraction;
 
-    protected bool attackCoolDown = false;
+    protected GameObject runAwayTarget;
 
     public Animator animator;
     protected bool isRunning;
@@ -27,13 +28,15 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
     {
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
         detectionnArea = GetComponentInChildren(typeof(DetectionArea)) as DetectionArea;
-        detectionnArea.OnAreaEnter += OnDetectionRadiusEnter;
+        detectionnArea.OnAreaStay += OnDetectionRadiusStay;
         detectionnArea.OnAreaExit += OnDetectionRadiusExit;
     }
 
-    protected void OnDetectionRadiusEnter(Collider2D collision)
+    protected void OnDetectionRadiusStay(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player") {
+        if (runAwayTarget)
+            return;
+        if (collision.gameObject.tag == "Player") {
             target = collision.gameObject;
         }
     }
@@ -50,11 +53,41 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
     {
         AIAnimation();
 
-        GameObject currentInteractionItem = interactionArea.GetCurrentItem();
-        if (currentInteractionItem && GameObject.ReferenceEquals(target, currentInteractionItem)) {
-            OnInteraction?.Invoke(new object());
+        if (runAwayTarget)
+            return;
+        aiPath.maxSpeed = 1f;
+        List<GameObject> currentInteractionItems = interactionArea.GetCurrentItems();
+        GameObject friend = currentInteractionItems.Find(x => x.tag == "Enemy") as GameObject;
+        if (friend != null && !GameObject.ReferenceEquals(friend, gameObject))
+        {
+            target = friend;
+            RunAway();
+            return;
+        }
+
+        if (currentInteractionItems.Contains(target)) {
             animator.SetTrigger("Attack");
         }
+    }
+
+
+    public void DoDamageToTarget()
+    {
+        OnInteraction?.Invoke(new object());
+        RunAway();
+    }
+
+    protected void RunAway()
+    {
+        if (runAwayTarget == null) {
+            runAwayTarget = new GameObject("GhostRunAwayTarget");
+            runAwayTarget.transform.position = (target.transform.position - (transform.position/2));
+        }
+        target = runAwayTarget;
+        aiPath.maxSpeed = 2f;
+        aiPath.SearchPath();
+
+        GameObject.Destroy(runAwayTarget.gameObject, 2f);
     }
 
     protected void AIAnimation()
@@ -88,17 +121,18 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
         if (target == null) {
             return;
         }
-        Debug.DrawRay(transform.position, Vector3.Normalize(target.transform.position - transform.position), Color.yellow);
+
+        if (aiPath.steeringTarget != null) {
+            interactionArea.transform.position = Utils.PositionBetween(transform.position, aiPath.steeringTarget, 0.8f);
+        }
+
         RaycastHit2D targetHit = Physics2D.Linecast(transform.position, target.transform.position, 
         ((1 << LayerMask.NameToLayer("Default")) | (1 << LayerMask.NameToLayer("MiddleLayer"))));
-
-        if (targetHit.collider) {
-            Debug.DrawRay(transform.position, (targetHit.transform.position - transform.position), Color.red);
-        }
 
         if (targetHit.collider?.tag == "Player")
         {
             aiDestination.target = target.transform;
+            aiPath.SearchPath();
         }
     }
 }
