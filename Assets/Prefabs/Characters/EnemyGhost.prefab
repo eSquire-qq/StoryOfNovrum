@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2110c738bc273484aa4fd426d824d9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentItem: {fileID: 0}
+  currentItems: []
 --- !u!61 &1126666742725832645
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -91,7 +91,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!1 &4842705483627549749
@@ -204,7 +204,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.5
   pickNextWaypointDist: 1
-  endReachedDistance: 0.1
+  endReachedDistance: 0.25
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -293,6 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiDestination: {fileID: 4842705483627549757}
   aiPath: {fileID: 4842705483627549759}
+  target: {fileID: 0}
   animator: {fileID: 4842705483627549744}
 --- !u!212 &4842705483627549745
 SpriteRenderer:

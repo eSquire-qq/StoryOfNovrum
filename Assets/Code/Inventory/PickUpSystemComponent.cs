@@ -23,7 +23,7 @@ namespace Inventory
 
         public void Interact(object interactionContext)
         {
-            PickableItemObject interactionObject = interactionArea.GetCurrentItem()?.GetComponent<PickableItemObject>();
+            PickableItemObject interactionObject = interactionArea.GetCurrentItems()?.Find(x => x.GetComponent<PickableItemObject>() != null)?.GetComponent<PickableItemObject>();
             if (interactionObject != null)
             {
                 int reminded = inventoryData.AddItem(interactionObject.InventoryItem, interactionObject.Quantity);

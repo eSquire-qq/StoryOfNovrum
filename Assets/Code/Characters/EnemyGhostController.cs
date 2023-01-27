@@ -12,7 +12,7 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
     protected AIDestinationSetter aiDestination;
     [SerializeField]
     protected AIPath aiPath;
-    protected GameObject target; 
+    public GameObject target; 
     protected InteractionArea interactionArea;
     protected DetectionArea detectionnArea;
 
@@ -56,19 +56,26 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
         if (runAwayTarget)
             return;
         aiPath.maxSpeed = 1f;
-        GameObject currentInteractionItem = interactionArea.GetCurrentItem();
-        if (currentInteractionItem && GameObject.ReferenceEquals(target, currentInteractionItem)) {
-            OnInteraction?.Invoke(new object());
+        List<GameObject> currentInteractionItems = interactionArea.GetCurrentItems();
+        if (currentInteractionItems.Contains(target)) {
             animator.SetTrigger("Attack");
+        }
+    }
 
+
+    public void DoDamageToTarget()
+    {
+        OnInteraction?.Invoke(new object());
+
+        if (runAwayTarget == null) {
             runAwayTarget = new GameObject("GhostRunAwayTarget");
             runAwayTarget.transform.position = (target.transform.position - (transform.position/2));
-            target = runAwayTarget;
-            aiPath.maxSpeed = 2f;
-            aiPath.SearchPath();
-
-            GameObject.Destroy(runAwayTarget.gameObject, 2f);
         }
+        target = runAwayTarget;
+        aiPath.maxSpeed = 2f;
+        aiPath.SearchPath();
+
+        GameObject.Destroy(runAwayTarget.gameObject, 2f);
     }
 
     protected void AIAnimation()

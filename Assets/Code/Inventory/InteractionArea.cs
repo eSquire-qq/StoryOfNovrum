@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Inventory.Model;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace Inventory.Interaction
     public class InteractionArea : MonoBehaviour
     {
         [SerializeField]
-        protected GameObject currentItem;
+        protected List<GameObject> currentItems;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -14,8 +15,8 @@ namespace Inventory.Interaction
             if (item == null) {
                 return;
             }
-            currentItem = item;
-            InteractiveObject interativeItem = currentItem.GetComponent<InteractiveObject>();
+            currentItems.Add(item);
+            InteractiveObject interativeItem = item.GetComponent<InteractiveObject>();
             if (interativeItem != null)
             {
                 interativeItem.ShowHighlight();
@@ -28,7 +29,9 @@ namespace Inventory.Interaction
             if (item == null) {
                 return;
             }
-            currentItem = item;
+            if (!currentItems.Contains(item)) {
+                currentItems.Add(item);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -39,14 +42,14 @@ namespace Inventory.Interaction
             {
                 interativeItem.HideHighlight();
             }
-            if (GameObject.ReferenceEquals(currentItem, item)) {
-                currentItem = null;
+            if (currentItems.Contains(item)) {
+                currentItems.Remove(item);
             }
         }
 
-        public GameObject GetCurrentItem()
+        public List<GameObject> GetCurrentItems()
         {
-            return currentItem;
+            return currentItems;
         }
     }
 
