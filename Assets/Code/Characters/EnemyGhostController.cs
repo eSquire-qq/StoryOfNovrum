@@ -111,7 +111,7 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
         }
 
         if (aiPath.steeringTarget != null) {
-            interactionArea.transform.position = Utils.PositionBetween(transform.position, aiPath.steeringTarget, 0.75f);
+            interactionArea.transform.position = Utils.PositionBetween(transform.position, aiPath.steeringTarget, 0.8f);
         }
 
         RaycastHit2D targetHit = Physics2D.Linecast(transform.position, target.transform.position, 
