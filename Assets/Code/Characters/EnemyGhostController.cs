@@ -66,22 +66,21 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
         }
 
         if (currentInteractionItems.Contains(target)) {
-            animator.SetTrigger("Attack");
+            OnInteraction?.Invoke(new object());
         }
     }
 
-
-    public void DoDamageToTarget()
-    {
-        OnInteraction?.Invoke(new object());
-        RunAway();
-    }
-
-    protected void RunAway()
+    public void RunAway()
     {
         if (runAwayTarget == null) {
             runAwayTarget = new GameObject("GhostRunAwayTarget");
-            runAwayTarget.transform.position = (target.transform.position - (transform.position/2));
+            if (target) {
+                runAwayTarget.transform.position = (target.transform.position - (transform.position/2));
+            } else {
+                runAwayTarget.transform.position = new Vector3(
+                    transform.position.x + UnityEngine.Random.Range(-5f, 5f),
+                    transform.position.y + UnityEngine.Random.Range(-5f, 5f), 0f);
+            }
         }
         target = runAwayTarget;
         aiPath.maxSpeed = 2f;
