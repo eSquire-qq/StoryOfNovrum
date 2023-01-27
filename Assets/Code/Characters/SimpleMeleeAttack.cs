@@ -31,7 +31,7 @@ public class SimpleMeleeAttack : MonoBehaviour
             return;
 		}
 
-        Health attackObject = interactionArea.GetCurrentItem()?.GetComponent<Health>();
+        Health attackObject = interactionArea.GetCurrentItems()?.Find(x => (x.GetComponent<Health>() != null && x != gameObject))?.GetComponent<Health>();
         if (attackObject == null)
         {
             return;
