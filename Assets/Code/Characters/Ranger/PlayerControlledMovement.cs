@@ -6,8 +6,8 @@ using Inventory.Interaction;
 public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker<object>
 {
 
-	public float horizontal;
-    public float vertical;
+	protected float horizontal;
+    protected float vertical;
 
     protected bool isRunning;
     protected Vector3 moveDir;
