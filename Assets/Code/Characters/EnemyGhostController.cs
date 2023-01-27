@@ -57,6 +57,14 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
             return;
         aiPath.maxSpeed = 1f;
         List<GameObject> currentInteractionItems = interactionArea.GetCurrentItems();
+        GameObject friend = currentInteractionItems.Find(x => x.tag == "Enemy") as GameObject;
+        if (friend != null && !GameObject.ReferenceEquals(friend, gameObject))
+        {
+            target = friend;
+            RunAway();
+            return;
+        }
+
         if (currentInteractionItems.Contains(target)) {
             animator.SetTrigger("Attack");
         }
@@ -66,7 +74,11 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
     public void DoDamageToTarget()
     {
         OnInteraction?.Invoke(new object());
+        RunAway();
+    }
 
+    protected void RunAway()
+    {
         if (runAwayTarget == null) {
             runAwayTarget = new GameObject("GhostRunAwayTarget");
             runAwayTarget.transform.position = (target.transform.position - (transform.position/2));
