@@ -270,12 +270,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7615496425247075377, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615496425247075377, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615496425247075377, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615496425247075377, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.66
+      value: -2.597
       objectReference: {fileID: 0}
     - target: {fileID: 7615496425247075377, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.88
+      value: -0.875
       objectReference: {fileID: 0}
     - target: {fileID: 7615496425247075377, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
       propertyPath: m_LocalPosition.z
@@ -313,6 +325,10 @@ PrefabInstance:
       propertyPath: playerSpriteRenderer
       value: 
       objectReference: {fileID: 561622746}
+    - target: {fileID: 7615496425247075382, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
+      propertyPath: m_IsCustomRangeActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7615496425247075383, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
       propertyPath: target
       value: 
@@ -360,7 +376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -212.20004, y: 178.79999}
+  m_AnchoredPosition: {x: -212.20007, y: 178.79999}
   m_SizeDelta: {x: -874.92, y: -369.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81648567
