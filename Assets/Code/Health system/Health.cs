@@ -10,14 +10,15 @@ public class Health : MonoBehaviour
 
     public HealthBarScript healthBar;
 
+    protected Animator animator; 
     public event Action OnNoHealth;
-
     void Start()
     {
         currentHealth = maxHealth;
         if (healthBar) {
             healthBar.SetMaxHealth(maxHealth);
         }
+        animator = GetComponent(typeof(Animator)) as Animator;
     }
 
     void Update()
@@ -38,6 +39,9 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
 	{
         currentHealth -= damage;
+        if (animator) {
+            animator.SetTrigger("TakeDamage");
+        }
 	}
 
     public void Heal(float health)

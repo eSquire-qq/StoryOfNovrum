@@ -4,24 +4,19 @@ using Inventory.Model;
 
 namespace Inventory
 {
-    public class PickUpSystemComponent : MonoBehaviour, IInteraction
+    public class PickUpSystemComponent : MonoBehaviour
     {
         protected InteractionArea interactionArea;
 
         [SerializeField]
         protected InventorySO inventoryData;
 
-        [SerializeField]
-        protected IInteractionInvoker<object> invoker;
-
         public void Awake()
         {
             interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
-            invoker = GetComponent(typeof(IInteractionInvoker<object>)) as IInteractionInvoker<object>;
-            invoker.OnInteraction += Interact;
         }
 
-        public void Interact(object interactionContext)
+        public void Interact()
         {
             PickableItemObject interactionObject = interactionArea.GetCurrentItems()?.Find(x => x.GetComponent<PickableItemObject>() != null)?.GetComponent<PickableItemObject>();
             if (interactionObject != null)
