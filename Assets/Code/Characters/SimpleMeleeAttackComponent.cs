@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Timers;
 
-public class SimpleMeleeAttack : MonoBehaviour
+public class SimpleMeleeAttackComponent : MonoBehaviour
 {
     protected InteractionArea interactionArea;
     protected WieldObjectController wieldObjectController;
@@ -19,9 +19,6 @@ public class SimpleMeleeAttack : MonoBehaviour
     protected float cooldown;
 
     [SerializeField]
-    protected IInteractionInvoker<object> invoker;
-
-    [SerializeField]
     protected Animator animator;
 
     protected bool attackCoolDown = false;
@@ -29,12 +26,10 @@ public class SimpleMeleeAttack : MonoBehaviour
     {
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
         wieldObjectController = GetComponentInChildren(typeof(WieldObjectController)) as WieldObjectController;
-        invoker = GetComponent(typeof(IInteractionInvoker<object>)) as IInteractionInvoker<object>;
         animator = GetComponent(typeof(Animator)) as Animator;
-        invoker.OnInteraction += Attack;
     }
 
-	public void Attack(object interactionContext)
+	public void Attack()
     {
 		if (attackCoolDown)
 		{
