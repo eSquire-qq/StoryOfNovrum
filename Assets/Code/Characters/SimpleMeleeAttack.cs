@@ -13,6 +13,12 @@ public class SimpleMeleeAttack : MonoBehaviour
     protected WieldObjectController wieldObjectController;
 
     [SerializeField]
+    protected float damage;
+
+    [SerializeField]
+    protected float cooldown;
+
+    [SerializeField]
     protected IInteractionInvoker<object> invoker;
 
     [SerializeField]
@@ -40,7 +46,7 @@ public class SimpleMeleeAttack : MonoBehaviour
             animator.SetTrigger("Attack");
         }
 
-        float cooldown = 500f;
+        float cooldown = this.cooldown;
         if (wieldObjectController) {
             InventoryItem currentWeapon = wieldObjectController.wieldItem;
             if (currentWeapon.item != null)
@@ -63,7 +69,7 @@ public class SimpleMeleeAttack : MonoBehaviour
         {
             return;
         }
-        float damage = 5f;
+        float damage = this.damage;
         if (wieldObjectController) {
             InventoryItem currentWeapon = wieldObjectController.wieldItem;
             if (currentWeapon.item != null)
