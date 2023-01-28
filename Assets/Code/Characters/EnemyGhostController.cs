@@ -6,7 +6,7 @@ using Inventory.Interaction;
 using System;
 using System.Timers;
 
-public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
+public class EnemyGhostController : MonoBehaviour
 {
     [SerializeField]
     protected AIDestinationSetter aiDestination;
@@ -16,7 +16,7 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
     protected InteractionArea interactionArea;
     protected DetectionArea detectionnArea;
 
-    public event Action<object> OnInteraction;
+    protected SimpleMeleeAttackComponent attackComponent;
 
     protected GameObject runAwayTarget;
 
@@ -27,6 +27,7 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
     public void Start()
     {
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
+        attackComponent = GetComponentInChildren(typeof(SimpleMeleeAttackComponent)) as SimpleMeleeAttackComponent;
         detectionnArea = GetComponentInChildren(typeof(DetectionArea)) as DetectionArea;
         detectionnArea.OnAreaStay += OnDetectionRadiusStay;
         detectionnArea.OnAreaExit += OnDetectionRadiusExit;
@@ -66,7 +67,7 @@ public class EnemyGhostController : MonoBehaviour, IInteractionInvoker<object>
         }
 
         if (currentInteractionItems.Contains(target)) {
-            OnInteraction?.Invoke(new object());
+            attackComponent?.Attack();
         }
     }
 

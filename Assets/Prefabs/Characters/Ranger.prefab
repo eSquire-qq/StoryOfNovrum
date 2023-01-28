@@ -156,7 +156,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.75, y: 0.75}
   m_EdgeRadius: 0
 --- !u!114 &4201616506598567575
 MonoBehaviour:
@@ -190,7 +190,8 @@ GameObject:
   - component: {fileID: 7867401838648007961}
   - component: {fileID: 511878713070689517}
   - component: {fileID: 7713783886679460329}
-  - component: {fileID: 7163251894904306013}
+  - component: {fileID: 3901231917652026112}
+  - component: {fileID: 115338577944538856}
   m_Layer: 0
   m_Name: Ranger
   m_TagString: Player
@@ -422,7 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSystem: {fileID: 511878713070689517}
---- !u!114 &7163251894904306013
+--- !u!114 &3901231917652026112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -431,9 +432,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8913491051991209953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5a087b44ceb454eb0da2e35cd27cad, type: 3}
+  m_Script: {fileID: 11500000, guid: 9070b38ee00fffd41b2748e3551d1b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  cooldown: 0
+  damage: 5
+  cooldown: 10
   animator: {fileID: 7897676791936716030}
+--- !u!114 &115338577944538856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913491051991209953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb26cbae160b60d4c9091d7ba1689889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionArea: {fileID: 4201616506598567575}
+  playerController: {fileID: 735921956970293467}
+  attackComponent: {fileID: 3901231917652026112}
+  pickUpComponent: {fileID: 4134423407000772886}
