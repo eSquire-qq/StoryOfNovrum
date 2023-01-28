@@ -1,0 +1,46 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using System;
+using Inventory.Interaction;
+using Inventory;
+
+public class PlayerInteractionManager : MonoBehaviour
+{
+	[SerializeField]
+	protected InteractionArea interactionArea;
+
+	[SerializeField]
+	protected PlayerControlledMovement playerController;
+
+	[SerializeField]
+	protected SimpleMeleeAttackComponent attackComponent;
+
+	[SerializeField]
+	protected PickUpSystemComponent pickUpComponent;
+
+	public void Awake()
+	{
+		playerController = GetComponent(typeof(PlayerControlledMovement)) as PlayerControlledMovement;
+		if (playerController != null) {
+			playerController.OnInteraction += Interact;
+		}
+		interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
+	}
+
+	public void Interact(object context)
+	{
+		Health attackObject = interactionArea.GetCurrentItems()?.Find(x => (x.GetComponent<Health>() != null && x != gameObject))?.GetComponent<Health>();
+		if (attackObject && attackComponent) {
+			attackComponent.Attack();
+			return;
+		}
+		PickableItemObject interactionObject = interactionArea.GetCurrentItems()?.Find(x => x.GetComponent<PickableItemObject>() != null)?.GetComponent<PickableItemObject>();
+		if (interactionObject && pickUpComponent) {
+			pickUpComponent.Interact();
+			return;
+		}
+		if (attackComponent) {
+			attackComponent.Attack();
+		}
+	}
+}

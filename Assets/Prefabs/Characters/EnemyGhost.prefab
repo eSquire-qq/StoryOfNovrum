@@ -389,21 +389,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4051527242813568048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4842705483627549749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5a087b44ceb454eb0da2e35cd27cad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 15
-  cooldown: 500
-  animator: {fileID: 4842705483627549744}
 --- !u!58 &9185176636921500458
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -458,6 +443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9070b38ee00fffd41b2748e3551d1b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
+  cooldown: 100
   animator: {fileID: 4842705483627549744}
 --- !u!1 &8363846130288067690
 GameObject:

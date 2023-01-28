@@ -435,8 +435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9070b38ee00fffd41b2748e3551d1b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  cooldown: 0
+  damage: 5
+  cooldown: 10
   animator: {fileID: 7897676791936716030}
 --- !u!114 &115338577944538856
 MonoBehaviour:
@@ -450,5 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb26cbae160b60d4c9091d7ba1689889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpComponent: {fileID: 4134423407000772886}
+  interactionArea: {fileID: 4201616506598567575}
+  playerController: {fileID: 735921956970293467}
   attackComponent: {fileID: 3901231917652026112}
+  pickUpComponent: {fileID: 4134423407000772886}
