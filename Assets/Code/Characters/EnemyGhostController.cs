@@ -84,7 +84,7 @@ public class EnemyGhostController : MonoBehaviour
             }
         }
         target = runAwayTarget;
-        aiPath.maxSpeed = 2f;
+        aiPath.maxSpeed = 1.5f;
         aiPath.SearchPath();
 
         GameObject.Destroy(runAwayTarget.gameObject, 2f);
@@ -106,6 +106,7 @@ public class EnemyGhostController : MonoBehaviour
 
         if(steeringVector.x != 0 || steeringVector.y != 0)
         {
+            interactionArea.transform.position = transform.position + steeringVector/2;
             animator.SetFloat("Horizontal", steeringVector.x);
             animator.SetFloat("Vertical", steeringVector.y);    
             if(!isRunning)
@@ -120,10 +121,6 @@ public class EnemyGhostController : MonoBehaviour
     {
         if (target == null) {
             return;
-        }
-
-        if (aiPath.steeringTarget != null) {
-            interactionArea.transform.position = Utils.PositionBetween(transform.position, aiPath.steeringTarget, 0.8f);
         }
 
         RaycastHit2D targetHit = Physics2D.Linecast(transform.position, target.transform.position, 
