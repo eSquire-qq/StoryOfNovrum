@@ -56,7 +56,7 @@ public class SpriteMaskController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "MaskTrigger")
+        if (collision.tag != GlobalConstants.Triggers.MASKTRIGGER)
             return;
         SpriteRenderer spriteRenderer = collision.GetComponentInParent<SpriteRenderer>();
         if (spriteRenderer != null)
@@ -68,7 +68,7 @@ public class SpriteMaskController : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag != "MaskTrigger")
+        if (collision.tag != GlobalConstants.Triggers.MASKTRIGGER)
             return;
         SpriteRenderer spriteRenderer = collision.GetComponentInParent<SpriteRenderer>();
         if (spriteRenderer != null)

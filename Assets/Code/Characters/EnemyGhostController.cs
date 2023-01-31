@@ -37,7 +37,7 @@ public class EnemyGhostController : MonoBehaviour
     {
         if (runAwayTarget)
             return;
-        if (collision.gameObject.tag == "Player") {
+        if (collision.gameObject.tag == GlobalConstants.Tags.PLAYER) {
             target = collision.gameObject;
         }
     }
@@ -58,7 +58,7 @@ public class EnemyGhostController : MonoBehaviour
             return;
         aiPath.maxSpeed = 1f;
         List<GameObject> currentInteractionItems = interactionArea.GetCurrentItems();
-        GameObject friend = currentInteractionItems.Find(x => x.tag == "Enemy") as GameObject;
+        GameObject friend = currentInteractionItems.Find(x => x.tag == GlobalConstants.Tags.ENEMY) as GameObject;
         if (friend != null && !GameObject.ReferenceEquals(friend, gameObject))
         {
             target = friend;
@@ -124,9 +124,9 @@ public class EnemyGhostController : MonoBehaviour
         }
 
         RaycastHit2D targetHit = Physics2D.Linecast(transform.position, target.transform.position, 
-        ((1 << LayerMask.NameToLayer("Default")) | (1 << LayerMask.NameToLayer("MiddleLayer"))));
+        ((1 << LayerMask.NameToLayer(GlobalConstants.Layers.DEFAULT)) | (1 << LayerMask.NameToLayer(GlobalConstants.Layers.MIDDLELAYER))));
 
-        if (targetHit.collider?.tag == "Player")
+        if (targetHit.collider?.tag == GlobalConstants.Tags.PLAYER)
         {
             aiDestination.target = target.transform;
             aiPath.SearchPath();
