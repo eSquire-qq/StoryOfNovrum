@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     public float maxHealth = 100;
     public float currentHealth;
+    public bool dead;
 
     public HealthBarScript healthBar;
 
@@ -17,6 +18,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        dead = false;
         if (healthBar) {
             healthBar.SetMaxHealth(maxHealth);
         }
@@ -26,10 +28,15 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && dead == false)
 		{
+            dead = true;
             OnNoHealth?.Invoke();
 		}
+        if (currentHealth >= 0 && dead == true)
+		{
+            dead = false;
+        }
         if (healthBar) {
             healthBar.SetHealth(currentHealth);
         }
