@@ -23,7 +23,7 @@ public class OnObjectDestruction : AOnDestruction
             collider.enabled = false;
         }
         if (animator) {
-            animator.SetTrigger("OnDestruction");
+            animator.SetTrigger(GlobalConstants.Triggers.ONEDESTRUCTION);
         }
     }
 }
