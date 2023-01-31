@@ -45,7 +45,7 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
 
         if (animator)
         {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger(GlobalConstants.Triggers.ATTACK);
         }
 
         float cooldown = this.cooldown;
@@ -53,7 +53,7 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
             InventoryItem currentWeapon = wieldObjectController.wieldItem;
             if (currentWeapon.item != null)
             {
-                float weaponCooldown = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Cooldown").value;
+                float weaponCooldown = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == GlobalConstants.Parameters.COOLDOWN).value;
                 if (weaponCooldown > 0) {
                     cooldown = weaponCooldown;
                 }
@@ -82,7 +82,7 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
             InventoryItem currentWeapon = wieldObjectController.wieldItem;
             if (currentWeapon.item != null)
             {
-                damage = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Damage").value;
+                damage = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == GlobalConstants.Triggers.DAMAGE).value;
                 float weaponKnockBackMultiplier = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "KnockBack").value;
                 if (weaponKnockBackMultiplier > 0) {
                     knockBackMultiplier = weaponKnockBackMultiplier;

@@ -97,7 +97,7 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
-            ActionData dropAction = inventoryItem.item.actionDatas.Find(x => x.actionName == "Drop");
+            ActionData dropAction = inventoryItem.item.actionDatas.Find(x => x.actionName == GlobalConstants.Actions.DROP);
             if (dropAction == null)
                 return;
             bool success = dropAction.action.PerformAction(new ActionInput{

@@ -335,11 +335,15 @@ PrefabInstance:
       objectReference: {fileID: 561622745}
     - target: {fileID: 7615496425247075383, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
       propertyPath: offset.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7615496425247076298, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
       propertyPath: m_Name
       value: Player Sprite Mask
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615496425247076298, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10d3f1a86fb95a444819d44792475882, type: 3}
@@ -380,7 +384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -562.00006, y: 327}
+  m_AnchoredPosition: {x: -562.0002, y: 327}
   m_SizeDelta: {x: -874.92, y: -369.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81648567
