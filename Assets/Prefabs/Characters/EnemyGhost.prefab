@@ -444,8 +444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  cooldown: 100
-  knockBackMultiplier: 100
+  cooldown: 250
+  knockBackMultiplier: 10
   animator: {fileID: 4842705483627549744}
   rb: {fileID: 8922896376687720174}
 --- !u!1 &8363846130288067690
