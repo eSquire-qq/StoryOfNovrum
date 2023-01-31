@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142679b7f2fdd5b49b049938700f214c, type: 3}
+  m_Name: Axe Item
+  m_EditorClassIdentifier: 
+  <IsStackable>k__BackingField: 0
+  <MaxStackSize>k__BackingField: 1
+  <Name>k__BackingField: Axe
+  <Description>k__BackingField: Chops stuff
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: ed7e51f30a28c0444ba925e581eedf81, type: 3}
+  <DefaultParametersList>k__BackingField:
+  - itemParameter: {fileID: 11400000, guid: d66784541eb4bd7448e4e82c4824bea5, type: 2}
+    value: 25
+  - itemParameter: {fileID: 11400000, guid: c5f991e6a40e99942b9a511e2ac789ee, type: 2}
+    value: 25
+  <actionDatas>k__BackingField:
+  - action: {fileID: 11400000, guid: a2cf66b742bcae24a950cec4fb3e9bff, type: 2}
+    <actionName>k__BackingField: Drop
+  - action: {fileID: 11400000, guid: 288707ce006403c489dd090dd76a23b8, type: 2}
+    <actionName>k__BackingField: Consume

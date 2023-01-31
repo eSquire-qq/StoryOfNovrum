@@ -16,9 +16,6 @@ MonoBehaviour:
   - quantity: 0
     item: {fileID: 0}
     itemState: []
-  - quantity: 1
-    item: {fileID: 11400000, guid: d91a38004099e1c478f01e9d2ca20a0a, type: 2}
-    itemState: []
   - quantity: 0
     item: {fileID: 0}
     itemState: []
@@ -31,4 +28,13 @@ MonoBehaviour:
   - quantity: 0
     item: {fileID: 0}
     itemState: []
-  <Size>k__BackingField: 6
+  - quantity: 0
+    item: {fileID: 0}
+    itemState: []
+  - quantity: 0
+    item: {fileID: 0}
+    itemState: []
+  - quantity: 0
+    item: {fileID: 0}
+    itemState: []
+  <Size>k__BackingField: 8

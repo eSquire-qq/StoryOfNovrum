@@ -160,13 +160,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""New action map"",
-            ""id"": ""17ba8fe4-b72d-4ac9-83db-732db4ffb77c"",
+            ""name"": ""Menu"",
+            ""id"": ""22fc20d7-5842-4e98-ac03-c63546a54573"",
             ""actions"": [
                 {
-                    ""name"": ""PauseMenu"",
+                    ""name"": ""Escape"",
                     ""type"": ""Button"",
-                    ""id"": ""38fa6779-2be5-4e92-a5b5-f4752a575be7"",
+                    ""id"": ""4120ef10-6796-4b34-99eb-9d703b2f358d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -176,12 +176,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""1a161e79-87a0-4ed1-bbd1-822556e61a75"",
+                    ""id"": ""6e7ec964-2faf-4718-a715-7fb01e6fc7b9"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""PauseMenu"",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -255,9 +255,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        // New action map
-        m_Newactionmap = asset.FindActionMap("New action map", throwIfNotFound: true);
-        m_Newactionmap_PauseMenu = m_Newactionmap.FindAction("PauseMenu", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Escape = m_Menu.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -355,38 +355,38 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     }
     public PlayerActions @Player => new PlayerActions(this);
 
-    // New action map
-    private readonly InputActionMap m_Newactionmap;
-    private INewactionmapActions m_NewactionmapActionsCallbackInterface;
-    private readonly InputAction m_Newactionmap_PauseMenu;
-    public struct NewactionmapActions
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Escape;
+    public struct MenuActions
     {
         private @PlayerInput m_Wrapper;
-        public NewactionmapActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @PauseMenu => m_Wrapper.m_Newactionmap_PauseMenu;
-        public InputActionMap Get() { return m_Wrapper.m_Newactionmap; }
+        public MenuActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Escape => m_Wrapper.m_Menu_Escape;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(NewactionmapActions set) { return set.Get(); }
-        public void SetCallbacks(INewactionmapActions instance)
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
         {
-            if (m_Wrapper.m_NewactionmapActionsCallbackInterface != null)
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
             {
-                @PauseMenu.started -= m_Wrapper.m_NewactionmapActionsCallbackInterface.OnPauseMenu;
-                @PauseMenu.performed -= m_Wrapper.m_NewactionmapActionsCallbackInterface.OnPauseMenu;
-                @PauseMenu.canceled -= m_Wrapper.m_NewactionmapActionsCallbackInterface.OnPauseMenu;
+                @Escape.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnEscape;
             }
-            m_Wrapper.m_NewactionmapActionsCallbackInterface = instance;
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @PauseMenu.started += instance.OnPauseMenu;
-                @PauseMenu.performed += instance.OnPauseMenu;
-                @PauseMenu.canceled += instance.OnPauseMenu;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
             }
         }
     }
-    public NewactionmapActions @Newactionmap => new NewactionmapActions(this);
+    public MenuActions @Menu => new MenuActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -437,8 +437,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
-    public interface INewactionmapActions
+    public interface IMenuActions
     {
-        void OnPauseMenu(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }

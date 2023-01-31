@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Inventory.Actions;
 
 namespace Inventory.Model
 {
@@ -28,6 +29,11 @@ namespace Inventory.Model
         [field: SerializeField]
         public List<ItemParameter> DefaultParametersList { get; set; }
 
+        [field: SerializeField]
+        public List<ActionData> actionDatas { get; set; }
+        
+        public List<string> actionNames { get; protected set;}
+
     }
 
     [Serializable]
@@ -40,6 +46,16 @@ namespace Inventory.Model
         {
             return other.itemParameter == itemParameter;
         }
+    }
+
+    [Serializable]
+    public class ActionData
+    {
+        [field: SerializeField]
+        public ItemActionSO action;
+
+        [field: SerializeField]
+        public string actionName { get; protected set;}
     }
 }
 

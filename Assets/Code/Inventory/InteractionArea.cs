@@ -1,38 +1,55 @@
+using System.Collections.Generic;
 using Inventory.Model;
 using UnityEngine;
 
-namespace Inverntory.Interaction
+namespace Inventory.Interaction
 {
     public class InteractionArea : MonoBehaviour
     {
         [SerializeField]
-        protected InteractiveObject currentItem;
+        protected List<GameObject> currentItems;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            InteractiveObject item = collision.GetComponent<InteractiveObject>();
-            if (item != null)
+            GameObject item = collision.gameObject;
+            if (item == null) {
+                return;
+            }
+            currentItems.Add(item);
+            InteractiveObject interativeItem = item.GetComponent<InteractiveObject>();
+            if (interativeItem != null)
             {
-                item.ShowHighlight();
-                currentItem = item;
+                interativeItem.ShowHighlight();
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            GameObject item = collision.gameObject;
+            if (item == null) {
+                return;
+            }
+            if (!currentItems.Contains(item)) {
+                currentItems.Add(item);
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            InteractiveObject item = collision.GetComponent<InteractiveObject>();
-            if (item != null)
+            GameObject item = collision.gameObject;
+            InteractiveObject interativeItem = item.GetComponent<InteractiveObject>();
+            if (interativeItem != null)
             {
-                item.HideHighlight();
-                if (currentItem == item) {
-                    currentItem = null;
-                }
+                interativeItem.HideHighlight();
+            }
+            if (currentItems.Contains(item)) {
+                currentItems.Remove(item);
             }
         }
 
-        public InteractiveObject GetCurrentItem()
+        public List<GameObject> GetCurrentItems()
         {
-            return currentItem;
+            return currentItems;
         }
     }
 

@@ -138,13 +138,13 @@
             ]
         },
         {
-            "name": "New action map",
-            "id": "17ba8fe4-b72d-4ac9-83db-732db4ffb77c",
+            "name": "Menu",
+            "id": "22fc20d7-5842-4e98-ac03-c63546a54573",
             "actions": [
                 {
-                    "name": "PauseMenu",
+                    "name": "Escape",
                     "type": "Button",
-                    "id": "38fa6779-2be5-4e92-a5b5-f4752a575be7",
+                    "id": "4120ef10-6796-4b34-99eb-9d703b2f358d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -154,12 +154,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "1a161e79-87a0-4ed1-bbd1-822556e61a75",
+                    "id": "6e7ec964-2faf-4718-a715-7fb01e6fc7b9",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "PauseMenu",
+                    "groups": "",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
