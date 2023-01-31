@@ -152,7 +152,7 @@ namespace Inventory.Model
         public void SplitItem(int itemIndex)
         {
             InventoryItem item = inventoryItems[itemIndex];
-            if (item.item.IsStackable == false) {
+            if (item.item.IsStackable == false || item.quantity <= 1) {
                 return;
             }
             this.AddItemToFirstFreeSlot(item.item, (item.quantity/2), item.itemState);

@@ -19,7 +19,13 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
     protected float cooldown;
 
     [SerializeField]
+    protected float knockBackMultiplier;
+
+    [SerializeField]
     protected Animator animator;
+
+    [SerializeField]
+    protected Rigidbody2D rb;
 
     protected bool attackCoolDown = false;
     public void Awake()
@@ -27,6 +33,7 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
         wieldObjectController = GetComponentInChildren(typeof(WieldObjectController)) as WieldObjectController;
         animator = GetComponent(typeof(Animator)) as Animator;
+        rb = GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
     }
 
 	public void Attack()
@@ -46,15 +53,20 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
             InventoryItem currentWeapon = wieldObjectController.wieldItem;
             if (currentWeapon.item != null)
             {
-                cooldown = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Cooldown").value;
+                float weaponCooldown = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Cooldown").value;
+                if (weaponCooldown > 0) {
+                    cooldown = weaponCooldown;
+                }
             }
         }
-        attackCoolDown = true;
 
-        Timer attackCoolDownTimer = new Timer(cooldown);
-		attackCoolDownTimer.Elapsed += OnAttackCooldownTimerPassed;
-        attackCoolDownTimer.AutoReset = false;
-        attackCoolDownTimer.Enabled = true;
+        if (cooldown > 0) {
+            attackCoolDown = true;
+            Timer attackCoolDownTimer = new Timer(cooldown);
+		    attackCoolDownTimer.Elapsed += OnAttackCooldownTimerPassed;
+            attackCoolDownTimer.AutoReset = false;
+            attackCoolDownTimer.Enabled = true;
+        }
     }
 
     public void DoDamage()
@@ -65,14 +77,21 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
             return;
         }
         float damage = this.damage;
+        float knockBackMultiplier = this.knockBackMultiplier;
         if (wieldObjectController) {
             InventoryItem currentWeapon = wieldObjectController.wieldItem;
             if (currentWeapon.item != null)
             {
                 damage = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Damage").value;
+                float weaponKnockBackMultiplier = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "KnockBack").value;
+                if (weaponKnockBackMultiplier > 0) {
+                    knockBackMultiplier = weaponKnockBackMultiplier;
+                }
             }
         }
-        attackObject.TakeDamage(damage);
+        Vector2 damageVector = (attackObject.transform.position - transform.position);
+        damageVector *= ((rb != null && rb.mass > 1) ? rb.mass : 1) * damage * knockBackMultiplier;
+        attackObject.TakeDamage(damage, damageVector);
     }
 
     protected void OnAttackCooldownTimerPassed(object source, ElapsedEventArgs e)

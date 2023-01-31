@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class AOnDestruction : MonoBehaviour
 {
     [SerializeField]
-    private Health healthSystem;
-    void Start()
+    protected Health healthSystem;
+    protected void Start()
     {
         healthSystem.OnNoHealth += OnDestruction;
     }
