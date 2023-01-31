@@ -53,15 +53,20 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
             InventoryItem currentWeapon = wieldObjectController.wieldItem;
             if (currentWeapon.item != null)
             {
-                cooldown = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Cooldown").value;
+                float weaponCooldown = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Cooldown").value;
+                if (weaponCooldown > 0) {
+                    cooldown = weaponCooldown;
+                }
             }
         }
-        attackCoolDown = true;
 
-        Timer attackCoolDownTimer = new Timer(cooldown);
-		attackCoolDownTimer.Elapsed += OnAttackCooldownTimerPassed;
-        attackCoolDownTimer.AutoReset = false;
-        attackCoolDownTimer.Enabled = true;
+        if (cooldown > 0) {
+            attackCoolDown = true;
+            Timer attackCoolDownTimer = new Timer(cooldown);
+		    attackCoolDownTimer.Elapsed += OnAttackCooldownTimerPassed;
+            attackCoolDownTimer.AutoReset = false;
+            attackCoolDownTimer.Enabled = true;
+        }
     }
 
     public void DoDamage()
@@ -78,7 +83,10 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
             if (currentWeapon.item != null)
             {
                 damage = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Damage").value;
-                knockBackMultiplier = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "KnockBack").value;
+                float weaponKnockBackMultiplier = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "KnockBack").value;
+                if (weaponKnockBackMultiplier > 0) {
+                    knockBackMultiplier = weaponKnockBackMultiplier;
+                }
             }
         }
         Vector2 damageVector = (attackObject.transform.position - transform.position);
