@@ -10,8 +10,10 @@ public class Health : MonoBehaviour
 
     public HealthBarScript healthBar;
 
+    protected Rigidbody2D rb;
     protected Animator animator; 
     public event Action OnNoHealth;
+    protected Vector3 knockBack;
     void Start()
     {
         currentHealth = maxHealth;
@@ -19,14 +21,11 @@ public class Health : MonoBehaviour
             healthBar.SetMaxHealth(maxHealth);
         }
         animator = GetComponent(typeof(Animator)) as Animator;
+        rb = GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-		{
-            TakeDamage(20);
-		}
         if (currentHealth <= 0)
 		{
             OnNoHealth?.Invoke();
@@ -36,13 +35,35 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Vector3 knockBack)
 	{
         currentHealth -= damage;
         if (animator) {
             animator.SetTrigger("TakeDamage");
         }
+        if (knockBack != null) {
+            this.knockBack = (Vector3)knockBack;
+        }
 	}
+
+    public void FixedUpdate()
+    {
+        if (knockBack.x != 0 || knockBack.y != 0) {
+            rb.AddForce(knockBack, ForceMode2D.Force);
+        }
+        if (knockBack.x < 0) {
+            knockBack.x += (0 - knockBack.x)/10;
+        }
+        if (knockBack.x > 0) {
+            knockBack.x -= (0 + knockBack.x)/10;
+        }
+        if (knockBack.y < 0) {
+            knockBack.y += (0 - knockBack.y)/10;
+        }
+        if (knockBack.y > 0) {
+            knockBack.y -= (0 + knockBack.y)/10;
+        }
+    }
 
     public void Heal(float health)
 	{

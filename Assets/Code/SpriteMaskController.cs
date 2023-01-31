@@ -56,7 +56,6 @@ public class SpriteMaskController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
         if (collision.tag != "MaskTrigger")
             return;
         SpriteRenderer spriteRenderer = collision.GetComponentInParent<SpriteRenderer>();

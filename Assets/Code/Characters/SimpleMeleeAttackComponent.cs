@@ -19,7 +19,13 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
     protected float cooldown;
 
     [SerializeField]
+    protected float knockBackMultiplier;
+
+    [SerializeField]
     protected Animator animator;
+
+    [SerializeField]
+    protected Rigidbody2D rb;
 
     protected bool attackCoolDown = false;
     public void Awake()
@@ -27,6 +33,7 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
         wieldObjectController = GetComponentInChildren(typeof(WieldObjectController)) as WieldObjectController;
         animator = GetComponent(typeof(Animator)) as Animator;
+        rb = GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
     }
 
 	public void Attack()
@@ -65,14 +72,18 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
             return;
         }
         float damage = this.damage;
+        float knockBackMultiplier = this.knockBackMultiplier;
         if (wieldObjectController) {
             InventoryItem currentWeapon = wieldObjectController.wieldItem;
             if (currentWeapon.item != null)
             {
                 damage = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "Damage").value;
+                knockBackMultiplier = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "KnockBack").value;
             }
         }
-        attackObject.TakeDamage(damage);
+        Vector2 damageVector = (attackObject.transform.position - transform.position);
+        damageVector *= ((rb != null && rb.mass > 1) ? rb.mass : 1) * damage * knockBackMultiplier;
+        attackObject.TakeDamage(damage, damageVector);
     }
 
     protected void OnAttackCooldownTimerPassed(object source, ElapsedEventArgs e)

@@ -376,7 +376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -562, y: 327}
+  m_AnchoredPosition: {x: -562.00006, y: 327}
   m_SizeDelta: {x: -874.92, y: -369.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81648567
@@ -583,6 +583,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 925334992076042282, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263520809275807342, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 1329840687}
+    - target: {fileID: 3901231917652026112, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
+      propertyPath: knockBackMultiplier
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926388331841920167, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926388331841920167, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
+      propertyPath: m_UseAutoMass
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5182231614844914007, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
@@ -6743,6 +6759,14 @@ PrefabInstance:
     - target: {fileID: 4842705483627549759, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
       propertyPath: radius
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922896376687720174, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922896376687720174, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9185176636921500458, guid: c3b98d659d8db61499d192f6b186ca1e, type: 3}
       propertyPath: m_Radius
