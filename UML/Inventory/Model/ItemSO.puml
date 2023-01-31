@@ -1,0 +1,28 @@
+@startuml
+abstract class ItemSO {
+    + IsStackable : bool <<get>> <<set>>
+    + ID : int <<get>>
+    + MaxStackSize : int <<get>> <<set>> = 1
+    + Name : string <<get>> <<set>>
+    + Description : string <<get>> <<set>>
+}
+class ItemParameter <<struct>> {
+    + value : float
+    + Equals(other:ItemParameter) : bool
+}
+class ActionData {
+    + actionName : string <<get>> <<protected set>>
+}
+class "List`1"<T> {
+}
+class "IEquatable`1"<T> {
+}
+ScriptableObject <|-- ItemSO
+ItemSO --> "ItemImage" Sprite
+ItemSO --> "DefaultParametersList<ItemParameter>" "List`1"
+ItemSO --> "actionDatas<ActionData>" "List`1"
+ItemSO --> "actionNames<string>" "List`1"
+"IEquatable`1" "<ItemParameter>" <|-- ItemParameter
+ItemParameter --> "itemParameter" ItemParameterSO
+ActionData --> "action" ItemActionSO
+@enduml

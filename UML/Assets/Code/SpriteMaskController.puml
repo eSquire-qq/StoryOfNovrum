@@ -1,0 +1,9 @@
+@startuml
+class SpriteMaskController {
+    + Awake() : void
+    + Update() : void
+    + OnTriggerEnter2D(collision:Collider2D) : void
+    + OnTriggerExit2D(collision:Collider2D) : void
+}
+MonoBehaviour <|-- SpriteMaskController
+@enduml

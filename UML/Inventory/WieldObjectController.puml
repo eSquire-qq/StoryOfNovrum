@@ -1,0 +1,6 @@
+@startuml
+class WieldObjectController {
+}
+MonoBehaviour <|-- WieldObjectController
+WieldObjectController --> "wieldItem" InventoryItem
+@enduml

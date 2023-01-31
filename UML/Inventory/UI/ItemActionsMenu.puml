@@ -1,0 +1,9 @@
+@startuml
+class ItemActionMenu {
+    + Awake() : void
+    + SetData(sprite:Sprite, quantity:int) : void
+    Update() : void
+    + Toggle(val:bool) : void
+}
+MonoBehaviour <|-- ItemActionMenu
+@enduml

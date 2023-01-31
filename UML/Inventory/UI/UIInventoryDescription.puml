@@ -1,0 +1,8 @@
+@startuml
+class UIInventoryDescription {
+    + Awake() : void
+    + ResetDescription() : void
+    + SetDescription(sprite:Sprite, itemName:string, itemDescription:string) : void
+}
+MonoBehaviour <|-- UIInventoryDescription
+@enduml

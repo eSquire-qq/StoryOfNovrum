@@ -1,0 +1,6 @@
+@startuml
+class Utils <<static>> {
+    + {static} HideIfClickedOutside(panel:GameObject) : void
+    + {static} PositionBetween(v1:Vector3, v2:Vector3, percentage:float) : Vector3
+}
+@enduml

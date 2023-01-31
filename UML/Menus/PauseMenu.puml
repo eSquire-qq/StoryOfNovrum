@@ -1,0 +1,15 @@
+@startuml
+class PauseMenu {
+    + gameIsPaused : bool
+    + Awake() : void
+    + Resume() : void
+    + Pause(context:InputAction.CallbackContext) : void
+    + LoadMenu() : void
+    + QuitGame() : void
+    + OnEnable() : void
+    + OnDisable() : void
+    + ActivateMenu() : void
+    + DeactivateMenu() : void
+}
+MonoBehaviour <|-- PauseMenu
+@enduml

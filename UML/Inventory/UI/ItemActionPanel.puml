@@ -1,0 +1,9 @@
+@startuml
+class ItemActionPanel {
+    + AddButon(name:string, onClickAction:Action) : void
+    + Toggle(val:bool) : void
+    + RemoveOldButtons() : void
+    + Update() : void
+}
+MonoBehaviour <|-- ItemActionPanel
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+abstract class ItemActionSO {
+    + {abstract} PerformAction(input:ActionInput, itemState:List<ItemParameter>) : bool
+}
+ScriptableObject <|-- ItemActionSO
+IItemAction <|-- ItemActionSO
+@enduml

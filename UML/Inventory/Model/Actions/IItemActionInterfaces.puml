@@ -1,0 +1,13 @@
+@startuml
+class ActionInput <<struct>> {
+    + itemIndex : int
+}
+interface IItemAction {
+    PerformAction(input:ActionInput, itemState:List<ItemParameter>) : bool
+}
+interface IItemWithActions {
+    PerformAction(input:ActionInput, actionName:string) : bool
+}
+ActionInput --> "target" GameObject
+ActionInput --> "inventory" InventorySO
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+class "@PlayerInput" <<partial>> {
+    + @PlayerInput()
+    + Dispose() : void
+    + bindingMask : InputBinding? <<get>> <<set>>
+    + devices : ReadOnlyArray<InputDevice>? <<get>> <<set>>
+    + Contains(action:InputAction) : bool
+    + GetEnumerator() : IEnumerator<InputAction>
+    GetEnumerator() : IEnumerator
+    + Enable() : void
+    + Disable() : void
+    + FindAction(actionNameOrId:string, throwIfNotFound:bool) : InputAction
+    + FindBinding(bindingMask:InputBinding, action:InputAction) : int
+}
+class "ReadOnlyArray`1"<T> {
+}
+class "IEnumerable`1"<T> {
+}
+class PlayerActions <<struct>> {
+    + PlayerActions(wrapper:@PlayerInput)
+    + Get() : InputActionMap
+    + Enable() : void
+    + Disable() : void
+    + enabled : bool <<get>>
+    + SetCallbacks(instance:IPlayerActions) : void
+}
+class MenuActions <<struct>> {
+    + MenuActions(wrapper:@PlayerInput)
+    + Get() : InputActionMap
+    + Enable() : void
+    + Disable() : void
+    + enabled : bool <<get>>
+    + SetCallbacks(instance:IMenuActions) : void
+}
+interface IPlayerActions {
+    OnMove(context:InputAction.CallbackContext) : void
+    OnInteract(context:InputAction.CallbackContext) : void
+}
+interface IMenuActions {
+    OnEscape(context:InputAction.CallbackContext) : void
+}
+IInputActionCollection2 <|-- "@PlayerInput"
+IDisposable <|-- "@PlayerInput"
+"@PlayerInput" --> "asset" InputActionAsset
+"@PlayerInput" --> "controlSchemes<InputControlScheme>" "ReadOnlyArray`1"
+"@PlayerInput" --> "bindings<InputBinding>" "IEnumerable`1"
+"@PlayerInput" --> "@Player" PlayerActions
+"@PlayerInput" --> "@Menu" MenuActions
+"@PlayerInput" --> "KeyboardMouseScheme" InputControlScheme
+"@PlayerInput" --> "GamepadScheme" InputControlScheme
+"@PlayerInput" --> "TouchScheme" InputControlScheme
+"@PlayerInput" --> "JoystickScheme" InputControlScheme
+"@PlayerInput" --> "XRScheme" InputControlScheme
+"@PlayerInput" +-- PlayerActions
+PlayerActions --> "@Move" InputAction
+PlayerActions --> "@Interact" InputAction
+"@PlayerInput" +-- MenuActions
+MenuActions --> "@Escape" InputAction
+"@PlayerInput" +-- IPlayerActions
+"@PlayerInput" +-- IMenuActions
+@enduml

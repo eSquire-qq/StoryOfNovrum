@@ -1,0 +1,368 @@
+@startuml
+class Utils <<static>> {
+    + {static} HideIfClickedOutside(panel:GameObject) : void
+    + {static} PositionBetween(v1:Vector3, v2:Vector3, percentage:float) : Vector3
+}
+class SpriteMaskController {
+    + Awake() : void
+    + Update() : void
+    + OnTriggerEnter2D(collision:Collider2D) : void
+    + OnTriggerExit2D(collision:Collider2D) : void
+}
+MonoBehaviour <|-- SpriteMaskController
+class InteractiveObject {
+    + ShowHighlight() : void
+    + HideHighlight() : void
+}
+MonoBehaviour <|-- InteractiveObject
+class AttachToObject {
+    + FixedUpdate() : void
+}
+MonoBehaviour <|-- AttachToObject
+class "@PlayerInput" <<partial>> {
+    + @PlayerInput()
+    + Dispose() : void
+    + bindingMask : InputBinding? <<get>> <<set>>
+    + devices : ReadOnlyArray<InputDevice>? <<get>> <<set>>
+    + Contains(action:InputAction) : bool
+    + GetEnumerator() : IEnumerator<InputAction>
+    GetEnumerator() : IEnumerator
+    + Enable() : void
+    + Disable() : void
+    + FindAction(actionNameOrId:string, throwIfNotFound:bool) : InputAction
+    + FindBinding(bindingMask:InputBinding, action:InputAction) : int
+}
+class "ReadOnlyArray`1"<T> {
+}
+class "IEnumerable`1"<T> {
+}
+class PlayerActions <<struct>> {
+    + PlayerActions(wrapper:@PlayerInput)
+    + Get() : InputActionMap
+    + Enable() : void
+    + Disable() : void
+    + enabled : bool <<get>>
+    + SetCallbacks(instance:IPlayerActions) : void
+}
+class MenuActions <<struct>> {
+    + MenuActions(wrapper:@PlayerInput)
+    + Get() : InputActionMap
+    + Enable() : void
+    + Disable() : void
+    + enabled : bool <<get>>
+    + SetCallbacks(instance:IMenuActions) : void
+}
+interface IPlayerActions {
+    OnMove(context:InputAction.CallbackContext) : void
+    OnInteract(context:InputAction.CallbackContext) : void
+}
+interface IMenuActions {
+    OnEscape(context:InputAction.CallbackContext) : void
+}
+IInputActionCollection2 <|-- "@PlayerInput"
+IDisposable <|-- "@PlayerInput"
+"@PlayerInput" --> "asset" InputActionAsset
+"@PlayerInput" --> "controlSchemes<InputControlScheme>" "ReadOnlyArray`1"
+"@PlayerInput" --> "bindings<InputBinding>" "IEnumerable`1"
+"@PlayerInput" --> "@Player" PlayerActions
+"@PlayerInput" --> "@Menu" MenuActions
+"@PlayerInput" --> "KeyboardMouseScheme" InputControlScheme
+"@PlayerInput" --> "GamepadScheme" InputControlScheme
+"@PlayerInput" --> "TouchScheme" InputControlScheme
+"@PlayerInput" --> "JoystickScheme" InputControlScheme
+"@PlayerInput" --> "XRScheme" InputControlScheme
+"@PlayerInput" +-- PlayerActions
+PlayerActions --> "@Move" InputAction
+PlayerActions --> "@Interact" InputAction
+"@PlayerInput" +-- MenuActions
+MenuActions --> "@Escape" InputAction
+"@PlayerInput" +-- IPlayerActions
+"@PlayerInput" +-- IMenuActions
+class GlobalConstants {
+    + {static} <<readonly>> PLAYER_IDLE_ANIMATION_TRIGGER : string = "player_idle_animation_trigger"
+    + {static} <<readonly>> PLAYER_WALK_DOWN_ANIMATION_TRIGGER : string = "player_walk_down_animation_trigger"
+    + {static} <<readonly>> PLAYER_WALK_UP_ANIMATION_TRIGGER : string = "player_walk_up_animation_trigger"
+    + {static} <<readonly>> PLAYER_WALK_SIDE_ANIMATION_TRIGGER : string = "player_walk_side_animation_trigger"
+}
+ScriptableObject <|-- GlobalConstants
+class EnemyGhostController {
+    + Start() : void
+    + Update() : void
+    + RunAway() : void
+    + FixedUpdate() : void
+}
+MonoBehaviour <|-- EnemyGhostController
+EnemyGhostController --> "target" GameObject
+EnemyGhostController --> "animator" Animator
+class DetectionArea {
+    +  <<event>> OnAreaEnter,OnAreaStay,OnAreaExit : Action<Collider2D> 
+    + OnTriggerEnter2D(collision:Collider2D) : void
+    + OnTriggerStay2D(collision:Collider2D) : void
+    + OnTriggerExit2D(collision:Collider2D) : void
+}
+MonoBehaviour <|-- DetectionArea
+class SimpleMeleeAttackComponent {
+    + Awake() : void
+    + Attack() : void
+    + DoDamage() : void
+}
+MonoBehaviour <|-- SimpleMeleeAttackComponent
+class HealthBarScript {
+    + SetMaxHealth(health:float) : void
+    + SetHealth(health:float) : void
+}
+MonoBehaviour <|-- HealthBarScript
+HealthBarScript --> "slider" Slider
+HealthBarScript --> "gradient" Gradient
+HealthBarScript --> "fill" Image
+class OnObjectDestruction {
+}
+AOnDestruction <|-- OnObjectDestruction
+abstract class AOnDestruction {
+    Start() : void
+}
+MonoBehaviour <|-- AOnDestruction
+class Health {
+    + maxHealth : float = 100
+    + currentHealth : float
+    +  <<event>> OnNoHealth : Action 
+    Start() : void
+    Update() : void
+    + TakeDamage(damage:float) : void
+    + Heal(health:float) : void
+}
+MonoBehaviour <|-- Health
+Health --> "healthBar" HealthBarScript
+class OnCharacterDeath {
+}
+AOnDestruction <|-- OnCharacterDeath
+class MainMenu {
+    + PlayGame() : void
+    + QuitGame() : void
+}
+MonoBehaviour <|-- MainMenu
+class PauseMenu {
+    + gameIsPaused : bool
+    + Awake() : void
+    + Resume() : void
+    + Pause(context:InputAction.CallbackContext) : void
+    + LoadMenu() : void
+    + QuitGame() : void
+    + OnEnable() : void
+    + OnDisable() : void
+    + ActivateMenu() : void
+    + DeactivateMenu() : void
+}
+MonoBehaviour <|-- PauseMenu
+interface IInteraction {
+    + Interact(context:object) : void
+}
+interface "IInteractionInvoker`1"<T> {
+    +  <<event>> OnInteraction : Action<T> 
+}
+class InteractionArea {
+    + GetCurrentItems() : List<GameObject>
+}
+MonoBehaviour <|-- InteractionArea
+class PickableItemObject {
+    + Quantity : int <<get>> <<set>> = 1
+    + DestroyItem() : void
+}
+MonoBehaviour <|-- PickableItemObject
+PickableItemObject --> "InventoryItem" ItemSO
+class InventoryController {
+    + Update() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- InventoryController
+InventoryController o-> "initialItems<InventoryItem>" "List`1"
+class WieldObjectController {
+}
+MonoBehaviour <|-- WieldObjectController
+WieldObjectController --> "wieldItem" InventoryItem
+class PickUpSystemComponent {
+    + Awake() : void
+    + Interact() : void
+}
+MonoBehaviour <|-- PickUpSystemComponent
+class PlayerControlledMovement {
+    + moveSpeed : float = 100f
+    +  <<event>> OnInteraction : Action<object> 
+    + Start() : void
+    + Awake() : void
+    + OnEnable() : void
+    + OnDisable() : void
+    + Interact(context:InputAction.CallbackContext) : void
+}
+class "IInteractionInvoker`1"<T> {
+}
+MonoBehaviour <|-- PlayerControlledMovement
+"IInteractionInvoker`1" "<object>" <|-- PlayerControlledMovement
+PlayerControlledMovement --> "rb" Rigidbody2D
+PlayerControlledMovement --> "animator" Animator
+class PlayerInteractionManager {
+    + Awake() : void
+    + Interact(context:object) : void
+}
+MonoBehaviour <|-- PlayerInteractionManager
+class PlayerAttack {
+    Start() : void
+    + Awake() : void
+    + Attack(interactionContext:object) : void
+}
+MonoBehaviour <|-- PlayerAttack
+class MouseFollower {
+    + Awake() : void
+    + SetData(sprite:Sprite, quantity:int) : void
+    Update() : void
+    + Toggle(val:bool) : void
+}
+MonoBehaviour <|-- MouseFollower
+class ItemActionMenu {
+    + Awake() : void
+    + SetData(sprite:Sprite, quantity:int) : void
+    Update() : void
+    + Toggle(val:bool) : void
+}
+MonoBehaviour <|-- ItemActionMenu
+class UIInventoryDescription {
+    + Awake() : void
+    + ResetDescription() : void
+    + SetDescription(sprite:Sprite, itemName:string, itemDescription:string) : void
+}
+MonoBehaviour <|-- UIInventoryDescription
+class UIInventoryItem {
+    +  <<event>> OnItemClicked,OnItemDroppedOn,OnItemBeginDrag,OnItemEndDrag,OnRightMouseBtnClick : Action<UIInventoryItem> 
+    + selected : bool = false
+    + Awake() : void
+    + ResetData() : void
+    + Deselect() : void
+    + SetData(sprite:Sprite, quantity:int) : void
+    + Select() : void
+    + OnPointerClick(eventData:PointerEventData) : void
+    + OnEndDrag(eventData:PointerEventData) : void
+    + OnBeginDrag(eventData:PointerEventData) : void
+    + OnDrop(eventData:PointerEventData) : void
+    + OnDrag(eventData:PointerEventData) : void
+}
+MonoBehaviour <|-- UIInventoryItem
+IPointerClickHandler <|-- UIInventoryItem
+IDragHandler <|-- UIInventoryItem
+IBeginDragHandler <|-- UIInventoryItem
+IEndDragHandler <|-- UIInventoryItem
+IDropHandler <|-- UIInventoryItem
+class UIInventoryPage {
+    + {static} CtrlPressed : bool
+    +  <<event>> OnSelect,OnUnselect,OnSplit,OnDrop,OnItemActionRequested,OnStartDragging : Action<int> 
+    +  <<event>> OnSwapItems : Action<int, int> 
+    + InitializeInventoryUI(inventorysize:int) : void
+    + UpdateData(itemIndex:int, itemImage:Sprite, itemQuantity:int) : void
+    + CreateDraggedItem(sprite:Sprite, quantity:int) : void
+    + Show() : void
+    + AddAction(actionName:string, performAction:Action) : void
+    + ShowItemAction(itemIndex:int) : void
+    + HideItemAction() : void
+    + DeselectAllItems() : void
+    + DeselectItem(index:int) : void
+    + Hide() : void
+    + Update() : void
+}
+class "List`1"<T> {
+}
+class "HashSet`1"<T> {
+}
+MonoBehaviour <|-- UIInventoryPage
+UIInventoryPage o-> "listOfUIItems<UIInventoryItem>" "List`1"
+UIInventoryPage o-> "currentlyPressedKeys<KeyCode>" "HashSet`1"
+class ItemActionPanel {
+    + AddButon(name:string, onClickAction:Action) : void
+    + Toggle(val:bool) : void
+    + RemoveOldButtons() : void
+    + Update() : void
+}
+MonoBehaviour <|-- ItemActionPanel
+abstract class ItemActionSO {
+    + {abstract} PerformAction(input:ActionInput, itemState:List<ItemParameter>) : bool
+}
+ScriptableObject <|-- ItemActionSO
+IItemAction <|-- ItemActionSO
+abstract class ItemSO {
+    + IsStackable : bool <<get>> <<set>>
+    + ID : int <<get>>
+    + MaxStackSize : int <<get>> <<set>> = 1
+    + Name : string <<get>> <<set>>
+    + Description : string <<get>> <<set>>
+}
+class ItemParameter <<struct>> {
+    + value : float
+    + Equals(other:ItemParameter) : bool
+}
+class ActionData {
+    + actionName : string <<get>> <<protected set>>
+}
+class "List`1"<T> {
+}
+class "IEquatable`1"<T> {
+}
+ScriptableObject <|-- ItemSO
+ItemSO --> "ItemImage" Sprite
+ItemSO --> "DefaultParametersList<ItemParameter>" "List`1"
+ItemSO --> "actionDatas<ActionData>" "List`1"
+ItemSO --> "actionNames<string>" "List`1"
+"IEquatable`1" "<ItemParameter>" <|-- ItemParameter
+ItemParameter --> "itemParameter" ItemParameterSO
+ActionData --> "action" ItemActionSO
+class InventorySO {
+    + Size : int <<get>> = 10
+    +  <<event>> OnInventoryUpdated : Action<Dictionary<int, InventoryItem>> 
+    + Initialize() : void
+    + AddItem(item:ItemSO, quantity:int, itemState:List<ItemParameter>) : int
+    + RemoveItem(itemIndex:int, amount:int) : void
+    + AddItem(item:InventoryItem) : void
+    + GetCurrentInventoryState() : Dictionary<int, InventoryItem>
+    + GetItemAt(itemIndex:int) : InventoryItem
+    + SplitItem(itemIndex:int) : void
+    + SwapItems(itemIndex_1:int, itemIndex_2:int) : void
+}
+class InventoryItem <<struct>> {
+    + quantity : int
+    + IsEmpty : bool <<get>>
+    + ChangeQuantity(newQuantity:int) : InventoryItem
+    + {static} GetEmptyItem() : InventoryItem
+}
+class "List`1"<T> {
+}
+ScriptableObject <|-- InventorySO
+InventoryItem --> "item" ItemSO
+InventoryItem --> "itemState<ItemParameter>" "List`1"
+class CommonItemSO {
+    + Awake() : void
+    + PerformAction(input:ActionInput, actionName:string) : bool
+}
+ItemSO <|-- CommonItemSO
+IItemWithActions <|-- CommonItemSO
+class ItemParameterSO {
+    + ParameterName : string <<get>>
+}
+ScriptableObject <|-- ItemParameterSO
+class ItemHealActionSO {
+    + <<override>> PerformAction(input:ActionInput, itemState:List<ItemParameter>) : bool
+}
+ItemActionSO <|-- ItemHealActionSO
+class ItemDropActionSO {
+    + <<override>> PerformAction(input:ActionInput, itemState:List<ItemParameter>) : bool
+}
+ItemActionSO <|-- ItemDropActionSO
+class ActionInput <<struct>> {
+    + itemIndex : int
+}
+interface IItemAction {
+    PerformAction(input:ActionInput, itemState:List<ItemParameter>) : bool
+}
+interface IItemWithActions {
+    PerformAction(input:ActionInput, actionName:string) : bool
+}
+ActionInput --> "target" GameObject
+ActionInput --> "inventory" InventorySO
+@enduml

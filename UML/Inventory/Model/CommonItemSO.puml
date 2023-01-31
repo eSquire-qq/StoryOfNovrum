@@ -1,0 +1,8 @@
+@startuml
+class CommonItemSO {
+    + Awake() : void
+    + PerformAction(input:ActionInput, actionName:string) : bool
+}
+ItemSO <|-- CommonItemSO
+IItemWithActions <|-- CommonItemSO
+@enduml

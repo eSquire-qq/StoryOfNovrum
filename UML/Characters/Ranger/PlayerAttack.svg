@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="213px" preserveAspectRatio="none" style="width:261px;height:213px;" version="1.1" viewBox="0 0 261 213" width="261px" zoomAndPan="magnify"><defs><filter height="300%" id="f1nl33bu4ygjwk" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[ca0068f81a636243c03f7c8883218929]
+class PlayerAttack--><rect fill="#FEFECE" filter="url(#f1nl33bu4ygjwk)" height="86.4141" id="PlayerAttack" style="stroke: #A80036; stroke-width: 1.5;" width="244" x="6" y="116"/><ellipse cx="84.75" cy="132" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M87.7188,137.6406 Q87.1406,137.9375 86.5,138.0781 Q85.8594,138.2344 85.1563,138.2344 Q82.6563,138.2344 81.3281,136.5938 Q80.0156,134.9375 80.0156,131.8125 Q80.0156,128.6875 81.3281,127.0313 Q82.6563,125.375 85.1563,125.375 Q85.8594,125.375 86.5,125.5313 Q87.1563,125.6875 87.7188,125.9844 L87.7188,128.7031 Q87.0938,128.125 86.5,127.8594 Q85.9063,127.5781 85.2813,127.5781 Q83.9375,127.5781 83.25,128.6563 Q82.5625,129.7188 82.5625,131.8125 Q82.5625,133.9063 83.25,134.9844 Q83.9375,136.0469 85.2813,136.0469 Q85.9063,136.0469 86.5,135.7813 Q87.0938,135.5 87.7188,134.9219 L87.7188,137.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="78" x="105.25" y="136.1543">PlayerAttack</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="249" y1="148" y2="148"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="249" y1="156" y2="156"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71" x="26" y="170.2104">Start() : void</text><ellipse cx="17" cy="179.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="79" x="26" y="183.0151">Awake() : void</text><ellipse cx="17" cy="192.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="218" x="26" y="195.8198">Attack(interactionContext:object) : void</text><!--MD5=[83b3cf3d23d77c6f1e1b5291a241bc2a]
+class MonoBehaviour--><rect fill="#FEFECE" filter="url(#f1nl33bu4ygjwk)" height="48" id="MonoBehaviour" style="stroke: #A80036; stroke-width: 1.5;" width="128" x="64" y="8"/><ellipse cx="79" cy="24" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M81.9688,29.6406 Q81.3906,29.9375 80.75,30.0781 Q80.1094,30.2344 79.4063,30.2344 Q76.9063,30.2344 75.5781,28.5938 Q74.2656,26.9375 74.2656,23.8125 Q74.2656,20.6875 75.5781,19.0313 Q76.9063,17.375 79.4063,17.375 Q80.1094,17.375 80.75,17.5313 Q81.4063,17.6875 81.9688,17.9844 L81.9688,20.7031 Q81.3438,20.125 80.75,19.8594 Q80.1563,19.5781 79.5313,19.5781 Q78.1875,19.5781 77.5,20.6563 Q76.8125,21.7188 76.8125,23.8125 Q76.8125,25.9063 77.5,26.9844 Q78.1875,28.0469 79.5313,28.0469 Q80.1563,28.0469 80.75,27.7813 Q81.3438,27.5 81.9688,26.9219 L81.9688,29.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="96" x="93" y="28.1543">MonoBehaviour</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="65" x2="191" y1="40" y2="40"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="65" x2="191" y1="48" y2="48"/><!--MD5=[1292e3406111491194e9200bd92d9f0c]
+reverse link MonoBehaviour to PlayerAttack--><path d="M128,76.27 C128,89.12 128,103.17 128,115.94 " fill="none" id="MonoBehaviour&lt;-PlayerAttack" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="121,76.22,128,56.22,135,76.22,121,76.22" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[a187502c1972d78e8104ef076c9cc161]
+@startuml
+class PlayerAttack {
+    Start() : void
+    + Awake() : void
+    + Attack(interactionContext:object) : void
+}
+MonoBehaviour <|- - PlayerAttack
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 10:22:07 GMT 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.9+11-Ubuntu-0ubuntu1
+Operating System: Linux
+Default Encoding: ANSI_X3.4-1968
+Language: en
+Country: US
+--></g></svg>

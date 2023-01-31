@@ -1,0 +1,8 @@
+@startuml
+class SimpleMeleeAttackComponent {
+    + Awake() : void
+    + Attack() : void
+    + DoDamage() : void
+}
+MonoBehaviour <|-- SimpleMeleeAttackComponent
+@enduml

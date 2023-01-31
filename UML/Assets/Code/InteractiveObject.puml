@@ -1,0 +1,7 @@
+@startuml
+class InteractiveObject {
+    + ShowHighlight() : void
+    + HideHighlight() : void
+}
+MonoBehaviour <|-- InteractiveObject
+@enduml

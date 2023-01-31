@@ -1,0 +1,10 @@
+@startuml
+class HealthBarScript {
+    + SetMaxHealth(health:float) : void
+    + SetHealth(health:float) : void
+}
+MonoBehaviour <|-- HealthBarScript
+HealthBarScript --> "slider" Slider
+HealthBarScript --> "gradient" Gradient
+HealthBarScript --> "fill" Image
+@enduml

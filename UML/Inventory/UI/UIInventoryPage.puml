@@ -1,0 +1,25 @@
+@startuml
+class UIInventoryPage {
+    + {static} CtrlPressed : bool
+    +  <<event>> OnSelect,OnUnselect,OnSplit,OnDrop,OnItemActionRequested,OnStartDragging : Action<int> 
+    +  <<event>> OnSwapItems : Action<int, int> 
+    + InitializeInventoryUI(inventorysize:int) : void
+    + UpdateData(itemIndex:int, itemImage:Sprite, itemQuantity:int) : void
+    + CreateDraggedItem(sprite:Sprite, quantity:int) : void
+    + Show() : void
+    + AddAction(actionName:string, performAction:Action) : void
+    + ShowItemAction(itemIndex:int) : void
+    + HideItemAction() : void
+    + DeselectAllItems() : void
+    + DeselectItem(index:int) : void
+    + Hide() : void
+    + Update() : void
+}
+class "List`1"<T> {
+}
+class "HashSet`1"<T> {
+}
+MonoBehaviour <|-- UIInventoryPage
+UIInventoryPage o-> "listOfUIItems<UIInventoryItem>" "List`1"
+UIInventoryPage o-> "currentlyPressedKeys<KeyCode>" "HashSet`1"
+@enduml
