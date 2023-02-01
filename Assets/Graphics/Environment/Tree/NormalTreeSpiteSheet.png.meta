@@ -1,0 +1,376 @@
+fileFormatVersion: 2
+guid: 5590f58d7bc79374584f7660d0951bdd
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NormalTreeSpiteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 431
+        width: 112
+        height: 124
+      alignment: 9
+      pivot: {x: 0.4960144, y: 0.1962802}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 23, y: -56}
+        - {x: 17, y: -55}
+        - {x: 14, y: -60}
+        - {x: 8, y: -61}
+        - {x: -2, y: -55}
+        - {x: -5, y: -61}
+        - {x: -15, y: -59}
+        - {x: -27, y: -62}
+        - {x: -24, y: -53}
+        - {x: -16, y: -43}
+        - {x: -24, y: -40}
+        - {x: 24, y: -35}
+        - {x: 19, y: -42}
+        - {x: 30, y: -44}
+        - {x: 22, y: -52}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d0467c5666c7e4f946d30973d339d7
+      internalID: -938395583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalTreeSpiteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 399
+        width: 155
+        height: 161
+      alignment: 9
+      pivot: {x: 0.5269293, y: 0.12466772}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 28.5, y: -68.5}
+        - {x: 30.5, y: -79.5}
+        - {x: 4.5, y: -77.5}
+        - {x: -10.5, y: -73.5}
+        - {x: -28.5, y: -78.5}
+        - {x: -18.5, y: -63.5}
+        - {x: -22.5, y: -57.5}
+        - {x: 33.5, y: -53.5}
+        - {x: 30.5, y: -57.5}
+        - {x: 40.5, y: -69.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fabe0d4fdb965a49aec6dc41b875204
+      internalID: 370278140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalTreeSpiteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 381
+        width: 160
+        height: 179
+      alignment: 9
+      pivot: {x: 0.53896695, y: 0.15169333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 34, y: -89.5}
+        - {x: 24, y: -83.5}
+        - {x: 16, y: -85.5}
+        - {x: 7, y: -80.5}
+        - {x: 3, y: -82.5}
+        - {x: -9, y: -78.5}
+        - {x: -24, y: -82.5}
+        - {x: -16, y: -67.5}
+        - {x: -22, y: -66.5}
+        - {x: -14, y: -58.5}
+        - {x: 35, y: -57.5}
+        - {x: 32, y: -63.5}
+        - {x: 41, y: -74.5}
+        - {x: 28, y: -72.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90562614fc3eeaa4e9bf1b110b65f3ad
+      internalID: -486516020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalTreeSpiteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 264
+        width: 145
+        height: 160
+      alignment: 9
+      pivot: {x: 0.4855038, y: 0.21415444}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 22.5, y: -70}
+        - {x: 6.5, y: -76}
+        - {x: 9.5, y: -67}
+        - {x: -1.5, y: -66}
+        - {x: -15.5, y: -71}
+        - {x: -7.5, y: -78}
+        - {x: -46.5, y: -79}
+        - {x: -30.5, y: -71}
+        - {x: -48.5, y: -67}
+        - {x: -36.5, y: -62}
+        - {x: -42.5, y: -57}
+        - {x: 12.5, y: -50}
+        - {x: 40.5, y: -72}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a696d7ccd3748549bf001c444aa4237
+      internalID: 2090566355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalTreeSpiteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 185
+        width: 170
+        height: 187
+      alignment: 9
+      pivot: {x: 0.50729084, y: 0.038803183}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 25, y: -79.5}
+        - {x: 28, y: -93.5}
+        - {x: 19, y: -87.5}
+        - {x: 10, y: -88.5}
+        - {x: 1, y: -83.5}
+        - {x: -4, y: -85.5}
+        - {x: -16, y: -80.5}
+        - {x: -21, y: -84.5}
+        - {x: -31, y: -85.5}
+        - {x: -21, y: -71.5}
+        - {x: -28, y: -70.5}
+        - {x: -21, y: -62.5}
+        - {x: 29, y: -61.5}
+        - {x: 36, y: -78.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87aa455b12e064d4f83854088b6bbac7
+      internalID: -421707430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalTreeSpiteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 195
+        width: 177
+        height: 179
+      alignment: 9
+      pivot: {x: 0.50000036, y: 0.043508947}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 27.5, y: -89.5}
+        - {x: 15.5, y: -85.5}
+        - {x: 0.5, y: -81.5}
+        - {x: -9.5, y: -79.5}
+        - {x: -32.5, y: -83.5}
+        - {x: -23.5, y: -68.5}
+        - {x: -29.5, y: -66.5}
+        - {x: -24.5, y: -60.5}
+        - {x: 27.5, y: -62.5}
+        - {x: 24.5, y: -66.5}
+        - {x: 31.5, y: -76.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b089838f17e03eb4bbead3f164c02929
+      internalID: 1018137343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalTreeSpiteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 78
+        width: 165
+        height: 179
+      alignment: 9
+      pivot: {x: 0.5330628, y: 0.116862416}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1517dbec952b7534b8651b3fb112e897
+      internalID: 1829187816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalTreeSpiteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 0
+        width: 145
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66508cdf10a6c9a4ba6e6fb043ce0f77
+      internalID: -1417679204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      NormalTreeSpiteSheet_0: -938395583
+      NormalTreeSpiteSheet_7: -1417679204
+      NormalTreeSpiteSheet_2: -486516020
+      NormalTreeSpiteSheet_3: 2090566355
+      NormalTreeSpiteSheet_6: 1829187816
+      NormalTreeSpiteSheet_1: 370278140
+      NormalTreeSpiteSheet_5: 1018137343
+      NormalTreeSpiteSheet_4: -421707430
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
