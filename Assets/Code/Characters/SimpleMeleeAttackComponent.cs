@@ -29,6 +29,15 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
     [SerializeField]
     protected Rigidbody2D rb;
 
+    [SerializeField]
+	protected List<AudioClip> damageSounds;
+
+    [SerializeField]
+	protected List<AudioClip> missSounds;
+
+    [SerializeField]
+    protected AudioSource audioSource;
+
     protected bool attackCoolDown = false;
     public void Awake()
     {
@@ -81,6 +90,8 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
         Health attackObject = interactionArea.GetCurrentItems()?.Find(x => (x.GetComponent<Health>() != null && x != gameObject))?.GetComponent<Health>();
         if (attackObject == null)
         {
+            if (audioSource && missSounds.Count() > 0)
+			 	audioSource.PlayOneShot(missSounds[UnityEngine.Random.Range(0, missSounds.Count())]);
             return;
         }
         float damage = this.damage;
@@ -105,6 +116,10 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
         }
         Vector2 damageVector = (attackObject.transform.position - transform.position);
         damageVector *= ((rb != null && rb.mass > 1) ? rb.mass : 1) * damage * knockBackMultiplier;
+
+        if (audioSource && damageSounds.Count() > 0)
+			audioSource.PlayOneShot(damageSounds[UnityEngine.Random.Range(0, damageSounds.Count())]);
+
         attackObject.TakeDamage(damage, damageVector);
     }
 

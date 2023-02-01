@@ -10,7 +10,7 @@ public class PlayerInteractionManager : MonoBehaviour
 	protected InteractionArea interactionArea;
 
 	[SerializeField]
-	protected PlayerControlledMovement playerController;
+	protected PlayerController playerController;
 
 	[SerializeField]
 	protected SimpleMeleeAttackComponent attackComponent;
@@ -20,7 +20,7 @@ public class PlayerInteractionManager : MonoBehaviour
 
 	public void Awake()
 	{
-		playerController = GetComponent(typeof(PlayerControlledMovement)) as PlayerControlledMovement;
+		playerController = GetComponent(typeof(PlayerController)) as PlayerController;
 		if (playerController != null) {
 			playerController.OnInteraction += Interact;
 		}
