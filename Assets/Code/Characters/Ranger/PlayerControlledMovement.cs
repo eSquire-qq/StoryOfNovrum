@@ -2,20 +2,17 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using Inventory.Interaction;
+using Animations;
 
 public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker<object>
 {
 
-	protected float horizontal;
-    protected float vertical;
-
-    protected bool isRunning;
     protected Vector3 moveDir;
 
 	public float moveSpeed = 100f;
 
 	public Rigidbody2D rb;
-	public Animator animator;
+	public AnimatorController animatorController;
 	protected InteractionArea interactionArea;
 	protected PlayerInput playerInput;
 
@@ -26,6 +23,7 @@ public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker<objec
     public void Start()
 	{
 		interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
+		animatorController = GetComponent(typeof(AnimatorController)) as AnimatorController;
 		rb = GetComponent<Rigidbody2D>();
 	}
 
@@ -52,28 +50,20 @@ public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker<objec
 
 	protected void Update()
 	{
-		horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+		float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
 
-        if(horizontal != 0 || vertical != 0)
+        if(horizontal == 0 && vertical == 0)
         {
-            animator.SetFloat("Horizontal", horizontal);
-            animator.SetFloat("Vertical", vertical);    
-            if(!isRunning)
-            {
-                isRunning = true;
-                animator.SetBool("isRunning", isRunning);
-            }
-        }else
-        {
-            if(isRunning)
-            {
-                isRunning = false;
-                animator.SetBool("isRunning",isRunning);
-                StopRunning();
-            }
-        }
-        moveDir = new Vector3(horizontal,vertical).normalized;
+			animatorController.ChangeAnimationState("Idle", animatorController.currentAnimationState == "Run" ? true : false);
+        } else {
+			animatorController.ChangeAnimationState("Run");
+		}
+
+		moveDir = new Vector3(horizontal,vertical).normalized;
+		if (moveDir.x < 0 || moveDir.x > 0) {
+			transform.localScale = new Vector2(moveDir.x < 0 ? 1 : -1, 1f);
+		}
 	}
 
 	protected void FixedUpdate()
@@ -81,7 +71,7 @@ public class PlayerControlledMovement : MonoBehaviour, IInteractionInvoker<objec
 		rb.velocity = moveDir * moveSpeed * Time.deltaTime;
 		if (interactionArea) {
 			if (moveDir.x != 0 || moveDir.y != 0) {
-				interactionArea.transform.localPosition = moveDir/2;
+				interactionArea.transform.position = transform.position + moveDir/2;
 			}
 		}
 	}

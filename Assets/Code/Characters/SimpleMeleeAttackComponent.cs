@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Timers;
+using Animations;
 
 public class SimpleMeleeAttackComponent : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
     protected float knockBackMultiplier;
 
     [SerializeField]
-    protected Animator animator;
+    protected AnimatorController animatorController;
 
     [SerializeField]
     protected Rigidbody2D rb;
@@ -32,7 +33,7 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
     {
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
         wieldObjectController = GetComponentInChildren(typeof(WieldObjectController)) as WieldObjectController;
-        animator = GetComponent(typeof(Animator)) as Animator;
+        animatorController = GetComponent(typeof(AnimatorController)) as AnimatorController;
         rb = GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
     }
 
@@ -43,9 +44,9 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
             return;
 		}
 
-        if (animator)
+        if (animatorController)
         {
-            animator.SetTrigger(GlobalConstants.Triggers.ATTACK);
+            animatorController.ChangeAnimationState("Attack", true);
         }
 
         float cooldown = this.cooldown;
