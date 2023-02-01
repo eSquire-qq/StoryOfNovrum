@@ -21,8 +21,16 @@ MonoBehaviour:
   - itemParameter: {fileID: 11400000, guid: d66784541eb4bd7448e4e82c4824bea5, type: 2}
     value: 25
   - itemParameter: {fileID: 11400000, guid: f35bb76361e5f49448b1bb0dd3f59423, type: 2}
-    value: 250
+    value: 1050
+  - itemParameter: {fileID: 11400000, guid: 2d71cf6e60db9fd4c97ee1941cb530e0, type: 2}
+    value: 10
   <actionDatas>k__BackingField:
   - action: {fileID: 11400000, guid: a2cf66b742bcae24a950cec4fb3e9bff, type: 2}
     <actionName>k__BackingField: Drop
-  <animations>k__BackingField: []
+  <animations>k__BackingField:
+  - <type>k__BackingField: {fileID: 11400000, guid: ec8cbc42196d3a540984c84331ac4eff, type: 2}
+    <name>k__BackingField: Attack_Axe_0
+  - <type>k__BackingField: {fileID: 11400000, guid: ec8cbc42196d3a540984c84331ac4eff, type: 2}
+    <name>k__BackingField: Attack_Axe_1
+  - <type>k__BackingField: {fileID: 11400000, guid: ec8cbc42196d3a540984c84331ac4eff, type: 2}
+    <name>k__BackingField: Attack_Axe_2

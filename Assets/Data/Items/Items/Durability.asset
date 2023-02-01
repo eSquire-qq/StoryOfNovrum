@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ca59d6aa0773f4aa036b168ad5db0a, type: 3}
   m_Name: Durability
   m_EditorClassIdentifier: 
-  <ParameterName>k__BackingField: Cooldown
+  <ParameterName>k__BackingField: Durability
