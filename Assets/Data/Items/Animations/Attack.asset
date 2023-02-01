@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f666a7b79558d4b8c86b2fdef41029, type: 3}
   m_Name: Attack
   m_EditorClassIdentifier: 
-  <AnimationType>k__BackingField: 
+  <AnimationType>k__BackingField: Attack
