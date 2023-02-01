@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Animations;
 
 public class Health : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Health : MonoBehaviour
     public HealthBarScript healthBar;
 
     protected Rigidbody2D rb;
-    protected Animator animator; 
+    protected AnimatorController animatorController; 
     public event Action OnNoHealth;
     protected Vector3 knockBack;
     void Start()
@@ -22,7 +23,7 @@ public class Health : MonoBehaviour
         if (healthBar) {
             healthBar.SetMaxHealth(maxHealth);
         }
-        animator = GetComponent(typeof(Animator)) as Animator;
+        animatorController = GetComponent(typeof(AnimatorController)) as AnimatorController;
         rb = GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
     }
 
@@ -45,8 +46,8 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage, Vector3 knockBack)
 	{
         currentHealth -= damage;
-        if (animator) {
-            animator.SetTrigger(GlobalConstants.Triggers.TAKEDAMAGE);
+        if (animatorController) {
+            animatorController.ChangeAnimationState(GlobalConstants.Triggers.TAKEDAMAGE, true);
         }
         if (knockBack != null) {
             this.knockBack = (Vector3)knockBack;

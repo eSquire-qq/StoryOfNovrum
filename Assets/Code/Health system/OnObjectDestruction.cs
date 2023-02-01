@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Animations;
 
 public class OnObjectDestruction : AOnDestruction
 {
     [SerializeField]
-    Animator animator;
+    protected AnimatorController animator;
 
     [SerializeField]
-    Collider2D collider;
+    protected Collider2D collider;
 
     protected void Start()
     {
         base.Start();
-        animator = GetComponent(typeof(Animator)) as Animator;
+        animator = GetComponent(typeof(AnimatorController)) as AnimatorController;
         collider = GetComponent(typeof(Collider2D)) as Collider2D;
     }
 
@@ -23,7 +24,7 @@ public class OnObjectDestruction : AOnDestruction
             collider.enabled = false;
         }
         if (animator) {
-            animator.SetTrigger(GlobalConstants.Triggers.ONEDESTRUCTION);
+            animator.ChangeAnimationState(GlobalConstants.Triggers.ONEDESTRUCTION, true);
         }
     }
 }

@@ -5,6 +5,7 @@ using Pathfinding;
 using Inventory.Interaction;
 using System;
 using System.Timers;
+using Animations;
 
 public class EnemyGhostController : MonoBehaviour
 {
@@ -19,16 +20,18 @@ public class EnemyGhostController : MonoBehaviour
     protected SimpleMeleeAttackComponent attackComponent;
 
     protected GameObject runAwayTarget;
-
-    public Animator animator;
-    protected bool isRunning;
+    protected bool isMoving;
     private Rigidbody2D rb;
+
+    [SerializeField]
+    protected AnimatorController animatorController;
 
     public void Start()
     {
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
         attackComponent = GetComponentInChildren(typeof(SimpleMeleeAttackComponent)) as SimpleMeleeAttackComponent;
         detectionnArea = GetComponentInChildren(typeof(DetectionArea)) as DetectionArea;
+        animatorController = GetComponent(typeof(AnimatorController)) as AnimatorController;
         detectionnArea.OnAreaStay += OnDetectionRadiusStay;
         detectionnArea.OnAreaExit += OnDetectionRadiusExit;
     }
@@ -94,26 +97,16 @@ public class EnemyGhostController : MonoBehaviour
     {
         Vector3 steeringVector = Vector3.Normalize(aiPath.steeringTarget - transform.position);
 
-        if (aiPath.TargetReached)
-        {
-            if(isRunning)
-            {
-                isRunning = false;
-                animator.SetBool("isRunning", isRunning);
-            }
-            return;
-        }
+        transform.localScale = new Vector2(steeringVector.x < 0 ? -1f : 1f, 1f);
 
         if(steeringVector.x != 0 || steeringVector.y != 0)
         {
             interactionArea.transform.position = transform.position + steeringVector/2;
-            animator.SetFloat("Horizontal", steeringVector.x);
-            animator.SetFloat("Vertical", steeringVector.y);    
-            if(!isRunning)
-            {
-                isRunning = true;
-                animator.SetBool("isRunning", isRunning);
-            }
+            animatorController.ChangeAnimationState("Walk", animatorController.currentAnimationState == "Idle" ? true : false);
+        }
+        if (aiPath.TargetReached)
+        {
+            animatorController.ChangeAnimationState("Idle");
         }
     }
 
