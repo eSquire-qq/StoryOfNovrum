@@ -102,11 +102,11 @@ public class EnemyGhostController : MonoBehaviour
         if(steeringVector.x != 0 || steeringVector.y != 0)
         {
             interactionArea.transform.position = transform.position + steeringVector/2;
-            animatorController.ChangeAnimationState("Walk", animatorController.currentAnimationState == "Idle" ? true : false);
+            animatorController.ChangeAnimationState(GlobalConstants.Animations.WALK, animatorController.currentAnimationState == GlobalConstants.Animations.IDLE ? true : false);
         }
         if (aiPath.TargetReached)
         {
-            animatorController.ChangeAnimationState("Idle");
+            animatorController.ChangeAnimationState(GlobalConstants.Animations.IDLE);
         }
     }
 

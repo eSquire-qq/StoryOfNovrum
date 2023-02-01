@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 142679b7f2fdd5b49b049938700f214c, type: 3}
-  m_Name: Axe Item
+  m_Name: Default Dagger Item
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
-  <Name>k__BackingField: Axe
+  <Name>k__BackingField: Dagger
   <Description>k__BackingField: Chops stuff
-  <ItemImage>k__BackingField: {fileID: -1548399874, guid: 3e368939350ece7479623aa3f1a40310, type: 3}
+  <ItemImage>k__BackingField: {fileID: 1480442162, guid: 3e368939350ece7479623aa3f1a40310, type: 3}
   <DefaultParametersList>k__BackingField:
   - itemParameter: {fileID: 11400000, guid: d66784541eb4bd7448e4e82c4824bea5, type: 2}
-    value: 25
+    value: 10
   - itemParameter: {fileID: 11400000, guid: f35bb76361e5f49448b1bb0dd3f59423, type: 2}
-    value: 250
-  <actionDatas>k__BackingField:
-  - action: {fileID: 11400000, guid: a2cf66b742bcae24a950cec4fb3e9bff, type: 2}
-    <actionName>k__BackingField: Drop
-  <animations>k__BackingField: []
+    value: 100
+  <actionDatas>k__BackingField: []
+  <animations>k__BackingField:
+  - <name>k__BackingField: Attack_Dagger_0
+    <type>k__BackingField: Attack
+  - <name>k__BackingField: Attack_Dagger_1
+    <type>k__BackingField: Attack

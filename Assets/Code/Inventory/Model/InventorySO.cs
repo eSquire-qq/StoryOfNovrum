@@ -144,6 +144,11 @@ namespace Inventory.Model
             return returnValue;
         }
 
+        public int GetIndex(InventoryItem item)
+        {
+            return inventoryItems.FindIndex(x => x.Equals(item));
+        }
+
         public InventoryItem GetItemAt(int itemIndex)
         {
             return inventoryItems[itemIndex];
@@ -206,7 +211,9 @@ namespace Inventory.Model
     {
         public int quantity;
         public ItemSO item;
+
         public List<ItemParameter> itemState;
+        
         public bool IsEmpty => item == null;
 
         public InventoryItem ChangeQuantity(int newQuantity)

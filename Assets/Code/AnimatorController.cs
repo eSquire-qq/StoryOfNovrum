@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using System.Linq;
 
 namespace Animations
 {
@@ -10,14 +11,14 @@ namespace Animations
     {
         [SerializeField]
         protected Animator animator;
-
-        protected Task nextAnimation;
-
         public string currentAnimationState {get; protected set;}
+
+        public string[] animationsList {get; protected set;}
 
         protected void Start()
         {
             animator = GetComponent<Animator>() as Animator;
+            animationsList = animator.runtimeAnimatorController.animationClips.ToList().Select(x => x.name).ToArray();
         }
 
         public void ChangeAnimationState(string animationState, bool imediate = false)

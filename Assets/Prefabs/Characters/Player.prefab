@@ -99,6 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 931e6d2bee2b0ef43abd6d4d4a74fe14, type: 2}
+  deafultItem:
+    quantity: 1
+    item: {fileID: 11400000, guid: 58ebbb847475b9243aabd6abdb045972, type: 2}
+    itemState: []
 --- !u!1 &3028720538180671761
 GameObject:
   m_ObjectHideFlags: 0

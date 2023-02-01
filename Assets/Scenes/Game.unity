@@ -599,7 +599,7 @@ PrefabInstance:
       objectReference: {fileID: 1329840687}
     - target: {fileID: 3901231917652026112, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
       propertyPath: damage
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3901231917652026112, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
       propertyPath: knockBackMultiplier
