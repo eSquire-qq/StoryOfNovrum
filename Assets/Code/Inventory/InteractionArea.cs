@@ -49,6 +49,7 @@ namespace Inventory.Interaction
 
         public List<GameObject> GetCurrentItems()
         {
+            currentItems.RemoveAll(item => item == null);
             return currentItems;
         }
     }

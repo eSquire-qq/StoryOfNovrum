@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3336657552631485483}
   - component: {fileID: 8295715096575255085}
   - component: {fileID: 4691733223914648854}
+  - component: {fileID: 278815237191966544}
   m_Layer: 0
   m_Name: ClayPot
   m_TagString: Untagged
@@ -221,3 +222,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSystem: {fileID: 3336657552631485485}
   timer: 5
+--- !u!114 &278815237191966544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3336657552631485478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec5b8e426a48d74d893bf8553446d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
