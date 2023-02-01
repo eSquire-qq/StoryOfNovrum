@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Timers;
 using Animations;
+using System.Linq;
 
 public class SimpleMeleeAttackComponent : MonoBehaviour
 {
@@ -44,12 +45,8 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
             return;
 		}
 
-        if (animatorController)
-        {
-            animatorController.ChangeAnimationState("Attack", true);
-        }
-
         float cooldown = this.cooldown;
+        string animation = "Attack";
         if (wieldObjectController) {
             InventoryItem currentWeapon = wieldObjectController.wieldItem;
             if (currentWeapon.item != null)
@@ -58,7 +55,16 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
                 if (weaponCooldown > 0) {
                     cooldown = weaponCooldown;
                 }
+                List<string> weaponAnimations = currentWeapon.item.animations.Where(x => x.type.AnimationType == GlobalConstants.Animations.ATTACK).Select(x => x.name).ToList<string>();
+                if (weaponAnimations.Count() > 0) {
+                    animation = weaponAnimations[UnityEngine.Random.Range(0, weaponAnimations.Count())];
+                }
             }
+        }
+
+        if (animatorController)
+        {
+            animatorController.ChangeAnimationState(animation, true);
         }
 
         if (cooldown > 0) {
@@ -83,10 +89,17 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
             InventoryItem currentWeapon = wieldObjectController.wieldItem;
             if (currentWeapon.item != null)
             {
-                damage = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == GlobalConstants.Triggers.DAMAGE).value;
-                float weaponKnockBackMultiplier = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == "KnockBack").value;
+                damage = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == GlobalConstants.Parameters.DAMAGE).value;
+                float weaponKnockBackMultiplier = currentWeapon.itemState.Find(x => x.itemParameter.ParameterName == GlobalConstants.Parameters.KNOCKBACK).value;
                 if (weaponKnockBackMultiplier > 0) {
                     knockBackMultiplier = weaponKnockBackMultiplier;
+                }
+                int index = currentWeapon.itemState.FindIndex(x => x.itemParameter.ParameterName == GlobalConstants.Parameters.DURABILITY);
+                if (index >= 0) {
+                    ItemParameter durability = new ItemParameter();
+                    durability.itemParameter = currentWeapon.itemState[index].itemParameter;
+                    durability.value = currentWeapon.itemState[index].value - 1;
+                    currentWeapon.itemState[index] = durability;
                 }
             }
         }
