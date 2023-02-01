@@ -6,6 +6,7 @@ using Inventory.Interaction;
 using System;
 using System.Timers;
 using Animations;
+using System.Linq;
 
 public class EnemyGhostController : MonoBehaviour
 {
@@ -25,6 +26,12 @@ public class EnemyGhostController : MonoBehaviour
 
     [SerializeField]
     protected AnimatorController animatorController;
+
+    [SerializeField]
+	protected List<AudioClip> runSounds;
+
+	[SerializeField]
+	protected AudioSource audioSourceRunSound;
 
     public void Start()
     {
@@ -101,6 +108,8 @@ public class EnemyGhostController : MonoBehaviour
 
         if(steeringVector.x != 0 || steeringVector.y != 0)
         {
+            if (audioSourceRunSound && !audioSourceRunSound.isPlaying && runSounds.Count() > 0)
+			 	audioSourceRunSound.PlayOneShot(runSounds[UnityEngine.Random.Range(0, runSounds.Count())]);
             interactionArea.transform.position = transform.position + steeringVector/2;
             animatorController.ChangeAnimationState(GlobalConstants.Animations.WALK, animatorController.currentAnimationState == GlobalConstants.Animations.IDLE ? true : false);
         }
@@ -121,6 +130,7 @@ public class EnemyGhostController : MonoBehaviour
 
         if (targetHit.collider?.tag == GlobalConstants.Tags.PLAYER)
         {
+            if (EventManager.instance) EventManager.TriggerEvent("EnterCombat", null);
             aiDestination.target = target.transform;
             aiPath.SearchPath();
         }

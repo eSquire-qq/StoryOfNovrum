@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Animations;
+using System.Linq;
 
 public class OnObjectDestruction : AOnDestruction
 {
@@ -10,6 +11,12 @@ public class OnObjectDestruction : AOnDestruction
 
     [SerializeField]
     protected Collider2D collider;
+
+    [SerializeField]
+	protected List<AudioClip> destructionSounds;
+
+    [SerializeField]
+    protected AudioSource audioSource;
 
     protected void Start()
     {
@@ -24,7 +31,9 @@ public class OnObjectDestruction : AOnDestruction
             collider.enabled = false;
         }
         if (animator) {
-            animator.ChangeAnimationState(GlobalConstants.Triggers.ONEDESTRUCTION, true);
+            animator.ChangeAnimationState(GlobalConstants.Animations.ONEDESTRUCTION, true);
         }
+        if (audioSource && destructionSounds.Count() > 0)
+			audioSource.PlayOneShot(destructionSounds[UnityEngine.Random.Range(0, destructionSounds.Count())]);
     }
 }

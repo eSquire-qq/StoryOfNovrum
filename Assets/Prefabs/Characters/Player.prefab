@@ -187,7 +187,6 @@ GameObject:
   - component: {fileID: 3393877185172820812}
   - component: {fileID: 3926388331841920167}
   - component: {fileID: 7897676791936716030}
-  - component: {fileID: 735921956970293467}
   - component: {fileID: 4134423407000772886}
   - component: {fileID: 5182231614844914007}
   - component: {fileID: 3277143960276114490}
@@ -197,6 +196,8 @@ GameObject:
   - component: {fileID: 3901231917652026112}
   - component: {fileID: 115338577944538856}
   - component: {fileID: 8211556395935349349}
+  - component: {fileID: 5426022623008405064}
+  - component: {fileID: 5411038926828950249}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -314,21 +315,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &735921956970293467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8913491051991209953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae26576a582915c4d85ba3a6fd2897d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 100
-  rb: {fileID: 3926388331841920167}
-  animatorController: {fileID: 0}
 --- !u!114 &4134423407000772886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryData: {fileID: 11400000, guid: 931e6d2bee2b0ef43abd6d4d4a74fe14, type: 2}
+  pickupSounds: []
+  audioSource: {fileID: 0}
 --- !u!114 &5182231614844914007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,6 +404,11 @@ MonoBehaviour:
   currentHealth: 100
   dead: 0
   healthBar: {fileID: 0}
+  hurtSounds:
+  - {fileID: 8300000, guid: 315fae2dcc6d1bd40a4d720d4c4b6c76, type: 3}
+  - {fileID: 8300000, guid: 803087e1646e5484b8670d51e354301e, type: 3}
+  - {fileID: 8300000, guid: c0ce2f420ba23a64abbe406c2479ad4c, type: 3}
+  audioSourceHurtSound: {fileID: 5426022623008405064}
 --- !u!114 &7713783886679460329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +424,8 @@ MonoBehaviour:
   healthSystem: {fileID: 511878713070689517}
   animator: {fileID: 8211556395935349349}
   collider: {fileID: 0}
+  destructionSounds: []
+  audioSource: {fileID: 0}
 --- !u!114 &3901231917652026112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +443,15 @@ MonoBehaviour:
   knockBackMultiplier: 10
   animatorController: {fileID: 8211556395935349349}
   rb: {fileID: 3926388331841920167}
+  damageSounds:
+  - {fileID: 8300000, guid: a51ee4ac7e5d135459c79d91c2757560, type: 3}
+  - {fileID: 8300000, guid: 9d9e6677ff9dbbe46b8872cfc1a53f5a, type: 3}
+  - {fileID: 8300000, guid: 705e175e8badba74aa958ba63331bee9, type: 3}
+  missSounds:
+  - {fileID: 8300000, guid: 6f8dfd67cbd0cd9409a4aec4d4b47477, type: 3}
+  - {fileID: 8300000, guid: 341cadf7f93e17d4fae6ddda2326d007, type: 3}
+  - {fileID: 8300000, guid: fbb83896c58d9594db21649b95d6bbf0, type: 3}
+  audioSource: {fileID: 5426022623008405064}
 --- !u!114 &115338577944538856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,7 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionArea: {fileID: 4201616506598567575}
-  playerController: {fileID: 735921956970293467}
+  playerController: {fileID: 5411038926828950249}
   attackComponent: {fileID: 3901231917652026112}
   pickUpComponent: {fileID: 4134423407000772886}
 --- !u!114 &8211556395935349349
@@ -477,3 +481,116 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7897676791936716030}
+--- !u!82 &5426022623008405064
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913491051991209953}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: acddc0dbe36206b4f85dd40c44a50759, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &5411038926828950249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913491051991209953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae26576a582915c4d85ba3a6fd2897d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 100
+  rb: {fileID: 3926388331841920167}
+  animatorController: {fileID: 8211556395935349349}
+  runSounds: []
+  audioSourceRunSound: {fileID: 5426022623008405064}
