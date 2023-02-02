@@ -30,6 +30,7 @@ public class MusicManager : MonoBehaviour
     {
         if (!isInCombat && currentClip != peaceMusic)
         {
+            audioSource.Stop();
             audioSource.PlayOneShot(peaceMusic);
             currentClip = peaceMusic;
         } 
@@ -38,14 +39,15 @@ public class MusicManager : MonoBehaviour
     protected void OnCombatStarted(Dictionary<string, object> message)
     {
         isInCombat = true;
-        if (combatExitDelay != null) {
-            combatExitDelay.Dispose();
-        }
+        // if (combatExitDelay != null) {
+        //     combatExitDelay.Wait();
+        // }
         combatExitDelay = Task.Delay(10000).ContinueWith(t => {
             isInCombat = false;
         });
         if (currentClip != combatMusic)
         {
+            audioSource.Stop();
             audioSource.PlayOneShot(combatMusic);
             currentClip = combatMusic;
         } 

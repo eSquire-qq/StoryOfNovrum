@@ -1761,7 +1761,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &107647653
 MonoBehaviour:
@@ -1793,6 +1793,18 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!114 &107647654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107647649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fe0a580f8195049ba3dce1e393971a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &109343362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2039,7 +2051,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &119522509
 PrefabInstance:
@@ -2054,11 +2066,11 @@ PrefabInstance:
       objectReference: {fileID: 1391176649}
     - target: {fileID: 511878713070689517, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
       propertyPath: maxHealth
-      value: 450
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 511878713070689517, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
       propertyPath: currentHealth
-      value: 450
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 735921956970293467, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
       propertyPath: moveSpeed
@@ -2114,7 +2126,7 @@ PrefabInstance:
       objectReference: {fileID: 1329840687}
     - target: {fileID: 3901231917652026112, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
       propertyPath: damage
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3901231917652026112, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
       propertyPath: knockBackMultiplier
@@ -2131,7 +2143,7 @@ PrefabInstance:
     - target: {fileID: 4134423407000772886, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
       propertyPath: audioSource
       value: 
-      objectReference: {fileID: 561622755}
+      objectReference: {fileID: 0}
     - target: {fileID: 4134423407000772886, guid: a62c6bd9ceb89c44baceb113c2cd4c6b, type: 3}
       propertyPath: pickupSounds.Array.size
       value: 3
@@ -3495,7 +3507,7 @@ Transform:
   - {fileID: 90230175}
   - {fileID: 881535609}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &277189738
 PrefabInstance:
@@ -27141,7 +27153,7 @@ Transform:
   - {fileID: 1556003718}
   - {fileID: 429217630}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &543372716
 PrefabInstance:
@@ -41089,7 +41101,7 @@ Transform:
   - {fileID: 211554056}
   - {fileID: 426278600}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1809402893
 PrefabInstance:
@@ -45158,7 +45170,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2128281346
 PrefabInstance:
@@ -45994,6 +46006,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 830625914310956824, guid: 73d9e8dc5e2e57f4eaec686c20a40d22, type: 3}
+      propertyPath: peaceMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: f9dd6ce3c4101124db3a5789ab0910f9, type: 3}
+    - target: {fileID: 830625914310956824, guid: 73d9e8dc5e2e57f4eaec686c20a40d22, type: 3}
+      propertyPath: combatMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: bbeeffd8a3224f94f8121f2700cff079, type: 3}
     - target: {fileID: 8369204531952580629, guid: 73d9e8dc5e2e57f4eaec686c20a40d22, type: 3}
       propertyPath: m_Name
       value: MusicManager
