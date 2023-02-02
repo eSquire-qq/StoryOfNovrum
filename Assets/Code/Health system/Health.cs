@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Animations;
+using System.Linq;
 
 public class Health : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class Health : MonoBehaviour
     protected AnimatorController animatorController; 
     public event Action OnNoHealth;
     protected Vector3 knockBack;
+
+    [SerializeField]
+	protected List<AudioClip> hurtSounds;
+
+    [SerializeField]
+    protected AudioSource audioSourceHurtSound;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -46,6 +54,8 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage, Vector3 knockBack)
 	{
         currentHealth -= damage;
+        if (audioSourceHurtSound && hurtSounds.Count() > 0)
+			 	audioSourceHurtSound.PlayOneShot(hurtSounds[UnityEngine.Random.Range(0, hurtSounds.Count())]);
         if (animatorController) {
             animatorController.ChangeAnimationState(GlobalConstants.Animations.TAKEDAMAGE, true);
         }

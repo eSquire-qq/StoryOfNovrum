@@ -6,6 +6,8 @@ namespace GlobalConstants{
     {
         public static readonly string ENEMY = "Enemy";
         public static readonly string PLAYER = "Player";
+
+        public static readonly string MASKTRIGGER = "MaskTrigger";
     }
 
     public class Layers : ScriptableObject
@@ -19,7 +21,6 @@ namespace GlobalConstants{
         public static readonly string ATTACK = "Attack";
         public static readonly string TAKEDAMAGE = "TakeDamage";
         public static readonly string ONEDESTRUCTION = "OnDestruction";
-        public static readonly string MASKTRIGGER = "MaskTrigger";
         public static readonly string IDLE = "Idle";
         public static readonly string WALK = "Walk";
     }
