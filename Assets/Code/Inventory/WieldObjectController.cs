@@ -12,7 +12,8 @@ namespace Inventory
         [SerializeField]
         protected InventorySO inventoryData;
 
-        protected SpriteRenderer wieldedObjectSprite;
+        [SerializeField]
+        protected InventoryItem deafultItem;
 
         public InventoryItem wieldItem { get;  protected set; }
 
@@ -20,8 +21,22 @@ namespace Inventory
         {
             inventoryUI.OnSelect += HandleSelect;
             inventoryUI.OnUnselect += HandleUnselect;
-            wieldedObjectSprite = GetComponent<SpriteRenderer>() as SpriteRenderer;
             wieldItem = InventoryItem.GetEmptyItem();
+            if (!deafultItem.IsEmpty) {
+                deafultItem.itemState = deafultItem.item.DefaultParametersList;
+                wieldItem = deafultItem;
+            }
+        }
+
+        protected void Update()
+        {
+            ItemParameter durability = wieldItem.itemState.Find(x => x.itemParameter.ParameterName == "Durability");
+            if (durability.itemParameter && durability.value <= 0f)
+            {
+                    int brokenItemIndex = inventoryData.GetIndex(wieldItem);
+                    HandleUnselect(brokenItemIndex);
+                    inventoryData.RemoveItem(brokenItemIndex, wieldItem.quantity);
+            }
         }
 
         protected void HandleSelect(int itemIndex)
@@ -29,18 +44,15 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
             {
-                wieldedObjectSprite.sprite = null;
                 return;
             }
             ItemSO item = inventoryItem.item;
             wieldItem = inventoryItem;
-            wieldedObjectSprite.sprite = item.ItemImage;
         }
 
         protected void HandleUnselect(int itemIndex)
         {
-            wieldItem = InventoryItem.GetEmptyItem();
-            wieldedObjectSprite.sprite = null;
+            wieldItem = deafultItem.IsEmpty ? InventoryItem.GetEmptyItem() : deafultItem;
             return;
         }
     }

@@ -34,6 +34,9 @@ namespace Inventory.Model
         
         public List<string> actionNames { get; protected set;}
 
+        [field: SerializeField]
+        public List<ItemAnimation> animations { get; set; }
+
     }
 
     [Serializable]
@@ -46,6 +49,16 @@ namespace Inventory.Model
         {
             return other.itemParameter == itemParameter;
         }
+    }
+
+    [Serializable]
+    public class ItemAnimation
+    {
+        [field: SerializeField]
+        public AnimationTypeSO type  {get; protected set;}
+
+        [field: SerializeField]
+        public string name {get; protected set;}
     }
 
     [Serializable]

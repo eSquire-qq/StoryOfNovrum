@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Walk
+  m_Name: Attack_Dagger_1
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -243913866, guid: 6fe6bec5f7bc25e4faa37e9313acfd91, type: 3}
+      value: {fileID: 1861061773, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
+    - time: 0.083333336
+      value: {fileID: 681287580, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
     - time: 0.16666667
-      value: {fileID: -1805973488, guid: 6fe6bec5f7bc25e4faa37e9313acfd91, type: 3}
+      value: {fileID: 483471755, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
+    - time: 0.25
+      value: {fileID: 929473641, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
     - time: 0.33333334
-      value: {fileID: 594860224, guid: 6fe6bec5f7bc25e4faa37e9313acfd91, type: 3}
+      value: {fileID: 127106550, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
+    - time: 0.41666666
+      value: {fileID: 1001687208, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
     - time: 0.5
-      value: {fileID: 585635916, guid: 6fe6bec5f7bc25e4faa37e9313acfd91, type: 3}
+      value: {fileID: -925410488, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,10 +52,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -243913866, guid: 6fe6bec5f7bc25e4faa37e9313acfd91, type: 3}
-    - {fileID: -1805973488, guid: 6fe6bec5f7bc25e4faa37e9313acfd91, type: 3}
-    - {fileID: 594860224, guid: 6fe6bec5f7bc25e4faa37e9313acfd91, type: 3}
-    - {fileID: 585635916, guid: 6fe6bec5f7bc25e4faa37e9313acfd91, type: 3}
+    - {fileID: 1861061773, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
+    - {fileID: 681287580, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
+    - {fileID: 483471755, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
+    - {fileID: 929473641, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
+    - {fileID: 127106550, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
+    - {fileID: 1001687208, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
+    - {fileID: -925410488, guid: 11f865ee6c79af64bba0247571b0af02, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -74,4 +83,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.16666667
+    functionName: DoDamage
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

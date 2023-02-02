@@ -14,18 +14,22 @@ namespace GlobalConstants{
         public static readonly string MIDDLELAYER = "MiddleLayer";
     }
 
-    public class Triggers : ScriptableObject
+    public class Animations : ScriptableObject
     {
         public static readonly string ATTACK = "Attack";
-        public static readonly string DAMAGE = "Damage";
         public static readonly string TAKEDAMAGE = "TakeDamage";
         public static readonly string ONEDESTRUCTION = "OnDestruction";
         public static readonly string MASKTRIGGER = "MaskTrigger";
+        public static readonly string IDLE = "Idle";
+        public static readonly string WALK = "Walk";
     }
     
     public class Parameters : ScriptableObject
     {
         public static readonly string COOLDOWN = "Cooldown";
+        public static readonly string DAMAGE = "Damage";
+        public static readonly string KNOCKBACK = "KnockBack";
+        public static readonly string DURABILITY = "Durability";
     }
 
     public class Actions : ScriptableObject
