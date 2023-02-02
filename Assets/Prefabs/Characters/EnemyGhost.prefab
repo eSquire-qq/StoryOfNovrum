@@ -267,8 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5774dc54e0ac6294a952536c0d981028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 250
+  currentHealth: 250
   dead: 0
   healthBar: {fileID: 0}
   hurtSounds:
@@ -291,9 +291,7 @@ MonoBehaviour:
   aiDestination: {fileID: 4842705483627549757}
   aiPath: {fileID: 4842705483627549759}
   target: {fileID: 0}
-  animatorController: {fileID: 0}
-  runSounds: []
-  audioSourceRunSound: {fileID: 8933205088946120430}
+  animatorController: {fileID: 6798857138090334633}
 --- !u!212 &4842705483627549745
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -378,7 +376,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.25
+  m_Mass: 0.75
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -482,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSystem: {fileID: 4842705483627549756}
-  animator: {fileID: 4842705483627549744}
+  animator: {fileID: 6798857138090334633}
   collider: {fileID: 9185176636921500458}
   destructionSounds:
   - {fileID: 8300000, guid: 2c16f7e978cc04142b17896ea5f5ebd6, type: 3}
