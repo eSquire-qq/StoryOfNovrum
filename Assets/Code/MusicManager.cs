@@ -28,9 +28,6 @@ public class MusicManager : MonoBehaviour
 
     protected void Update()
     {
-        Debug.Log(currentClip);
-        Debug.Log(peaceMusic);
-        Debug.Log(combatMusic);
         if (!isInCombat && currentClip != peaceMusic)
         {
             audioSource.PlayOneShot(peaceMusic);
