@@ -11,16 +11,20 @@ public class HealthBarScript : MonoBehaviour
     
     public void SetMaxHealth(float health)
 	{
+        // Встановлення індикатор ввідповідно до максимального
         slider.maxValue = health;
         slider.value = health;
-
+        
+        // Колір індикатора змінюється залежно від
+        // кількості здорвя
         fill.color = gradient.Evaluate(1f);
 	}
 
     public void SetHealth(float health)
 	{
+        // Положення індикатора відповідає кількості здоров'я
         slider.value = health;
-
+        // Колір індикатора відповідає кількості здорв'я
         fill.color = gradient.Evaluate(slider.normalizedValue);
 	}
 

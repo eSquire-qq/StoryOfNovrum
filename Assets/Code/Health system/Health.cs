@@ -7,7 +7,7 @@ using System.Linq;
 
 public class Health : MonoBehaviour
 {
-    public float maxHealth = 100;
+    public float maxHealth;
     public float currentHealth;
     public bool dead;
 
@@ -26,8 +26,12 @@ public class Health : MonoBehaviour
 
     void Start()
     {
+        // На початку гри поточне здоров'я дорівнює
+        // максимальному здоров'ю
         currentHealth = maxHealth;
         dead = false;
+        // Індикатор здоров'я відповідає максимальному
+        // здоров'ю
         if (healthBar) {
             healthBar.SetMaxHealth(maxHealth);
         }
@@ -53,9 +57,13 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage, Vector3 knockBack)
 	{
+        // Поточне здоров'я зменшується на 
+        // кількість ориманого урону
         currentHealth -= damage;
+        // Програвання звуку під час отримання урону 
         if (audioSourceHurtSound && hurtSounds.Count() > 0)
 			 	audioSourceHurtSound.PlayOneShot(hurtSounds[UnityEngine.Random.Range(0, hurtSounds.Count())]);
+        // Відігравання анімації отримання урону       
         if (animatorController) {
             animatorController.ChangeAnimationState(GlobalConstants.Animations.TAKEDAMAGE, true);
         }
@@ -85,6 +93,7 @@ public class Health : MonoBehaviour
 
     public void Heal(float health)
 	{
+        // Відновлює поточне здоров'я
         currentHealth += health;
 	}
 
