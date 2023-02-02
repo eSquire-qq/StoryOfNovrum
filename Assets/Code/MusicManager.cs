@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ public class MusicManager : MonoBehaviour
     protected bool isInCombat;
 
     protected Task combatExitDelay;
+    protected CancellationTokenSource combatExitDelayCancelationTokenSource;
+    protected CancellationToken combatExitDelayCancelationToken;
 
     protected void Start()
     {
@@ -31,24 +34,33 @@ public class MusicManager : MonoBehaviour
         if (!isInCombat && currentClip != peaceMusic)
         {
             audioSource.Stop();
-            audioSource.PlayOneShot(peaceMusic);
+            audioSource.clip = peaceMusic;
+            audioSource.Play();
             currentClip = peaceMusic;
         } 
     }
 
     protected void OnCombatStarted(Dictionary<string, object> message)
     {
+        if (combatExitDelayCancelationTokenSource != null) {
+            combatExitDelayCancelationTokenSource.Cancel();
+            combatExitDelayCancelationTokenSource.Dispose();
+        }
         isInCombat = true;
-        // if (combatExitDelay != null) {
-        //     combatExitDelay.Wait();
-        // }
+        combatExitDelayCancelationTokenSource = new CancellationTokenSource();
+        combatExitDelayCancelationToken = combatExitDelayCancelationTokenSource.Token;
         combatExitDelay = Task.Delay(10000).ContinueWith(t => {
+            if (combatExitDelayCancelationToken.IsCancellationRequested) {
+                return;
+            }
             isInCombat = false;
-        });
+        }, combatExitDelayCancelationToken);
+
         if (currentClip != combatMusic)
         {
             audioSource.Stop();
-            audioSource.PlayOneShot(combatMusic);
+            audioSource.clip = combatMusic;
+            audioSource.Play();
             currentClip = combatMusic;
         } 
     }
