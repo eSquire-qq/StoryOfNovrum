@@ -47,7 +47,7 @@ public class Health : MonoBehaviour
 	{
         currentHealth -= damage;
         if (animatorController) {
-            animatorController.ChangeAnimationState(GlobalConstants.Triggers.TAKEDAMAGE, true);
+            animatorController.ChangeAnimationState(GlobalConstants.Animations.TAKEDAMAGE, true);
         }
         if (knockBack != null) {
             this.knockBack = (Vector3)knockBack;
