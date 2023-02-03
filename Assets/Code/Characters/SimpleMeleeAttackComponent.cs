@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 using System.Timers;
 using Animations;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 public class SimpleMeleeAttackComponent : MonoBehaviour
 {
@@ -39,6 +41,11 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
     protected AudioSource audioSource;
 
     protected bool attackCoolDown = false;
+
+    protected Task attackCoolDownDelayTask;
+    protected CancellationTokenSource attackCoolDownDelayCancelationTokenSource;
+    protected CancellationToken attackCoolDownDelayCancelationToken;
+
     public void Awake()
     {
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
@@ -78,10 +85,15 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
 
         if (cooldown > 0) {
             attackCoolDown = true;
-            Timer attackCoolDownTimer = new Timer(cooldown);
-		    attackCoolDownTimer.Elapsed += OnAttackCooldownTimerPassed;
-            attackCoolDownTimer.AutoReset = false;
-            attackCoolDownTimer.Enabled = true;
+            
+            attackCoolDownDelayCancelationTokenSource = new CancellationTokenSource();
+            attackCoolDownDelayCancelationToken = attackCoolDownDelayCancelationTokenSource.Token;
+            attackCoolDownDelayTask = Task.Delay((int)cooldown).ContinueWith(t => {
+                if (attackCoolDownDelayCancelationToken.IsCancellationRequested) {
+                    return;
+                }
+                attackCoolDown = false;
+            }, attackCoolDownDelayCancelationToken);
         }
     }
 
@@ -121,11 +133,6 @@ public class SimpleMeleeAttackComponent : MonoBehaviour
 			audioSource.PlayOneShot(damageSounds[UnityEngine.Random.Range(0, damageSounds.Count())]);
 
         attackObject.TakeDamage(damage, damageVector);
-    }
-
-    protected void OnAttackCooldownTimerPassed(object source, ElapsedEventArgs e)
-    {
-        attackCoolDown = false;
     }
 
 }

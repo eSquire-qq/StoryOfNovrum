@@ -21,7 +21,7 @@ MonoBehaviour:
   - itemParameter: {fileID: 11400000, guid: d66784541eb4bd7448e4e82c4824bea5, type: 2}
     value: 10
   - itemParameter: {fileID: 11400000, guid: f35bb76361e5f49448b1bb0dd3f59423, type: 2}
-    value: 500
+    value: 1000
   <actionDatas>k__BackingField: []
   <animations>k__BackingField:
   - <type>k__BackingField: {fileID: 11400000, guid: ec8cbc42196d3a540984c84331ac4eff, type: 2}
