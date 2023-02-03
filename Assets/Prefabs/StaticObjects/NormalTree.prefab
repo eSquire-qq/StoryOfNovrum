@@ -67,7 +67,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.5}
   m_Size: {x: 1, y: 2}
   m_Direction: 1
 --- !u!1 &7828831338056739913
@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 7828831338056739915}
   - component: {fileID: 7828831338056739912}
   m_Layer: 10
-  m_Name: NormalTreeSpiteSheet_7
+  m_Name: NormalTree
   m_TagString: MaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,12 +145,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1417679204, guid: 5590f58d7bc79374584f7660d0951bdd, type: 3}
+  m_Sprite: {fileID: -1144302284, guid: 5590f58d7bc79374584f7660d0951bdd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.53125, y: 5}
+  m_Size: {x: 3.5, y: 3.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -169,6 +169,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2}
-  m_Size: {x: 2.5, y: 1}
+  m_Offset: {x: 0, y: -0.2}
+  m_Size: {x: 2, y: 0.6}
   m_Direction: 1

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Ground-1_22
+  m_Name: Platform_cave_no_slopes_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 592463976, guid: 47253e28da8caf842b4e8d4e7c0b12be, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 70273ee5cf94494458e04d0001737b29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
