@@ -23,7 +23,7 @@ MonoBehaviour:
   - itemParameter: {fileID: 11400000, guid: f35bb76361e5f49448b1bb0dd3f59423, type: 2}
     value: 1050
   - itemParameter: {fileID: 11400000, guid: 2d71cf6e60db9fd4c97ee1941cb530e0, type: 2}
-    value: 10
+    value: 18
   <actionDatas>k__BackingField:
   - action: {fileID: 11400000, guid: a2cf66b742bcae24a950cec4fb3e9bff, type: 2}
     <actionName>k__BackingField: Drop

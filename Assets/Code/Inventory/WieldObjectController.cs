@@ -1,3 +1,4 @@
+using System.Linq;
 using Inventory.Model;
 using Inventory.UI;
 using UnityEngine;
@@ -19,11 +20,13 @@ namespace Inventory
 
         private void Start()
         {
-            inventoryUI.OnSelect += HandleSelect;
-            inventoryUI.OnUnselect += HandleUnselect;
+            if (inventoryUI) {
+                inventoryUI.OnSelect += HandleSelect;
+                inventoryUI.OnUnselect += HandleUnselect;
+            }
             wieldItem = InventoryItem.GetEmptyItem();
             if (!deafultItem.IsEmpty) {
-                deafultItem.itemState = deafultItem.item.DefaultParametersList;
+                deafultItem.itemState = (deafultItem.itemState != null && deafultItem.itemState.Count() > 0) ? deafultItem.itemState : deafultItem.item.DefaultParametersList;
                 wieldItem = deafultItem;
             }
         }
@@ -31,7 +34,7 @@ namespace Inventory
         protected void Update()
         {
             ItemParameter durability = wieldItem.itemState.Find(x => x.itemParameter.ParameterName == "Durability");
-            if (durability.itemParameter && durability.value <= 0f)
+            if (durability.itemParameter && durability.value <= 0f && inventoryData)
             {
                     int brokenItemIndex = inventoryData.GetIndex(wieldItem);
                     HandleUnselect(brokenItemIndex);

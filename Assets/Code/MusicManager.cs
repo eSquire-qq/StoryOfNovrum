@@ -11,11 +11,7 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField]
     protected AudioClip peaceMusic;
-
-    [SerializeField]
     protected AudioClip combatMusic;
-
-    protected AudioClip currentClip;
 
     protected bool isInCombat;
 
@@ -31,12 +27,11 @@ public class MusicManager : MonoBehaviour
 
     protected void Update()
     {
-        if (!isInCombat && currentClip != peaceMusic)
+        if (!isInCombat && audioSource.clip != peaceMusic)
         {
             audioSource.Stop();
             audioSource.clip = peaceMusic;
             audioSource.Play();
-            currentClip = peaceMusic;
         } 
     }
 
@@ -56,12 +51,16 @@ public class MusicManager : MonoBehaviour
             isInCombat = false;
         }, combatExitDelayCancelationToken);
 
-        if (currentClip != combatMusic)
+        if (audioSource.clip != combatMusic)
         {
+            if (message != null && message["combatMusic"] != null) {
+                combatMusic = message["combatMusic"] as AudioClip;
+            }
             audioSource.Stop();
-            audioSource.clip = combatMusic;
-            audioSource.Play();
-            currentClip = combatMusic;
+            if (combatMusic) {
+                audioSource.clip = combatMusic;
+                audioSource.Play();
+            }
         } 
     }
 }

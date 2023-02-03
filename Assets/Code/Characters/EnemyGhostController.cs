@@ -33,6 +33,9 @@ public class EnemyGhostController : MonoBehaviour
 	[SerializeField]
 	protected AudioSource audioSourceRunSound;
 
+    [SerializeField]
+    protected AudioClip combatMusic;
+
     public void Start()
     {
         interactionArea = GetComponentInChildren(typeof(InteractionArea)) as InteractionArea;
@@ -110,12 +113,16 @@ public class EnemyGhostController : MonoBehaviour
         {
             if (audioSourceRunSound && !audioSourceRunSound.isPlaying && runSounds.Count() > 0)
 			 	audioSourceRunSound.PlayOneShot(runSounds[UnityEngine.Random.Range(0, runSounds.Count())]);
-            interactionArea.transform.position = transform.position + steeringVector/2;
+            if (target != null) {
+                interactionArea.transform.position = transform.position + Vector3.Normalize(target.transform.position - transform.position)/2;
+            } else {
+                interactionArea.transform.position = transform.position + steeringVector/2;
+            }
             animatorController.ChangeAnimationState(GlobalConstants.Animations.WALK, animatorController.currentAnimationState == GlobalConstants.Animations.IDLE ? true : false);
         }
         if (aiPath.TargetReached)
         {
-            animatorController.ChangeAnimationState(GlobalConstants.Animations.IDLE);
+            animatorController.ChangeAnimationState(GlobalConstants.Animations.IDLE, animatorController.currentAnimationState == GlobalConstants.Animations.WALK ? true : false);
         }
     }
 
@@ -130,7 +137,7 @@ public class EnemyGhostController : MonoBehaviour
 
         if (targetHit.collider?.tag == GlobalConstants.Tags.PLAYER)
         {
-            if (EventManager.instance) EventManager.TriggerEvent("EnterCombat", null);
+            if (EventManager.instance) EventManager.TriggerEvent("EnterCombat", new Dictionary<string, object>(){["combatMusic"] = combatMusic});
             aiDestination.target = target.transform;
             aiPath.SearchPath();
         }

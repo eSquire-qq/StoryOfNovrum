@@ -185,6 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1391057840145402028}
   - component: {fileID: 3184515941475690095}
+  - component: {fileID: 9146988210897356005}
   m_Layer: 2
   m_Name: Light 2D
   m_TagString: MainCamera
@@ -286,6 +287,23 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &9146988210897356005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7696718994631875024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 2066e79b9bc22e44ab5019cce4c2e185, type: 2}
 --- !u!1 &8913491051991209953
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +327,7 @@ GameObject:
   - component: {fileID: 8211556395935349349}
   - component: {fileID: 5426022623008405064}
   - component: {fileID: 5411038926828950249}
+  - component: {fileID: 8433586429091374522}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -512,8 +531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5774dc54e0ac6294a952536c0d981028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 450
-  currentHealth: 450
+  maxHealth: 100
+  currentHealth: 100
   dead: 0
   healthBar: {fileID: 0}
   hurtSounds:
@@ -706,3 +725,16 @@ MonoBehaviour:
   animatorController: {fileID: 8211556395935349349}
   runSounds: []
   audioSourceRunSound: {fileID: 5426022623008405064}
+--- !u!114 &8433586429091374522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913491051991209953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa8cdd5c4058cd4ea82456574e0f7a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSystem: {fileID: 511878713070689517}
