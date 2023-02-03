@@ -512,8 +512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5774dc54e0ac6294a952536c0d981028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 450
+  currentHealth: 450
   dead: 0
   healthBar: {fileID: 0}
   hurtSounds:
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  cooldown: 10
+  cooldown: 500
   knockBackMultiplier: 10
   animatorController: {fileID: 8211556395935349349}
   rb: {fileID: 3926388331841920167}
