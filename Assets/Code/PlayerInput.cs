@@ -252,9 +252,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     ]
 }");
         // Player
-        m_Player = asset.FindActionMap(GlobalConstants.Tags.PLAYER, throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction(GlobalConstants.Actions.MOVE, throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction(GlobalConstants.Actions.INTERACT, throwIfNotFound: true);
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Escape = m_Menu.FindAction("Escape", throwIfNotFound: true);
