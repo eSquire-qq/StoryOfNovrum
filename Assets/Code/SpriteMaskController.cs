@@ -13,7 +13,7 @@ public class SpriteMaskController : MonoBehaviour
 
     protected Collider2D spriteMaskCollider;
 
-    //List of objects that we are colliding with
+    // Список об'єктів, з якими ми стикаємося
     protected List<SpriteRenderer> otherRendereres = new List<SpriteRenderer>();
 
     protected bool checking = false;
@@ -30,22 +30,22 @@ public class SpriteMaskController : MonoBehaviour
         {
             foreach (SpriteRenderer renderer in otherRendereres)
             {
-                //check if the object is on the same layer and is in front of the player sprite
+                // Перевірити, чи знаходиться об’єкт на тому самому шарі та перед спрайтом гравця
 
                 if (
                     playerSpriteRenderer.sortingLayerName == renderer.sortingLayerName
                     && playerSpriteRenderer.sortingOrder <= renderer.sortingOrder
-                    //check the Y sorting order
+                    // Перевірте порядок сортування Y
                     && playerSpriteRenderer.transform.position.y > renderer.transform.position.y) 
                 {
-                    //if yes enable the sprite mask
+                    // Якщо так, увімкніть маску спрайту
                     spriteMask.enabled = true;
                     playerSpriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
                     return;
                 }
                 else
                 {
-                    //else disable the sprite mask
+                    // Інакше вимкніть маску спрайту
                     spriteMask.enabled = false;
                     playerSpriteRenderer.maskInteraction = SpriteMaskInteraction.None;
                 }
