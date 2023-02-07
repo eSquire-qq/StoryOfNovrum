@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 4842705483627549758}
   - component: {fileID: 4842705483627549757}
   - component: {fileID: 4842705483627549756}
-  - component: {fileID: 4842705483627549747}
   - component: {fileID: 4842705483627549746}
   - component: {fileID: 4842705483627549745}
   - component: {fileID: 4842705483627549744}
@@ -116,6 +115,11 @@ GameObject:
   - component: {fileID: 9185176636921500458}
   - component: {fileID: 5904526766490296252}
   - component: {fileID: 3223787591499015021}
+  - component: {fileID: 4697245692588933355}
+  - component: {fileID: 2037003790997155878}
+  - component: {fileID: 6798857138090334633}
+  - component: {fileID: 8933205088946120430}
+  - component: {fileID: 529760946957535254}
   m_Layer: 13
   m_Name: EnemyGhost
   m_TagString: Enemy
@@ -266,20 +270,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  dead: 0
   healthBar: {fileID: 0}
---- !u!114 &4842705483627549747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4842705483627549749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1b54ba2746d37a4b843a53c2f364f26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSystem: {fileID: 4842705483627549756}
+  hurtSounds:
+  - {fileID: 8300000, guid: c85eb66478df0eb4890d5f16cb4e1e74, type: 3}
+  - {fileID: 8300000, guid: 7ae2c09efe79e5546bbe76b58fd54916, type: 3}
+  - {fileID: 8300000, guid: b526884ff4ab4f849b0fc0f57b90fa73, type: 3}
+  audioSourceHurtSound: {fileID: 8933205088946120430}
 --- !u!114 &4842705483627549746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +292,10 @@ MonoBehaviour:
   aiDestination: {fileID: 4842705483627549757}
   aiPath: {fileID: 4842705483627549759}
   target: {fileID: 0}
-  animator: {fileID: 4842705483627549744}
+  animatorController: {fileID: 6798857138090334633}
+  runSounds: []
+  audioSourceRunSound: {fileID: 0}
+  combatMusic: {fileID: 8300000, guid: bbeeffd8a3224f94f8121f2700cff079, type: 3}
 --- !u!212 &4842705483627549745
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -380,7 +380,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.25
+  m_Mass: 0.75
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -444,8 +444,188 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  cooldown: 100
+  cooldown: 1000
+  knockBackMultiplier: 10
+  animatorController: {fileID: 6798857138090334633}
+  rb: {fileID: 8922896376687720174}
+  damageSounds:
+  - {fileID: 8300000, guid: a51ee4ac7e5d135459c79d91c2757560, type: 3}
+  - {fileID: 8300000, guid: 9d9e6677ff9dbbe46b8872cfc1a53f5a, type: 3}
+  - {fileID: 8300000, guid: 705e175e8badba74aa958ba63331bee9, type: 3}
+  missSounds:
+  - {fileID: 8300000, guid: 6f8dfd67cbd0cd9409a4aec4d4b47477, type: 3}
+  - {fileID: 8300000, guid: 341cadf7f93e17d4fae6ddda2326d007, type: 3}
+  - {fileID: 8300000, guid: fbb83896c58d9594db21649b95d6bbf0, type: 3}
+  audioSource: {fileID: 8933205088946120430}
+--- !u!114 &4697245692588933355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842705483627549749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c85828d068b0a47a87c8b47772f70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSystem: {fileID: 4842705483627549756}
+  timer: 10
+--- !u!114 &2037003790997155878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842705483627549749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b54ba2746d37a4b843a53c2f364f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSystem: {fileID: 4842705483627549756}
+  animator: {fileID: 6798857138090334633}
+  collider: {fileID: 9185176636921500458}
+  destructionSounds:
+  - {fileID: 8300000, guid: 2c16f7e978cc04142b17896ea5f5ebd6, type: 3}
+  audioSource: {fileID: 8933205088946120430}
+--- !u!114 &6798857138090334633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842705483627549749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec5b8e426a48d74d893bf8553446d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   animator: {fileID: 4842705483627549744}
+--- !u!82 &8933205088946120430
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842705483627549749}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: acddc0dbe36206b4f85dd40c44a50759, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &529760946957535254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842705483627549749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f4b828926950c4db77b87e8bcaf119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSystem: {fileID: 4842705483627549756}
+  itemPrefab: {fileID: 3463532090349341373, guid: 3da50ea5d7338bf48bf0256f4a6848fd, type: 3}
+  possibleItems:
+  - item: {fileID: 11400000, guid: bc26a283caf199a4aa24ce7ec861c609, type: 2}
+    dropChance: 10
+    quantity: 1
+  - item: {fileID: 11400000, guid: 2b6841ad814cb9a4493850e4fdea68ac, type: 2}
+    dropChance: 50
+    quantity: 1
+  - item: {fileID: 11400000, guid: 2b6841ad814cb9a4493850e4fdea68ac, type: 2}
+    dropChance: 25
+    quantity: 2
+  - item: {fileID: 11400000, guid: 2b6841ad814cb9a4493850e4fdea68ac, type: 2}
+    dropChance: 10
+    quantity: 2
+  droppedItems: []
 --- !u!1 &8363846130288067690
 GameObject:
   m_ObjectHideFlags: 0

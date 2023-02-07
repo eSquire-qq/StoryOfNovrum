@@ -144,6 +144,11 @@ namespace Inventory.Model
             return returnValue;
         }
 
+        public int GetIndex(InventoryItem item)
+        {
+            return inventoryItems.FindIndex(x => x.Equals(item));
+        }
+
         public InventoryItem GetItemAt(int itemIndex)
         {
             return inventoryItems[itemIndex];
@@ -152,7 +157,7 @@ namespace Inventory.Model
         public void SplitItem(int itemIndex)
         {
             InventoryItem item = inventoryItems[itemIndex];
-            if (item.item.IsStackable == false) {
+            if (item.item.IsStackable == false || item.quantity <= 1) {
                 return;
             }
             this.AddItemToFirstFreeSlot(item.item, (item.quantity/2), item.itemState);
@@ -206,7 +211,9 @@ namespace Inventory.Model
     {
         public int quantity;
         public ItemSO item;
+
         public List<ItemParameter> itemState;
+        
         public bool IsEmpty => item == null;
 
         public InventoryItem ChangeQuantity(int newQuantity)

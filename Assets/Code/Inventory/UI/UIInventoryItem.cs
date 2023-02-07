@@ -62,7 +62,6 @@ namespace Inventory.UI
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log(eventData);
             if (eventData.button == PointerEventData.InputButton.Right)
             {
                 OnRightMouseBtnClick?.Invoke(this);
