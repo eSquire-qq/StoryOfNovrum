@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
             dead = false;
         }
         if (healthBar) {
-            healthBar.SetHealth(currentHealth);
+            healthBar.SetHealth(currentHealth, maxHealth);
         }
     }
 
