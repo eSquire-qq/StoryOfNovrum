@@ -95,6 +95,9 @@ public class Health : MonoBehaviour
 	{
         // Відновлює поточне здоров'я
         currentHealth += health;
+        if(currentHealth > maxHealth){
+            currentHealth = maxHealth;
+        }
 	}
 
 }
