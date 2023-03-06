@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
             dead = false;
         }
         if (healthBar) {
-            healthBar.SetHealth(currentHealth);
+            healthBar.SetHealth(currentHealth, maxHealth);
         }
     }
 
@@ -95,6 +95,9 @@ public class Health : MonoBehaviour
 	{
         // Відновлює поточне здоров'я
         currentHealth += health;
+        if(currentHealth > maxHealth){
+            currentHealth = maxHealth;
+        }
 	}
 
 }
