@@ -49,4 +49,11 @@ public class PlayerInteractionManager : MonoBehaviour
 			attackComponent.Attack();
 		}
 	}
+
+	public void AddGold(int count)
+	{
+		goldCount += count;
+		goldCountText.text = goldCount.ToString();
+	}
+
 }
