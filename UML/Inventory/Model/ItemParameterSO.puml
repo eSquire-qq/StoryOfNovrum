@@ -1,0 +1,6 @@
+@startuml
+class ItemParameterSO {
+    + ParameterName : string <<get>>
+}
+ScriptableObject <|-- ItemParameterSO
+@enduml

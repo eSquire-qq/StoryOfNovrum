@@ -1,0 +1,8 @@
+@startuml
+interface IInteraction {
+    + Interact(context:object) : void
+}
+interface "IInteractionInvoker`1"<T> {
+    +  <<event>> OnInteraction : Action<T> 
+}
+@enduml

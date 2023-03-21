@@ -1,0 +1,7 @@
+@startuml
+class PickUpSystemComponent {
+    + Awake() : void
+    + Interact() : void
+}
+MonoBehaviour <|-- PickUpSystemComponent
+@enduml

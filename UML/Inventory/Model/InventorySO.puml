@@ -1,0 +1,25 @@
+@startuml
+class InventorySO {
+    + Size : int <<get>> = 10
+    +  <<event>> OnInventoryUpdated : Action<Dictionary<int, InventoryItem>> 
+    + Initialize() : void
+    + AddItem(item:ItemSO, quantity:int, itemState:List<ItemParameter>) : int
+    + RemoveItem(itemIndex:int, amount:int) : void
+    + AddItem(item:InventoryItem) : void
+    + GetCurrentInventoryState() : Dictionary<int, InventoryItem>
+    + GetItemAt(itemIndex:int) : InventoryItem
+    + SplitItem(itemIndex:int) : void
+    + SwapItems(itemIndex_1:int, itemIndex_2:int) : void
+}
+class InventoryItem <<struct>> {
+    + quantity : int
+    + IsEmpty : bool <<get>>
+    + ChangeQuantity(newQuantity:int) : InventoryItem
+    + {static} GetEmptyItem() : InventoryItem
+}
+class "List`1"<T> {
+}
+ScriptableObject <|-- InventorySO
+InventoryItem --> "item" ItemSO
+InventoryItem --> "itemState<ItemParameter>" "List`1"
+@enduml

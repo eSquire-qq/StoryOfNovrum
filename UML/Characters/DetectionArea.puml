@@ -1,0 +1,9 @@
+@startuml
+class DetectionArea {
+    +  <<event>> OnAreaEnter,OnAreaStay,OnAreaExit : Action<Collider2D> 
+    + OnTriggerEnter2D(collision:Collider2D) : void
+    + OnTriggerStay2D(collision:Collider2D) : void
+    + OnTriggerExit2D(collision:Collider2D) : void
+}
+MonoBehaviour <|-- DetectionArea
+@enduml

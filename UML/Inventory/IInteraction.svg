@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="79px" preserveAspectRatio="none" style="width:468px;height:79px;" version="1.1" viewBox="0 0 468 79" width="468px" zoomAndPan="magnify"><defs><filter height="300%" id="f1okgl4xjixnrn" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[aec2ae222569f1819eac20badf7ffb7d]
+class IInteraction--><rect fill="#FEFECE" filter="url(#f1okgl4xjixnrn)" height="60.8047" id="IInteraction" style="stroke: #A80036; stroke-width: 1.5;" width="191" x="6" y="8"/><ellipse cx="60.75" cy="24" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M56.6719,19.7656 L56.6719,17.6094 L64.0625,17.6094 L64.0625,19.7656 L61.5938,19.7656 L61.5938,27.8438 L64.0625,27.8438 L64.0625,30 L56.6719,30 L56.6719,27.8438 L59.1406,27.8438 L59.1406,19.7656 L56.6719,19.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="73" x="81.25" y="28.1543">IInteraction</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="196" y1="40" y2="40"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="196" y1="48" y2="48"/><ellipse cx="17" cy="59" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="165" x="26" y="62.2104">Interact(context:object) : void</text><!--MD5=[29b626c5e6d17e99120f826488031b0a]
+class IInteractionInvoker`1--><rect fill="#FEFECE" filter="url(#f1okgl4xjixnrn)" height="60.8047" id="IInteractionInvoker`1" style="stroke: #A80036; stroke-width: 1.5;" width="222" x="232.5" y="8"/><ellipse cx="268.2" cy="24" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M264.1219,19.7656 L264.1219,17.6094 L271.5125,17.6094 L271.5125,19.7656 L269.0438,19.7656 L269.0438,27.8438 L271.5125,27.8438 L271.5125,30 L264.1219,30 L264.1219,27.8438 L266.5906,27.8438 L266.5906,19.7656 L264.1219,19.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="133" x="286.8" y="28.1543">IInteractionInvoker`1</text><rect fill="#FFFFFF" height="15.9688" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="9" x="448.5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="7" x="449.5" y="17.1387">T</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="233.5" x2="453.5" y1="40" y2="40"/><ellipse cx="243.5" cy="51" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="196" x="252.5" y="54.2104">«event» OnInteraction : Action&lt;T&gt;</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="233.5" x2="453.5" y1="60.8047" y2="60.8047"/><!--MD5=[ef2615021653fd40c7267d6971b68d0c]
+@startuml
+interface IInteraction {
+    + Interact(context:object) : void
+}
+interface "IInteractionInvoker`1"<T> {
+    +  <<event>> OnInteraction : Action<T> 
+}
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 10:22:07 GMT 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.9+11-Ubuntu-0ubuntu1
+Operating System: Linux
+Default Encoding: ANSI_X3.4-1968
+Language: en
+Country: US
+--></g></svg>

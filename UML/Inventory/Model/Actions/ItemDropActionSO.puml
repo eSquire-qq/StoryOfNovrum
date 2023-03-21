@@ -1,0 +1,6 @@
+@startuml
+class ItemDropActionSO {
+    + <<override>> PerformAction(input:ActionInput, itemState:List<ItemParameter>) : bool
+}
+ItemActionSO <|-- ItemDropActionSO
+@enduml

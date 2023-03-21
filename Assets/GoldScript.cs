@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GoldScript : MonoBehaviour
 {
@@ -9,11 +8,11 @@ public class GoldScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.gameObject.tag == "Player")
         {
-            collision.GetComponent<PlayerInteractionManager>().AddGold(count);
+            collision.GetComponent<Player>().AddGold(count);
             Destroy(gameObject);
-
         }
     }
+
 }

@@ -1,0 +1,11 @@
+@startuml
+class EnemyGhostController {
+    + Start() : void
+    + Update() : void
+    + RunAway() : void
+    + FixedUpdate() : void
+}
+MonoBehaviour <|-- EnemyGhostController
+EnemyGhostController --> "target" GameObject
+EnemyGhostController --> "animator" Animator
+@enduml

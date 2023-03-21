@@ -1,0 +1,17 @@
+@startuml
+class PlayerControlledMovement {
+    + moveSpeed : float = 100f
+    +  <<event>> OnInteraction : Action<object> 
+    + Start() : void
+    + Awake() : void
+    + OnEnable() : void
+    + OnDisable() : void
+    + Interact(context:InputAction.CallbackContext) : void
+}
+class "IInteractionInvoker`1"<T> {
+}
+MonoBehaviour <|-- PlayerControlledMovement
+"IInteractionInvoker`1" "<object>" <|-- PlayerControlledMovement
+PlayerControlledMovement --> "rb" Rigidbody2D
+PlayerControlledMovement --> "animator" Animator
+@enduml

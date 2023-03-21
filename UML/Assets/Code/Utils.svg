@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="97px" preserveAspectRatio="none" style="width:430px;height:97px;" version="1.1" viewBox="0 0 430 97" width="430px" zoomAndPan="magnify"><defs><filter height="300%" id="fkplcbrourwsr" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[f8d2b21678b6ea5d90e779ee6463ca37]
+class Utils--><rect fill="#FEFECE" filter="url(#fkplcbrourwsr)" height="79.5469" id="Utils" style="stroke: #A80036; stroke-width: 1.5;" width="412" x="7" y="7"/><ellipse cx="186.75" cy="25.9688" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M189.7188,31.6094 Q189.1406,31.9063 188.5,32.0469 Q187.8594,32.2031 187.1563,32.2031 Q184.6563,32.2031 183.3281,30.5625 Q182.0156,28.9063 182.0156,25.7813 Q182.0156,22.6563 183.3281,21 Q184.6563,19.3438 187.1563,19.3438 Q187.8594,19.3438 188.5,19.5 Q189.1563,19.6563 189.7188,19.9531 L189.7188,22.6719 Q189.0938,22.0938 188.5,21.8281 Q187.9063,21.5469 187.2813,21.5469 Q185.9375,21.5469 185.25,22.625 Q184.5625,23.6875 184.5625,25.7813 Q184.5625,27.875 185.25,28.9531 Q185.9375,30.0156 187.2813,30.0156 Q187.9063,30.0156 188.5,29.75 Q189.0938,29.4688 189.7188,28.8906 L189.7188,31.6094 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="48" x="205.25" y="23.1387">«static»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="27" x="215.75" y="37.1074">Utils</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="418" y1="44.9375" y2="44.9375"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="418" y1="52.9375" y2="52.9375"/><ellipse cx="18" cy="63.9375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="264" x="27" y="67.1479">HideIfClickedOutside(panel:GameObject) : void</text><ellipse cx="18" cy="76.7422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="386" x="27" y="79.9526">PositionBetween(v1:Vector3, v2:Vector3, percentage:float) : Vector3</text><!--MD5=[2f13b46486775b64160ecd0eb702c3ee]
+@startuml
+class Utils <<static>> {
+    + {static} HideIfClickedOutside(panel:GameObject) : void
+    + {static} PositionBetween(v1:Vector3, v2:Vector3, percentage:float) : Vector3
+}
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 10:22:07 GMT 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.9+11-Ubuntu-0ubuntu1
+Operating System: Linux
+Default Encoding: ANSI_X3.4-1968
+Language: en
+Country: US
+--></g></svg>

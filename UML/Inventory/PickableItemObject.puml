@@ -1,0 +1,8 @@
+@startuml
+class PickableItemObject {
+    + Quantity : int <<get>> <<set>> = 1
+    + DestroyItem() : void
+}
+MonoBehaviour <|-- PickableItemObject
+PickableItemObject --> "InventoryItem" ItemSO
+@enduml

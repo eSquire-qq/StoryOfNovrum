@@ -1,0 +1,9 @@
+@startuml
+class InventoryController {
+    + Update() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- InventoryController
+InventoryController o-> "initialItems<InventoryItem>" "List`1"
+@enduml

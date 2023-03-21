@@ -1,0 +1,7 @@
+@startuml
+class PlayerInteractionManager {
+    + Awake() : void
+    + Interact(context:object) : void
+}
+MonoBehaviour <|-- PlayerInteractionManager
+@enduml

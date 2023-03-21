@@ -1,0 +1,22 @@
+@startuml
+class UIInventoryItem {
+    +  <<event>> OnItemClicked,OnItemDroppedOn,OnItemBeginDrag,OnItemEndDrag,OnRightMouseBtnClick : Action<UIInventoryItem> 
+    + selected : bool = false
+    + Awake() : void
+    + ResetData() : void
+    + Deselect() : void
+    + SetData(sprite:Sprite, quantity:int) : void
+    + Select() : void
+    + OnPointerClick(eventData:PointerEventData) : void
+    + OnEndDrag(eventData:PointerEventData) : void
+    + OnBeginDrag(eventData:PointerEventData) : void
+    + OnDrop(eventData:PointerEventData) : void
+    + OnDrag(eventData:PointerEventData) : void
+}
+MonoBehaviour <|-- UIInventoryItem
+IPointerClickHandler <|-- UIInventoryItem
+IDragHandler <|-- UIInventoryItem
+IBeginDragHandler <|-- UIInventoryItem
+IEndDragHandler <|-- UIInventoryItem
+IDropHandler <|-- UIInventoryItem
+@enduml

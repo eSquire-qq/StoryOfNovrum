@@ -1,0 +1,8 @@
+@startuml
+class PlayerAttack {
+    Start() : void
+    + Awake() : void
+    + Attack(interactionContext:object) : void
+}
+MonoBehaviour <|-- PlayerAttack
+@enduml

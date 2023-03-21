@@ -1,0 +1,6 @@
+@startuml
+class ItemHealActionSO {
+    + <<override>> PerformAction(input:ActionInput, itemState:List<ItemParameter>) : bool
+}
+ItemActionSO <|-- ItemHealActionSO
+@enduml

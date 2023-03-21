@@ -1,0 +1,13 @@
+@startuml
+class Health {
+    + maxHealth : float = 100
+    + currentHealth : float
+    +  <<event>> OnNoHealth : Action 
+    Start() : void
+    Update() : void
+    + TakeDamage(damage:float) : void
+    + Heal(health:float) : void
+}
+MonoBehaviour <|-- Health
+Health --> "healthBar" HealthBarScript
+@enduml
