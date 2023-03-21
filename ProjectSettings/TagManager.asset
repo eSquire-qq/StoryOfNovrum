@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MaskTrigger
   - Enemy
+  - MYPLAYER
   layers:
   - Default
   - TransparentFX
