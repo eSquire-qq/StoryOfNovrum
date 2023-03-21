@@ -3,9 +3,14 @@ using UnityEngine.InputSystem;
 using System;
 using Inventory.Interaction;
 using Inventory;
+using UnityEngine.UI;
 
 public class PlayerInteractionManager : MonoBehaviour
 {
+
+	public int goldCount;
+	public Text goldCountText;
+
 	[SerializeField]
 	protected InteractionArea interactionArea;
 
@@ -43,4 +48,11 @@ public class PlayerInteractionManager : MonoBehaviour
 			attackComponent.Attack();
 		}
 	}
+
+	public void AddGold(int count)
+	{
+		goldCount += count;
+		goldCountText.text = goldCount.ToString();
+	}
+
 }
