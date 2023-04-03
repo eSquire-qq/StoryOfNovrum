@@ -4,6 +4,7 @@ using System;
 using Inventory.Interaction;
 using Inventory;
 using UnityEngine.UI;
+using UnityEngine.UI;
 
 public class PlayerInteractionManager : MonoBehaviour
 {
@@ -54,5 +55,5 @@ public class PlayerInteractionManager : MonoBehaviour
 		goldCount += count;
 		goldCountText.text = goldCount.ToString();
 	}
-	
+
 }
