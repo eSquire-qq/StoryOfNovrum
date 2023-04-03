@@ -10,7 +10,7 @@ public class GoldScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            collision.GetComponent<Player>().AddGold(count);
+            collision.GetComponent<PlayerInteractionManager>().AddGold(count);
             Destroy(gameObject);
         }
     }

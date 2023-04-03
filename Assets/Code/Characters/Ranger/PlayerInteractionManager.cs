@@ -52,7 +52,7 @@ public class PlayerInteractionManager : MonoBehaviour
 	public void AddGold(int count)
 	{
 		goldCount += count;
-		goldCountText.Text = goldCount.ToString();
+		goldCountText.text = goldCount.ToString();
 	}
 	
 }
