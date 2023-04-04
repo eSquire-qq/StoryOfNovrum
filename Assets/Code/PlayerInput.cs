@@ -18,7 +18,7 @@ using UnityEngine.InputSystem.Utilities;
 public partial class @PlayerInput : IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
-    public s\\@PlayerInput()
+    public @PlayerInput()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerInput"",
