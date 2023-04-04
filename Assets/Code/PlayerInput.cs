@@ -186,6 +186,34 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""InventoryUI"",
+            ""id"": ""5e8748fa-3ce2-4445-b1bc-15b6f85d2ba3"",
+            ""actions"": [
+                {
+                    ""name"": ""TAB"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee9e437f-18d2-4a60-a59d-ec5ecf2b94b0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b6312412-6432-499e-8cf9-7ba80ac3c967"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TAB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -258,6 +286,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Escape = m_Menu.FindAction("Escape", throwIfNotFound: true);
+        // InventoryUI
+        m_InventoryUI = asset.FindActionMap("InventoryUI", throwIfNotFound: true);
+        m_InventoryUI_TAB = m_InventoryUI.FindAction("TAB", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -387,6 +418,39 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public MenuActions @Menu => new MenuActions(this);
+
+    // InventoryUI
+    private readonly InputActionMap m_InventoryUI;
+    private IInventoryUIActions m_InventoryUIActionsCallbackInterface;
+    private readonly InputAction m_InventoryUI_TAB;
+    public struct InventoryUIActions
+    {
+        private @PlayerInput m_Wrapper;
+        public InventoryUIActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TAB => m_Wrapper.m_InventoryUI_TAB;
+        public InputActionMap Get() { return m_Wrapper.m_InventoryUI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InventoryUIActions set) { return set.Get(); }
+        public void SetCallbacks(IInventoryUIActions instance)
+        {
+            if (m_Wrapper.m_InventoryUIActionsCallbackInterface != null)
+            {
+                @TAB.started -= m_Wrapper.m_InventoryUIActionsCallbackInterface.OnTAB;
+                @TAB.performed -= m_Wrapper.m_InventoryUIActionsCallbackInterface.OnTAB;
+                @TAB.canceled -= m_Wrapper.m_InventoryUIActionsCallbackInterface.OnTAB;
+            }
+            m_Wrapper.m_InventoryUIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @TAB.started += instance.OnTAB;
+                @TAB.performed += instance.OnTAB;
+                @TAB.canceled += instance.OnTAB;
+            }
+        }
+    }
+    public InventoryUIActions @InventoryUI => new InventoryUIActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -440,5 +504,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     public interface IMenuActions
     {
         void OnEscape(InputAction.CallbackContext context);
+    }
+    public interface IInventoryUIActions
+    {
+        void OnTAB(InputAction.CallbackContext context);
     }
 }

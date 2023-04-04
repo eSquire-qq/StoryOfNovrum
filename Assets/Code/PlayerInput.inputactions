@@ -164,6 +164,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "InventoryUI",
+            "id": "5e8748fa-3ce2-4445-b1bc-15b6f85d2ba3",
+            "actions": [
+                {
+                    "name": "TAB",
+                    "type": "Button",
+                    "id": "ee9e437f-18d2-4a60-a59d-ec5ecf2b94b0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b6312412-6432-499e-8cf9-7ba80ac3c967",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TAB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
