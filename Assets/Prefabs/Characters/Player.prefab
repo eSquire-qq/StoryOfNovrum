@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 5426022623008405064}
   - component: {fileID: 5411038926828950249}
   - component: {fileID: 8433586429091374522}
+  - component: {fileID: 9152528440094784069}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -458,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1ac6e1f8e80534686f9fe85e26a5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryData: {fileID: 11400000, guid: 931e6d2bee2b0ef43abd6d4d4a74fe14, type: 2}
+  inventoryController: {fileID: 5182231614844914007}
   pickupSounds: []
   audioSource: {fileID: 0}
 --- !u!114 &5182231614844914007
@@ -476,6 +477,7 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 931e6d2bee2b0ef43abd6d4d4a74fe14, type: 2}
   ItemPrefab: {fileID: 3463532090349341373, guid: 3da50ea5d7338bf48bf0256f4a6848fd, type: 3}
+  goldCounter: {fileID: 0}
   initialItems: []
 --- !u!61 &3277143960276114490
 BoxCollider2D:
@@ -738,3 +740,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSystem: {fileID: 511878713070689517}
+--- !u!114 &9152528440094784069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913491051991209953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478088cd7996d784eae518b3d6b2773c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldCounter: {fileID: 0}

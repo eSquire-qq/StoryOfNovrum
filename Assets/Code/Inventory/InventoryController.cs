@@ -21,12 +21,16 @@ namespace Inventory
         [SerializeField]
         protected GameObject ItemPrefab;
 
+        [SerializeField]
+        protected GoldCounter goldCounter;
+
         public List<InventoryItem> initialItems = new List<InventoryItem>();
 
         private void Start()
         {
             PrepareUI();
             PrepareInventoryData();
+            goldCounter = GetComponent(typeof(GoldCounter)) as GoldCounter;
         }
 
         private void PrepareInventoryData()
@@ -62,6 +66,15 @@ namespace Inventory
             inventoryUI.OnStartDragging += HandleDragging;
             inventoryUI.OnItemActionRequested += HandleItemActionRequest;
             inventoryUI.Show();
+        }
+
+        public int AddItem(ItemSO item, int quantity, List<ItemParameter> itemState = null)
+        {
+            if (item.name == "GoldBagItem" && goldCounter) {
+                goldCounter.AddGold(quantity);
+                return 0;
+            }
+            return inventoryData.AddItem(item, quantity, itemState);
         }
 
         private void HandleItemActionRequest(int itemIndex)
