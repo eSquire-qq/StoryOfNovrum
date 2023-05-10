@@ -317,7 +317,6 @@ GameObject:
   - component: {fileID: 3926388331841920167}
   - component: {fileID: 7897676791936716030}
   - component: {fileID: 4134423407000772886}
-  - component: {fileID: 5182231614844914007}
   - component: {fileID: 3277143960276114490}
   - component: {fileID: 7867401838648007961}
   - component: {fileID: 511878713070689517}
@@ -329,6 +328,7 @@ GameObject:
   - component: {fileID: 5411038926828950249}
   - component: {fileID: 8433586429091374522}
   - component: {fileID: 9152528440094784069}
+  - component: {fileID: 8514963523689923286}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -459,26 +459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1ac6e1f8e80534686f9fe85e26a5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryController: {fileID: 5182231614844914007}
+  inventoryController: {fileID: 8514963523689923286}
   pickupSounds: []
   audioSource: {fileID: 0}
---- !u!114 &5182231614844914007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8913491051991209953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309f049daebae2b47b851d29c7a5f975, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 0}
-  inventoryData: {fileID: 11400000, guid: 931e6d2bee2b0ef43abd6d4d4a74fe14, type: 2}
-  ItemPrefab: {fileID: 3463532090349341373, guid: 3da50ea5d7338bf48bf0256f4a6848fd, type: 3}
-  goldCounter: {fileID: 0}
-  initialItems: []
 --- !u!61 &3277143960276114490
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -753,3 +736,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldCounter: {fileID: 0}
+--- !u!114 &8514963523689923286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913491051991209953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b796d82d68d46ee45858712ead53e0d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
+  inventoryData: {fileID: 11400000, guid: 931e6d2bee2b0ef43abd6d4d4a74fe14, type: 2}
+  ItemPrefab: {fileID: 3463532090349341373, guid: 3da50ea5d7338bf48bf0256f4a6848fd, type: 3}
+  initialItems: []
+  goldCounter: {fileID: 0}
+  initialItems: []

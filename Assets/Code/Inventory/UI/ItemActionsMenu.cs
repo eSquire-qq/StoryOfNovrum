@@ -1,3 +1,4 @@
+using Inventory.Model;
 using Inventory.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,9 +18,9 @@ public class ItemActionMenu : MonoBehaviour
         item = GetComponentInChildren<UIInventoryItem>();
     }
 
-    public void SetData(Sprite sprite, int quantity)
+    public void SetData(InventoryItem itemData)
     {
-        item.SetData(sprite, quantity);
+        item.SetData(itemData);
     }
     void Update()
     {

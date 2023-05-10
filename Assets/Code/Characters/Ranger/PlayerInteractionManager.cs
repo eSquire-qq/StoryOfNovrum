@@ -33,13 +33,19 @@ public class PlayerInteractionManager : MonoBehaviour
 			attackComponent.Attack();
 			return;
 		}
-		PickableItemObject interactionObject = interactionArea.GetCurrentItems()?.Find(x => x.GetComponent<PickableItemObject>() != null)?.GetComponent<PickableItemObject>();
-		if (interactionObject && pickUpComponent) {
+		PickableItemObject pickableObject = interactionArea.GetCurrentItems()?.Find(x => x.GetComponent<PickableItemObject>() != null)?.GetComponent<PickableItemObject>();
+		if (pickableObject && pickUpComponent) {
 			pickUpComponent.Interact();
+			return;
+		}
+		InteractiveObject interactionObject = interactionArea.GetCurrentItems()?.Find(x => x.GetComponent<InteractiveObject>() != null)?.GetComponent<InteractiveObject>();
+		if (interactionObject) {
+			interactionObject.Interact(context);
 			return;
 		}
 		if (attackComponent) {
 			attackComponent.Attack();
+			return;
 		}
 	}
 
