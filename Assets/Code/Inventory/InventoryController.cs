@@ -23,13 +23,13 @@ namespace Inventory
 
         public List<InventoryItem> initialItems = new List<InventoryItem>();
 
-        private void Start()
+        protected virtual void Start()
         {
             PrepareUI();
             PrepareInventoryData();
         }
 
-        private void PrepareInventoryData()
+        protected virtual void PrepareInventoryData()
         {
             inventoryData.Initialize();
             inventoryData.OnInventoryUpdated += UpdateInventoryUI;
@@ -41,17 +41,16 @@ namespace Inventory
             }
         }
 
-        private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
+        protected virtual void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
         {
             inventoryUI.ResetAllItems();
             foreach (var item in inventoryState)
             {
-                inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, 
-                    item.Value.quantity);
+                inventoryUI.UpdateData(item.Key, item.Value);
             }
         }
 
-        private void PrepareUI()
+        protected void PrepareUI()
         {
             inventoryUI.InitializeInventoryUI(inventoryData.Size);
             inventoryUI.OnSelect += HandleSelect;
@@ -64,7 +63,12 @@ namespace Inventory
             inventoryUI.Show();
         }
 
-        private void HandleItemActionRequest(int itemIndex)
+        public virtual int AddItem(ItemSO item, int quantity, List<ItemParameter> itemState = null)
+        {
+            return inventoryData.AddItem(item, quantity, itemState);
+        }
+
+        protected virtual void HandleItemActionRequest(int itemIndex)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
@@ -72,9 +76,11 @@ namespace Inventory
             if (inventoryItem.item.actionDatas.Count <= 0)
                 return;
 
+            inventoryData.InformAboutChange();
             inventoryUI.ShowItemAction(itemIndex);
             foreach(ActionData action in inventoryItem.item.actionDatas)
             {
+                if (!action.visible) continue;
                 inventoryUI.AddAction(action.actionName, () => {
                     bool success = action.action.PerformAction(new ActionInput{
                         target = this.gameObject,
@@ -92,7 +98,7 @@ namespace Inventory
             }
         }
 
-        private void DropItem(int itemIndex)
+        protected virtual void DropItem(int itemIndex)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
@@ -114,25 +120,25 @@ namespace Inventory
             }
         }
 
-        private void HandleDragging(int itemIndex)
+        protected virtual void HandleDragging(int itemIndex)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
-            inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
+            inventoryUI.CreateDraggedItem(inventoryItem);
         }
 
-        private void HandleSplitItem(int itemIndex)
+        protected virtual void HandleSplitItem(int itemIndex)
         {
             inventoryData.SplitItem(itemIndex);
         }
 
-        private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
+        protected virtual void HandleSwapItems(int itemIndex_1, int itemIndex_2)
         {
             inventoryData.SwapItems(itemIndex_1, itemIndex_2);
         }
 
-        private void HandleSelect(int itemIndex)
+        protected virtual void HandleSelect(int itemIndex)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
@@ -146,13 +152,13 @@ namespace Inventory
                 item.name, description);
         }
 
-        protected void HandleUnselect(int itemIndex)
+        protected virtual void HandleUnselect(int itemIndex)
         {
                 inventoryUI.DeselectAllItems();
                 return;
         }
 
-        private string PrepareDescription(InventoryItem inventoryItem)
+        protected string PrepareDescription(InventoryItem inventoryItem)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(inventoryItem.item.Description);

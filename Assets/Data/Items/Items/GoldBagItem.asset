@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 99
-  <Name>k__BackingField: Gold Bag
+  <Name>k__BackingField: gold
   <Description>k__BackingField: A bag full of gold, a threasure people been fighting
     for, but now it`s useless, or for now.
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 823cbfb8115e56f4c9cd9c7b2efac133, type: 3}
@@ -22,3 +22,4 @@ MonoBehaviour:
   <actionDatas>k__BackingField:
   - action: {fileID: 11400000, guid: a2cf66b742bcae24a950cec4fb3e9bff, type: 2}
     <actionName>k__BackingField: Drop
+  <animations>k__BackingField: []

@@ -5,26 +5,29 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.EventSystems;
+using Inventory.Model;
 
 namespace Inventory.UI
 {
     public class UIInventoryItem : MonoBehaviour, IPointerClickHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
     {
         [SerializeField]
-        private Image itemImage;
-        [SerializeField]
-        private Image quantityBg;
-        [SerializeField]
-        private TMP_Text quantityTxt;
+        protected Image itemImage;
 
         [SerializeField]
-        private Image selectionImage;
+        protected Image quantityBg;
+        
+        [SerializeField]
+        protected TMP_Text quantityTxt;
+
+        [SerializeField]
+        protected Image selectionImage;
 
         public event Action<UIInventoryItem> OnItemClicked,
             OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag,
             OnRightMouseBtnClick;
 
-        private bool empty = true;
+        protected bool empty = true;
         public bool selected = false;
 
         public void Awake()
@@ -32,7 +35,7 @@ namespace Inventory.UI
             ResetData();
             Deselect();
         }
-        public void ResetData()
+        public virtual void ResetData()
         {
             itemImage.gameObject.SetActive(false);
             quantityBg.enabled = false;
@@ -44,13 +47,13 @@ namespace Inventory.UI
             selectionImage.enabled = false;
             selected = false;
         }
-        public void SetData(Sprite sprite, int quantity)
+        public virtual void SetData(InventoryItem item)
         {
             itemImage.gameObject.SetActive(true);
-            itemImage.sprite = sprite;
-            quantityTxt.text = quantity + "";
-            quantityBg.enabled = quantity > 1;
-            quantityTxt.enabled = quantity > 1;
+            itemImage.sprite = item.item.ItemImage;
+            quantityTxt.text = item.quantity + "";
+            quantityBg.enabled = item.quantity > 1;
+            quantityTxt.enabled = item.quantity > 1;
             empty = false;
         }
 

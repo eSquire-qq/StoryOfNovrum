@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -108,10 +120,10 @@ TextureImporter:
       name: traderIdle_0
       rect:
         serializedVersion: 2
-        x: 6
+        x: 0
         y: 0
-        width: 23
-        height: 37
+        width: 34
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c7c066e1d71e5843b9cd6b0d14c8981
-      internalID: -749948384
+      spriteID: e10feb38f021f1343b78341093e4f08b
+      internalID: 758460471
       vertices: []
       indices: 
       edges: []
@@ -129,10 +141,10 @@ TextureImporter:
       name: traderIdle_1
       rect:
         serializedVersion: 2
-        x: 43
+        x: 34
         y: 0
-        width: 23
-        height: 31
+        width: 34
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d8da093f84593e4d81727c7b06f8c23
-      internalID: -652225190
+      spriteID: 2bbb32be11b8870468cc55aa9e6d7564
+      internalID: -527333908
       vertices: []
       indices: 
       edges: []
@@ -150,10 +162,10 @@ TextureImporter:
       name: traderIdle_2
       rect:
         serializedVersion: 2
-        x: 78
+        x: 68
         y: 0
-        width: 23
-        height: 30
+        width: 34
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67d7fdaaf2354b34dbc0b70008dd8f9f
-      internalID: -979265120
+      spriteID: 5c30af6ae1b52874389bed20efbe0c60
+      internalID: -1484421330
       vertices: []
       indices: 
       edges: []
@@ -171,10 +183,10 @@ TextureImporter:
       name: traderIdle_3
       rect:
         serializedVersion: 2
-        x: 112
+        x: 102
         y: 0
-        width: 21
-        height: 31
+        width: 34
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44b172ff442ed0a419950baec9ee1cf0
-      internalID: -1324555407
+      spriteID: aca3871319e36084e817ddc88fb3bfb3
+      internalID: -193918947
       vertices: []
       indices: 
       edges: []
@@ -192,10 +204,10 @@ TextureImporter:
       name: traderIdle_4
       rect:
         serializedVersion: 2
-        x: 146
+        x: 136
         y: 0
-        width: 21
-        height: 34
+        width: 34
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7564d131a7e823408ff48dcf197b7d9
-      internalID: 675546304
+      spriteID: 4fc9adc466001d24180ac19a88f2f9a6
+      internalID: 1775821527
       vertices: []
       indices: 
       edges: []
@@ -213,10 +225,10 @@ TextureImporter:
       name: traderIdle_5
       rect:
         serializedVersion: 2
-        x: 180
+        x: 170
         y: 0
-        width: 21
-        height: 39
+        width: 34
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cca10e0ba092ee4aa0b55b8aa333bd9
-      internalID: -1842526591
+      spriteID: 1a91ef48a8c8c9840b8657c053f81524
+      internalID: -1993105414
       vertices: []
       indices: 
       edges: []
@@ -234,9 +246,9 @@ TextureImporter:
       name: traderIdle_6
       rect:
         serializedVersion: 2
-        x: 211
+        x: 204
         y: 0
-        width: 24
+        width: 34
         height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -245,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3172494279f6a04da695bbabf96b244
-      internalID: 29778587
+      spriteID: e0758fb036a8ddf4680089be9806030b
+      internalID: 524044770
       vertices: []
       indices: 
       edges: []
@@ -255,9 +267,9 @@ TextureImporter:
       name: traderIdle_7
       rect:
         serializedVersion: 2
-        x: 242
+        x: 238
         y: 0
-        width: 27
+        width: 34
         height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -266,8 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05144ec80f75f034786be83421c54dec
-      internalID: 1478167849
+      spriteID: 5026e3c418f92ca418f75541f87acf17
+      internalID: 1071378114
       vertices: []
       indices: 
       edges: []
@@ -283,14 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      traderIdle_6: 29778587
-      traderIdle_1: -652225190
-      traderIdle_0: -749948384
-      traderIdle_7: 1478167849
-      traderIdle_3: -1324555407
-      traderIdle_4: 675546304
-      traderIdle_5: -1842526591
-      traderIdle_2: -979265120
+      traderIdle_6: 524044770
+      traderIdle_1: -527333908
+      traderIdle_0: 758460471
+      traderIdle_7: 1071378114
+      traderIdle_3: -193918947
+      traderIdle_4: 1775821527
+      traderIdle_5: -1993105414
+      traderIdle_2: -1484421330
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

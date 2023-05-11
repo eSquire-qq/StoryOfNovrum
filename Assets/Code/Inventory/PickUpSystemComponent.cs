@@ -11,7 +11,7 @@ namespace Inventory
         protected InteractionArea interactionArea;
 
         [SerializeField]
-        protected InventorySO inventoryData;
+        protected InventoryController inventoryController;
 
         [SerializeField]
         protected List<AudioClip> pickupSounds;
@@ -31,7 +31,7 @@ namespace Inventory
             {
                 if (audioSource && pickupSounds.Count() > 0)
 			 	    audioSource.PlayOneShot(pickupSounds[UnityEngine.Random.Range(0, pickupSounds.Count())]);
-                int reminded = inventoryData.AddItem(interactionObject.InventoryItem, interactionObject.Quantity);
+                int reminded = inventoryController.AddItem(interactionObject.InventoryItem, interactionObject.Quantity);
                 if (reminded == 0) {
                     interactionObject.DestroyItem();
                     Destroy(interactionObject.gameObject);
