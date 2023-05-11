@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Level2.unity.meta
 guid: a1df0eb334af7cb4580814133035b5be
 DefaultImporter:
+========
+guid: 17b3b5c21c6ceee4d97c9f9bb580fca1
+PrefabImporter:
+>>>>>>>> e3d642e0aee08f09dc4390522f8d557ea8dc9ae0:Assets/Prefabs/StaticObjects/SmallTree.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
