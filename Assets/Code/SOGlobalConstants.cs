@@ -36,6 +36,7 @@ namespace GlobalConstants{
     public class Actions : ScriptableObject
     {
         public static readonly string DROP = "Drop";
+        public static readonly string BUY = "Buy";
         public static readonly string MOVE = "Move";
         public static readonly string INTERACT = "Interact";
     }

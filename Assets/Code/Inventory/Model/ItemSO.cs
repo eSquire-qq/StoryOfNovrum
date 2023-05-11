@@ -69,6 +69,14 @@ namespace Inventory.Model
 
         [field: SerializeField]
         public string actionName { get; protected set;}
+
+        [field: SerializeField]
+        public bool visible;
+        public ActionData(ItemActionSO actionSO, string actionName)
+        {
+            this.action = actionSO;
+            this.actionName = actionName;
+        }
     }
 }
 

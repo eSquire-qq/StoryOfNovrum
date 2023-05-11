@@ -1,16 +1,9 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using System;
 using Inventory.Interaction;
 using Inventory;
-using UnityEngine.UI;
-using UnityEngine.UI;
 
 public class PlayerInteractionManager : MonoBehaviour
 {
-
-	public int goldCount;
-	public Text goldCountText;
 
 	[SerializeField]
 	protected InteractionArea interactionArea;
@@ -40,20 +33,20 @@ public class PlayerInteractionManager : MonoBehaviour
 			attackComponent.Attack();
 			return;
 		}
-		PickableItemObject interactionObject = interactionArea.GetCurrentItems()?.Find(x => x.GetComponent<PickableItemObject>() != null)?.GetComponent<PickableItemObject>();
-		if (interactionObject && pickUpComponent) {
+		PickableItemObject pickableObject = interactionArea.GetCurrentItems()?.Find(x => x.GetComponent<PickableItemObject>() != null)?.GetComponent<PickableItemObject>();
+		if (pickableObject && pickUpComponent) {
 			pickUpComponent.Interact();
+			return;
+		}
+		InteractiveObject interactionObject = interactionArea.GetCurrentItems()?.Find(x => x.GetComponent<InteractiveObject>() != null)?.GetComponent<InteractiveObject>();
+		if (interactionObject) {
+			interactionObject.Interact(context);
 			return;
 		}
 		if (attackComponent) {
 			attackComponent.Attack();
+			return;
 		}
-	}
-
-	public void AddGold(int count)
-	{
-		goldCount += count;
-		goldCountText.text = goldCount.ToString();
 	}
 
 }

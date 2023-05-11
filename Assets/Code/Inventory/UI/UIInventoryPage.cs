@@ -4,28 +4,33 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using Inventory.Model;
+using TMPro;
 
 namespace Inventory.UI
 {
     public class UIInventoryPage : MonoBehaviour
     {
         [SerializeField]
-        private UIInventoryItem itemPrefab;
+        protected UIInventoryItem itemPrefab;
 
         [SerializeField]
-        private RectTransform contentPanel;
+        protected RectTransform contentPanel;
 
         [SerializeField]
-        private MouseFollower mouseFollower;
+        protected MouseFollower mouseFollower;
 
         [SerializeField]
-        private ItemActionPanel actionPanel;
+        protected ItemActionPanel actionPanel;
+
+        [SerializeField]
+        protected TMP_Text descriptionPanel;
 
         List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
 
-        private int currentlyDraggedItemIndex = -1;
+        protected int currentlyDraggedItemIndex = -1;
 
-        private bool ctrlPressed = false;
+        protected bool ctrlPressed = false;
 
         public static bool CtrlPressed;
         public static HashSet<KeyCode> currentlyPressedKeys = new HashSet<KeyCode>();
@@ -71,18 +76,18 @@ namespace Inventory.UI
         {
             DeselectAllItems();
             listOfUIItems[itemIndex].Select();
+            descriptionPanel.text = description;
         }
 
-        public void UpdateData(int itemIndex,
-            Sprite itemImage, int itemQuantity)
+        public void UpdateData(int itemIndex, InventoryItem item)
         {
             if (listOfUIItems.Count > itemIndex)
             {
-                listOfUIItems[itemIndex].SetData(itemImage, itemQuantity);
+                listOfUIItems[itemIndex].SetData(item);
             }
         }
 
-        private void HandleShowItemActions(UIInventoryItem inventoryItemUI)
+        protected virtual void HandleShowItemActions(UIInventoryItem inventoryItemUI)
         {
             int index = listOfUIItems.IndexOf(inventoryItemUI);
             if (index == -1)
@@ -92,7 +97,7 @@ namespace Inventory.UI
             OnItemActionRequested?.Invoke(index);
         }
 
-        private void HandleEndDrag(UIInventoryItem inventoryItemUI)
+        protected virtual void HandleEndDrag(UIInventoryItem inventoryItemUI)
         {
             if (
                 !RectTransformUtility.RectangleContainsScreenPoint(
@@ -105,7 +110,7 @@ namespace Inventory.UI
             ResetDraggedItem();
         }
 
-        private void HandleSwap(UIInventoryItem inventoryItemUI)
+        protected virtual void HandleSwap(UIInventoryItem inventoryItemUI)
         {
             int index = listOfUIItems.IndexOf(inventoryItemUI);
             if (index == -1)
@@ -115,13 +120,13 @@ namespace Inventory.UI
             OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
         }
 
-        private void ResetDraggedItem()
+        protected virtual void ResetDraggedItem()
         {
             mouseFollower.Toggle(false);
             currentlyDraggedItemIndex = -1;
         }
 
-        private void HandleBeginDrag(UIInventoryItem inventoryItemUI)
+        protected virtual void HandleBeginDrag(UIInventoryItem inventoryItemUI)
         {
             int index = listOfUIItems.IndexOf(inventoryItemUI);
             if (index == -1)
@@ -133,13 +138,13 @@ namespace Inventory.UI
             OnStartDragging?.Invoke(index);
         }
 
-        public void CreateDraggedItem(Sprite sprite, int quantity)
+        public virtual void CreateDraggedItem(InventoryItem itemData)
         {
             mouseFollower.Toggle(true);
-            mouseFollower.SetData(sprite, quantity);
+            mouseFollower.SetData(itemData);
         }
 
-        private void HandleItemSelection(UIInventoryItem inventoryItemUI)
+        protected virtual void HandleItemSelection(UIInventoryItem inventoryItemUI)
         {
             int index = listOfUIItems.IndexOf(inventoryItemUI);
             if (index == -1)
@@ -198,7 +203,7 @@ namespace Inventory.UI
             ctrlPressed = Input.GetKeyDown(KeyCode.LeftControl);
         }
 
-        private void OnGUI()
+        protected void OnGUI()
         {
             if (!Event.current.isKey) return;
 

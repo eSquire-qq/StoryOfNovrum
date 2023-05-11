@@ -200,7 +200,7 @@ namespace Inventory.Model
             InformAboutChange();
         }
 
-        private void InformAboutChange()
+        public void InformAboutChange()
         {
             OnInventoryUpdated?.Invoke(GetCurrentInventoryState());
         }
