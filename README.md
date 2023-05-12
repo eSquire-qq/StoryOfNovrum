@@ -13,7 +13,7 @@
     - `Characters` - this folder contains all the source codes of the character.
     - `Health system` - this folder contains all the source codes of the health system.
     - `Inventory` - this folder contains all the source code of the inventory.
-      - `Model` - this folder contains all the source code of the inventories.
+      - `Model` - this folder contains all the source code of the inventories model.
       - `UI` - this folder contains all the sourse codes of the UI.
     - `Menus` - this folder contains all the source code of the games menu.
   - `Data` - this folder contains all object parameters.
