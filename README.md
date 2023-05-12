@@ -10,12 +10,12 @@
 **Here are the main project folders**
 - `Assets`
   - `Code` - this folder contains all the source codes of the game.
-    - `Characters`
-    - `Health system`
-    - `Inventory`
-      - `Model`
-      - `UI`
-    - `Menus`
+    - `Characters` - this folder contains all the source codes of the character.
+    - `Health system` - this folder contains all the source codes of the health system.
+    - `Inventory` - this folder contains all the source code of the inventory.
+      - `Model` - this folder contains all the source code of the inventories.
+      - `UI` - this folder contains all the sourse codes of the UI.
+    - `Menus` - this folder contains all the source code of the games menu.
   - `Data` - this folder contains all object parameters.
   - `Graphics` - this folder contains all sprites, sprites assets, animations and UI of the game.
   - `Prefabs` - this folder contains all objects prefabs of game.
