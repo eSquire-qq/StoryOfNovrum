@@ -2,7 +2,7 @@
 
 ## How to download and run the project:
 1. Go to `Releases`.
-2. Download the `Story.Of.Novrum.rar' archive to your PC.
+2. Download the `Story.Of.Novrum.rar` archive to your PC.
 3. Unzip the archive.
 4. Run the file `Story Of Novrum.exe`.
 
