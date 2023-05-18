@@ -29,5 +29,4 @@ public class HealthBarScript : MonoBehaviour
         // Колір індикатора відповідає кількості здорв'я
         fill.color = gradient.Evaluate(slider.normalizedValue);
 	}
-
 }

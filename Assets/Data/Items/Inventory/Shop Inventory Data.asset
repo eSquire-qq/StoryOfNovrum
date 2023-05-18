@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Shop Inventory Data
   m_EditorClassIdentifier: 
   inventoryItems:
-  - quantity: 2
+  - quantity: 1
     item: {fileID: 11400000, guid: bc26a283caf199a4aa24ce7ec861c609, type: 2}
     itemState:
     - itemParameter: {fileID: 11400000, guid: c5f991e6a40e99942b9a511e2ac789ee, type: 2}
       value: 25
+    - itemParameter: {fileID: 11400000, guid: 9b67f6535f350754bbb7665eb0862694, type: 2}
+      value: 5
   - quantity: 0
     item: {fileID: 0}
     itemState: []
