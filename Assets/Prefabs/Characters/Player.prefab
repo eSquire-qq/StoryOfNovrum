@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  cooldown: 500
+  cooldown: 1500
   knockBackMultiplier: 10
   animatorController: {fileID: 8211556395935349349}
   rb: {fileID: 3926388331841920167}
@@ -595,6 +595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb26cbae160b60d4c9091d7ba1689889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldCount: 0
+  goldCountText: {fileID: 0}
   interactionArea: {fileID: 4201616506598567575}
   playerController: {fileID: 5411038926828950249}
   attackComponent: {fileID: 3901231917652026112}
