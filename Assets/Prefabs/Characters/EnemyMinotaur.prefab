@@ -179,7 +179,7 @@ MonoBehaviour:
   maxHealth: 250
   currentHealth: 250
   dead: 0
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 205659987897918755}
   hurtSounds:
   - {fileID: 8300000, guid: c85eb66478df0eb4890d5f16cb4e1e74, type: 3}
   - {fileID: 8300000, guid: 7ae2c09efe79e5546bbe76b58fd54916, type: 3}
@@ -1078,8 +1078,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.02339995, y: 0.00030517578}
-  m_SizeDelta: {x: 0.0468, y: 0.125}
+  m_AnchoredPosition: {x: -0.0055999756, y: -0.0023}
+  m_SizeDelta: {x: 0.0468, y: 0.0381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8800660997764993345
 CanvasRenderer:
