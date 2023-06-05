@@ -19,3 +19,7 @@
   - `Data` - this folder contains all object parameters.
   - `Graphics` - this folder contains all sprites, sprites assets, animations and UI of the game.
   - `Prefabs` - this folder contains all objects prefabs of game.
+## Screenshots:
+![Story_Of_Novrum_PwZCabeWIC](https://github.com/eSquire-qq/StoryOfNovrum/blob/main/Story_Of_Novrum_PwZCabeWIC.png)
+![Story_Of_Novrum_XBpSRNufSZ](https://github.com/eSquire-qq/StoryOfNovrum/blob/main/Story_Of_Novrum_XBpSRNufSZ.png)
+![Story_Of_Novrum_fwB1dpvn8l](https://github.com/eSquire-qq/StoryOfNovrum/blob/main/Story_Of_Novrum_fwB1dpvn8l.png)
